@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guojianyiliao.eryitianshi">
+
+
+    <permission
+        android:name="com.guojianyiliao.eryitianshi.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-sdk android:minSdkVersion="8"></uses-sdk>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.guojianyiliao.eryitianshi.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name="com.guojianyiliao.eryitianshi.MyUtils.SampleApplication"
+        android:allowBackup="true"
+        android:configChanges="orientation|screenSize|keyboardHidden|keyboard|"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/app_log"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:screenOrientation="portrait"
+        android:sharedUserId="android.uid.system"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:versionCode="1"
+        android:versionName="1.1">
+        <activity
+            android:name=".View.activity.LeadActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MyUtils.view.activity.SchoolActivityLryv"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.MyPublishedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.GrowUpDetailcopy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.GrowUpDetail"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MyUtils.view.activity.PublishedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.DiseaseRecordDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.AddremindActivityDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.AddremindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.MyInquiryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.InquiryActivityNew"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.SchoolActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.test.caidanshaixuan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.test.LayoutTestAcitity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MyUtils.view.activity.HomeAcitivtyMy"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".MyUtils.view.activity.BindingInfoData"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.FindPasActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.RegistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.BindingPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.LogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/WelcomeStyle" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.SetdataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.FindpawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.ReservationlistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lucency" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.MycollectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.ReservationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PasswordSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.ThemeselectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.SetPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.FeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.AboutusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.EvaluatepageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.NamepageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.HealthconditionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PayOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PayOrderActivityTwo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PayOrderActivityThirdly"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PayOrderActivityFourth"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.DiseaseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lucency" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.SexpageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PhonechangeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.ConsultPageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lucency" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PersonaldataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.RegistrationAtivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.PharmacyremindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.CompileremindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.RemindsetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.DoctorparticularsActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/lucency" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.InquiryrecordActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.guojianyiliao.eryitianshi.View.activity.HomeActivity" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="com.guojianyiliao.eryitianshi" />
+            </intent-filter>
+        </service>
+
+
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+
+                <category android:name="com.guojianyiliao.eryitianshi" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.guojianyiliao.eryitianshi" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+
+        <receiver
+            android:name="com.guojianyiliao.eryitianshi.Utils.MyBroadcastReceiver"
+            android:enabled="true">
+            <intent-filter>
+
+
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+
+                <category android:name="com.guojianyiliao.eryitianshi" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver
+            android:name="cn.jpush.im.android.helpers.IMReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
+                <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
+
+                <category android:name="com.guojianyiliao.eryitianshi" />
+            </intent-filter>
+        </receiver>
+
+        <data android:scheme="tencent1105577776" />
+
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="7c2a0e6211914830a77efa41" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5895814d5312dd13a2000867" />
+
+        <!--<meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />-->
+
+        <activity
+            android:name=".View.activity.ChatpageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.CompilePharmacyRemindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.OnekeyLoinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.HealthparticularsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.InquiryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.LectureoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.MyCashCouponsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.activity.MyCashCouponsCheckBoxActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.guojianyiliao.eryitianshi.Utils.MyService" />
+        <service
+            android:name="com.guojianyiliao.eryitianshi.Utils.ServiceOne"
+            android:process=":remote">
+            <intent-filter android:priority="1000">
+                <action android:name="com.example.servicedemo.ServiceOne" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.guojianyiliao.eryitianshi.Utils.ServiceTwo"
+            android:process=":remote">
+            <intent-filter android:priority="1000">
+                <action android:name="com.example.servicedemo.ServiceTwo" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.CompileConsultingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.UserAgreementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.LoginSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.View.activity.WebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lucency" />
+
+        <!-- MOb 配置-->
+        <!--<activity
+           android:name="com.mob.tools.MobUIShell"
+           android:configChanges="keyboardHidden|orientation|screenSize"
+           android:screenOrientation="portrait"
+           android:theme="@android:style/Theme.Translucent.NoTitleBar"
+           android:windowSoftInputMode="stateHidden|adjustResize">
+
+           <intent-filter>
+               <data android:scheme="tencent100371282" />
+               <action android:name="android.intent.action.VIEW" />
+
+               <category android:name="android.intent.category.BROWSABLE" />
+               <category android:name="android.intent.category.DEFAULT" />
+           </intent-filter>
+
+
+           <intent-filter>
+               <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+               <category android:name="android.intent.category.DEFAULT" />
+           </intent-filter>
+       </activity>-->
+
+
+        <!-- umeng 配置开始： 微信-->
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- umeng QQ配置-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- umeng sina配置文件 -->
+        <activity
+            android:name="com.guojianyiliao.eryitianshi.WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <service
+            android:name="com.sina.weibo.sdk.net.DownloadService"
+            android:exported="false"></service>
+        //红线不影响，等sina 修复
+        <!--配置结束-->
+
+        <!-- Bugly升级SDK配置开始  -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent" />
+        //兼容N
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.tencent.bugly.hotfix.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

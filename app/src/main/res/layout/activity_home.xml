@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.guojianyiliao.eryitianshi.View.activity.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y104">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home_bottom_navigation" />
+
+
+            <RelativeLayout
+                android:id="@+id/relativelaout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y96"
+                android:layout_alignParentBottom="true">
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y96"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_encyclopedia"
+                        android:layout_width="@dimen/x148"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y12"
+                        android:background="@null"
+                        android:button="@null"
+                        android:drawableTop="@drawable/lecture_onclick"
+                        android:gravity="center"
+                        android:text="首页"
+                        android:textColor="@drawable/encyclopedia_color"
+                        android:textSize="@dimen/y24" />
+
+                    <RadioButton
+                        android:id="@+id/rb_diagnosis"
+                        android:layout_width="@dimen/x148"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y12"
+                        android:background="@null"
+                        android:button="@null"
+                        android:drawableTop="@drawable/diagnosis_onclick"
+                        android:gravity="center"
+                        android:text="诊疗"
+                        android:textColor="@drawable/encyclopedia_color"
+                        android:textSize="@dimen/y24" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y96"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_lectureroom"
+                        android:layout_width="@dimen/x148"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y12"
+                        android:background="@null"
+                        android:button="@null"
+                        android:drawableTop="@drawable/encyclopedia_onclick"
+                        android:gravity="center"
+                        android:text="百科"
+                        android:textColor="@drawable/encyclopedia_color"
+                        android:textSize="@dimen/y24" />
+
+                    <RadioButton
+                        android:id="@+id/rb_mypage"
+                        android:layout_width="@dimen/x148"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y12"
+                        android:background="@null"
+                        android:button="@null"
+                        android:drawableTop="@drawable/my_onclick"
+                        android:gravity="center"
+                        android:text="我的"
+                        android:textColor="@drawable/encyclopedia_color"
+                        android:textSize="@dimen/y24" />
+                </RadioGroup>
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/y135"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+
+        <FrameLayout
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y124"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_inquiry"
+                    android:layout_width="@dimen/x104"
+                    android:layout_height="@dimen/y94"
+                    android:src="@drawable/inquiry_plus_sign" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="服务"
+                    android:textColor="#9fa5a8"
+                    android:textSize="@dimen/y24" />
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_registration"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y120"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <com.guojianyiliao.eryitianshi.page.view.RegistrationView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@color/backgroundblue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="挂号"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x32" />
+        </FrameLayout>
+    </FrameLayout>
+
+
+</RelativeLayout>

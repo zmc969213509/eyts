@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_give_cash_coupons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/x600"
+        android:layout_height="@dimen/y840"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/give_cash_coupons_background">
+
+        <!--<LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y90"
+                android:text="获得200元现金卷大礼包"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>-->
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_look_cash_coupons"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y80"
+                android:layout_marginBottom="@dimen/y20"
+                android:background="@drawable/btn_home_give_cash_coupons_regist"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:text="我知道了"
+                android:shadowColor="#ea4a4f"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@color/backgroundgray"
+                android:textSize="@dimen/y32" />
+
+            <Button
+                android:id="@+id/btn_payment_coupons_new"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y70"
+                android:layout_marginBottom="@dimen/y60"
+                android:background="@null"
+                android:text="立即使用>>"
+                android:textColor="@color/couponsregistr"
+                android:textSize="@dimen/y24" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y360"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@drawable/af_order_rand">
+
+        <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.RoundCornerImageView
+            android:id="@+id/rcImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y196"
+            android:layout_marginTop="@dimen/y30"
+            android:scaleType="centerCrop"
+            android:src="@color/backgroundblue" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/rcImageView"
+            android:layout_marginTop="@dimen/y15">
+
+            <TextView
+                android:id="@+id/tv_lectr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="文章标题"
+                android:textColor="#323232"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_lectr"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginTop="@dimen/y10"
+                android:text="时长320"
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x22" />
+
+            <ImageButton
+                android:id="@+id/img_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/y30"
+                android:background="@drawable/coll_sel_icon" />
+
+
+            <TextView
+                android:id="@+id/tv_browse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/img_like"
+                android:layout_marginRight="@dimen/y30"
+                android:layout_marginTop="@dimen/y10"
+                android:text="99"
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x22" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+            <com.github.jdsjlzx.recyclerview.LRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/x30"
+                android:scrollbars="none" />
+
+            <!--<FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">-->
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+            </LinearLayout>-->
+
+            <!-- <RelativeLayout
+                 android:id="@+id/rl_nonetwork"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:visibility="gone">
+
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:orientation="vertical">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/loadfail" />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/y50"
+                         android:text="内容被外星人劫持了"
+                         android:textColor="@color/linegray"
+                         android:textSize="@dimen/y32" />
+                 </LinearLayout>
+             </RelativeLayout>-->
+
+            <!--<RelativeLayout
+                android:id="@+id/rl_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_lading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/loading" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y50"
+                        android:text="内容加载中"
+                        android:textColor="@color/linegray"
+                        android:textSize="@dimen/y32" />
+                </LinearLayout>
+            </RelativeLayout>-->
+            <!--</FrameLayout>-->
+        </LinearLayout>
+    <!--</ScrollView>-->
+<!--</LinearLayout>-->
+
+
+    <!--这是一条分割线-->
+
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:id="@+id/scrollView"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="@color/white">-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="vertical">-->
+
+
+    <!--<com.example.chen.tset.page.LecturereoomTopBanner--><!--android:id="@+id/banner_lectureoom_top"--><!--android:layout_width="match_parent"--><!--android:layout_height="@dimen/y480" />-->
+
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="center_horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/tv_lectureroom"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginBottom="@dimen/y44"--><!--android:layout_marginTop="@dimen/y38"--><!--android:text="最新上传视频"--><!--android:textColor="@color/fontcolor"--><!--android:textSize="@dimen/y28" />--><!--</LinearLayout>-->
+
+    <!--<com.example.chen.tset.page.LectureroomAmongBanner--><!--android:id="@+id/banner_lectureoom_among"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content" />-->
+
+    <!--<View--><!--android:layout_width="match_parent"--><!--android:layout_height="@dimen/y20"--><!--android:background="@color/backgroundgray" />-->
+
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginBottom="@dimen/y44"--><!--android:layout_marginTop="@dimen/y38"--><!--android:gravity="center_horizontal">-->
+
+    <!--<TextView--><!--android:id="@+id/tv_lecure_beforetext"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center_horizontal"--><!--android:text="往期精选视频"--><!--android:textColor="@color/fontcolor"--><!--android:textSize="@dimen/y28" />--><!--</LinearLayout>-->
+
+    <!--<com.example.chen.tset.page.ListViewForScrollView--><!--android:id="@+id/lecture_room_listView"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content" />-->
+
+
+    <!--</LinearLayout>-->
+
+
+    <!--</ScrollView>-->

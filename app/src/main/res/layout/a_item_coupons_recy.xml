@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f6f6f6"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_monry_backsrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@drawable/mine_djq01">
+
+        <TextView
+            android:id="@+id/tv_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x384"
+            android:layout_marginTop="@dimen/y116"
+            android:text="¥"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x42" />
+
+        <TextView
+            android:id="@+id/tv_money_coupons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x24"
+            android:layout_marginTop="@dimen/y82"
+            android:layout_toRightOf="@id/tv_"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x96" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y70"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/tv_date_coupons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="使用日期：2017-04-14到星际时代"
+            android:textColor="#777777"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_use_coupons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:text="未使用"
+            android:textColor="#777777"
+            android:textSize="@dimen/x26" />
+
+    </RelativeLayout>
+
+</LinearLayout>

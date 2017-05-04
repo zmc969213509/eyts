@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_tab"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_background_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.5">
+
+        <LinearLayout
+            android:id="@+id/ll_search_foot"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y10"
+            android:background="@drawable/af_search_head"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@drawable/search_icon" />
+
+            <EditText
+                android:id="@+id/et_home_search"
+                android:layout_width="@dimen/x520"
+                android:layout_height="@dimen/y64"
+                android:layout_marginLeft="@dimen/x20"
+
+                android:background="@null"
+                android:hint="请输入您想要搜索的关键词"
+                android:textColor="@color/black"
+                android:textColorHint="#cccccc"
+                android:textSize="@dimen/x26" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ivb_home_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ll_search_foot"
+            android:background="@drawable/new_icon" />
+    </RelativeLayout>
+
+
+</LinearLayout>

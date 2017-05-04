@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_city"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_all_areas"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="全部职称"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/xmgray" />
+
+        <LinearLayout
+            android:id="@+id/ll_city_shenzheng"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="主任医师"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/xmgray" />
+
+        <LinearLayout
+            android:id="@+id/ll_city_chengdu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:gravity="center_horizontal"
+                android:text="副主任医师"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/xmgray" />
+
+        <LinearLayout
+            android:id="@+id/ll_city_beijin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="主治医师"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/xmgray" />
+
+        <LinearLayout
+            android:id="@+id/ll_city_shanghai"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="执业医师"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>
+
+
+       <!-- <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/xmgray" />
+
+        <LinearLayout
+            android:id="@+id/ll_city_guangdong"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y78"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="广州"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28" />
+        </LinearLayout>-->
+    </LinearLayout>
+
+
+</LinearLayout>

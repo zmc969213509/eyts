@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_watch_icon"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y100"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@drawable/default_icon"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/x4" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/iv_watch_icon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_watch_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="安卓"
+                android:textColor="#777777"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+                android:id="@+id/tv_watch_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2小时"
+                android:textColor="#cccccc"
+                android:visibility="gone"
+                android:textSize="@dimen/x24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_watch_gz"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/af_btn_gz"
+            android:gravity="center"
+            android:text="已关注"
+            android:textColor="#17c2ed"
+            android:textSize="@dimen/x22" />
+    </RelativeLayout>
+</LinearLayout>

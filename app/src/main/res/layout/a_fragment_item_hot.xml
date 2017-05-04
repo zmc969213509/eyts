@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_foot_collect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.RoundCornerImageView
+        android:id="@+id/iv_hot_icon"
+        android:layout_width="@dimen/x240"
+        android:layout_height="@dimen/y180"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_hot_icon"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/iv_hot_icon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_hot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y2"
+            android:ellipsize="end"
+            android:maxEms="15"
+            android:singleLine="true"
+            android:textColor="#323232"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_hot_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y20"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1"
+            android:lines="2"
+            android:textColor="#bab9b9"
+            android:textSize="@dimen/x26" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_hot_icon"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/iv_hot_icon">
+
+        <TextView
+            android:id="@+id/tv_hot_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="2017-3-30"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/x24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/x26"
+                android:layout_height="@dimen/y26"
+                android:src="@drawable/eye_icon" />
+
+            <TextView
+                android:id="@+id/tv_hot_collectnumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x30"
+                android:textColor="@color/linegray1"
+                android:textSize="@dimen/x22" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

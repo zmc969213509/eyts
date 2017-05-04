@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.XCFlowLayout
+        android:id="@+id/fl_content_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x30" />
+
+    <!--<com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:swipe_style="classic">
+        &lt;!&ndash;android:background="@color/style_window_background"&ndash;&gt;
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_twitter_header" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false" />
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_classic_footer" />
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>-->
+
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/recy_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20" />
+
+</LinearLayout>

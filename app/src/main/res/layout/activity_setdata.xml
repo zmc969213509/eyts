@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y350"
+        android:src="@drawable/set_data" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="昵称"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x32" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x60"
+            android:background="@null"
+            android:maxLength="6"
+            android:textCursorDrawable="@drawable/deittext_cursor_blue_style"
+            android:hint="请填写您的昵称"
+            android:textColor="@color/fontcolor"
+            android:textColorHint="@color/linegray1"
+            android:textSize="@dimen/x32" />/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="性别"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x32" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbtn_man"
+                android:layout_width="@dimen/x200"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x60"
+                android:background="@drawable/setdata_btn_onclick"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="男士"
+                android:textColor="@drawable/setdata_btn_color" />
+
+            <RadioButton
+                android:id="@+id/rb_madam"
+                android:layout_width="@dimen/x200"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x40"
+                android:background="@drawable/setdata_btn_onclick"
+                android:button="@null"
+                android:gravity="center"
+                android:text="女士"
+                android:textColor="@drawable/setdata_btn_color" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray"></View>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y60"
+        android:background="@drawable/countersign_btn_case"
+        android:text="完  成"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y100"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@drawable/default_icon"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/x4" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/iv_icon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_grow_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="安卓"
+                android:textColor="#777777"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+                android:id="@+id/tv_grow_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2小时"
+                android:textColor="#cccccc"
+                android:textSize="@dimen/x24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_grow_gz"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/af_btn_gz"
+            android:gravity="center"
+            android:text="+ 关注"
+            android:textColor="#17c2ed"
+            android:textSize="@dimen/x22" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_grow_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="安卓"
+        android:textColor="#323232"
+        android:textSize="@dimen/x30"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_grow_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1"
+        android:maxLines="3"
+        android:text="安卓"
+        android:textColor="#777777"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+
+    <com.lzy.ninegrid.NineGridView
+        android:id="@+id/nineGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/y10"
+        android:visibility="gone" />
+    <!--<com.jaeger.ninegridimageview.NineGridImageView
+        android:id="@+id/nineGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/y20"
+        android:paddingRight="5dp"
+        android:paddingTop="6dp" />
+-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_grow_see"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginTop="@dimen/y30"
+            android:text="浏览"
+            android:textColor="#777777"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/tv_grow_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:text=" "
+            android:textColor="#777777"
+            android:textSize="@dimen/x24" />
+
+        <ImageView
+            android:id="@+id/iv_grow_evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@id/tv_grow_comment"
+            android:background="@drawable/evaluate_icon" />
+
+        <TextView
+            android:id="@+id/tv_grow_eagrees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@id/iv_grow_evaluate"
+            android:text=" "
+            android:textColor="#777777"
+            android:textSize="@dimen/x24" />
+
+        <ImageView
+            android:id="@+id/iv_grow_def"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@id/tv_grow_eagrees"
+            android:background="@drawable/af_imabtn_def" />
+    </RelativeLayout>
+
+</LinearLayout>

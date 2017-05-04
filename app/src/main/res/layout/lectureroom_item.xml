@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="@dimen/x334"
+        android:layout_height="@dimen/y300"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/af_order_rand">
+
+        <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.RoundCornerImageView
+            android:id="@+id/rcImageView"
+            android:layout_width="@dimen/x334"
+            android:layout_height="@dimen/y210"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:layout_below="@id/rcImageView"
+            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginTop="@dimen/y20">
+
+            <TextView
+                android:id="@+id/tv_lectr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="标题"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_lectr"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="时长320"
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x22" />
+
+            <ImageView
+                android:id="@+id/img_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/y30"
+                android:background="@drawable/coll_sel_icon" />
+
+            <TextView
+                android:id="@+id/tv_browse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/img_like"
+                android:layout_marginRight="@dimen/x30"
+                android:text="99"
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x22" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/x14"-->
+    <!--android:layout_marginRight="@dimen/x30"-->
+    <!--android:layout_marginTop="@dimen/y20"-->
+    <!--android:layout_weight="1"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<com.example.chen.tset.page.view.RoundCornerImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/y196"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:src="#e90d0d" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_lectr1"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/x32"-->
+    <!--android:text="张老师为你讲解膝盖积水的处理和治疗"-->
+    <!--android:textColor="#323232"-->
+    <!--android:textSize="@dimen/x24" />-->
+    <!--</LinearLayout>-->
+
+
+</LinearLayout>

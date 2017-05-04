@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="#e6e6e6" />
+
+    <LinearLayout
+        android:id="@+id/ll_city_shenzheng"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:orientation="horizontal"
+        android:background="@drawable/aa_btn_item_login">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:textColor="@drawable/aa_item_text_selector"
+            android:textSize="@dimen/y28" />
+
+        <ImageView
+            android:id="@+id/iv_1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/aa_item_ima_selector" />
+
+    </LinearLayout>
+
+</LinearLayout>

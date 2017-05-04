@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:orientation="vertical">
+
+    <include layout="@layout/a_foot_head" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y130"
+        android:background="@color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y100"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@drawable/doctor_head"
+            app:civ_border_color="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/iv_icon"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_foot_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="安卓"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x32" />
+
+                <ImageView
+                    android:id="@+id/iv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_toRightOf="@id/tv_name"
+                    android:background="@drawable/boy_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y10"
+                android:text="18388888888"
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x24" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_set"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@color/white"
+        app:tabIndicatorColor="#17c2ed"
+        app:tabSelectedTextColor="#17c2ed"
+        app:tabTextColor="#777777" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_set"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

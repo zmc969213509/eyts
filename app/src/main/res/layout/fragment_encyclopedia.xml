@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="百科"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x36" />
+    </RelativeLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y52"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_tab1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:paddingRight="@dimen/x80"
+                android:text="成长指南"
+                android:textColor="@color/xmgray"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_tab2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/x80"
+                android:text="疾病库"
+                android:textColor="@color/xmgray"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y5"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="@dimen/x120"
+                    android:layout_height="@dimen/y5"
+                    android:layout_marginRight="@dimen/x77"
+                    android:background="@color/backgroundblue" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="@dimen/x120"
+                    android:layout_height="@dimen/y5"
+                    android:layout_marginLeft="@dimen/x63"
+                    android:background="@color/backgroundblue" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_encyclopedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

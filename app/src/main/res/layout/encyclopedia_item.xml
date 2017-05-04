@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:orientation="horizontal">
+
+        <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.RoundCornerImageView
+            android:id="@+id/iv_img"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y110"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:singleLine="true"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/y9"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:singleLine="true"
+                android:textColor="@color/xmgray"
+                android:textSize="@dimen/x24" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y9">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/linegray1"
+                    android:textSize="@dimen/x22" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/x26"
+                        android:layout_height="@dimen/y26"
+                        android:src="@drawable/encyclopedialike" />
+
+                    <TextView
+                        android:id="@+id/tv_characersafe_collectCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x14"
+                        android:layout_marginRight="@dimen/x42"
+                        android:textColor="@color/linegray1"
+                        android:textSize="@dimen/x22" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y12"
+        android:background="@color/linegray" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundgray"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.guojianyiliao.eryitianshi.View.activity.CompileremindActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/ll_rutname"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_passet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="取消"
+                    android:textColor="@color/backgroundblue"
+                    android:textSize="@dimen/x32" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="编辑提醒"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/x36" />
+
+            <LinearLayout
+                android:id="@+id/linearlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_pas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/x30"
+                    android:text="保存"
+                    android:textColor="@color/backgroundblue"
+                    android:textSize="@dimen/x32" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y30" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/compilrermind_set_case"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_starttime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="开始:"
+                        android:textColor="@color/fontcolor"
+                        android:textSize="@dimen/y26" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tv_starttime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/backgroundblue"
+                        android:textSize="@dimen/y28" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:background="@color/linegray" />
+
+            <RelativeLayout
+                android:id="@+id/rl_endtime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="结束:"
+                        android:textColor="@color/fontcolor"
+                        android:textSize="@dimen/y26" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tv_endtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/backgroundblue"
+                        android:textSize="@dimen/y28" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/compilrermind_set_case"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_time_select1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="时间:"
+                        android:textColor="@color/fontcolor"
+                        android:textSize="@dimen/y26" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tv_time1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/backgroundblue"
+                        android:textSize="@dimen/y28" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:background="@color/linegray" />
+
+            <EditText
+                android:id="@+id/et_compile_remind_content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y32"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_marginTop="@dimen/y28"
+                android:background="@null"
+                android:hint="用药编辑"
+                android:lineSpacingExtra="@dimen/y10"
+                android:textColor="@color/fontcolor"
+                android:textColorHint="@color/linegray1"
+                android:textCursorDrawable="@drawable/deittext_cursor_blue_style"
+                android:textSize="@dimen/y26" />
+
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl_add_remind"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/compilrermind_set_case">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="添加提醒"
+                android:textColor="@color/backgroundblue"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_remind_case1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/compilrermind_set_case"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_time_select2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="时间:"
+                        android:textColor="@color/fontcolor"
+                        android:textSize="@dimen/y26" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tv_time2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/backgroundblue"
+                        android:textSize="@dimen/y28" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:background="@color/linegray" />
+
+            <EditText
+                android:id="@+id/et_compile_remind_content2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y32"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_marginTop="@dimen/y28"
+                android:background="@null"
+                android:hint="用药编辑"
+                android:lineSpacingExtra="@dimen/y10"
+                android:textColor="@color/fontcolor"
+                android:textColorHint="@color/linegray1"
+                android:textCursorDrawable="@drawable/deittext_cursor_blue_style"
+                android:textSize="@dimen/y26" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_add_remind1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/compilrermind_set_case"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="添加提醒"
+                android:textColor="@color/backgroundblue"
+                android:textSize="@dimen/y28" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+
+            android:id="@+id/ll_remind_case2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/compilrermind_set_case"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/rl_time_select3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:text="时间:"
+                        android:textColor="@color/fontcolor"
+                        android:textSize="@dimen/y26" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tv_time3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/backgroundblue"
+                        android:textSize="@dimen/y28" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:background="@color/linegray" />
+
+            <EditText
+                android:id="@+id/et_compile_remind_content3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y32"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_marginTop="@dimen/y28"
+                android:background="@null"
+                android:hint="用药编辑"
+                android:lineSpacingExtra="@dimen/y10"
+                android:textColor="@color/fontcolor"
+                android:textColorHint="@color/linegray1"
+                android:textCursorDrawable="@drawable/deittext_cursor_blue_style"
+                android:textSize="@dimen/y26" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

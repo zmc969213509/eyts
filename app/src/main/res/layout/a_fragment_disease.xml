@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:orientation="vertical">
+
+    <include layout="@layout/a_foot_head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@drawable/drug_ll_item"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊医生:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="安卓:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊科室:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="内科:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊医院:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="成都市天使儿童医院:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊人:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="安卓:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊日期:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="2017-4-10:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="就诊疾病:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="感冒:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="疾病描述:"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:hint="感冒，发烧:"
+                android:textColorHint="#aaaaaa"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+    </LinearLayout>
+</LinearLayout>

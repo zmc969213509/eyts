@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="@dimen/x180"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y10"
+                    android:background="@color/backgroundgray" />
+
+                <ListView
+                    android:id="@+id/listview_dise"
+                    android:layout_width="@dimen/x180"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:fastScrollEnabled="false"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/bannerView"
+                    android:layout_width="@dimen/x480"
+                    android:layout_height="@dimen/y200"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_marginTop="@dimen/y20"
+                    android:orientation="vertical"
+                    app:indicator_drawable_selected="@drawable/lead_slide_sign"
+                    app:indicator_drawable_unselected="@drawable/lead_slide_sign1" />  
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyv_dise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x38"
+                    android:layout_marginRight="@dimen/x30"
+                    android:paddingTop="@dimen/y20"
+                    android:divider="@color/linegray"
+                    android:dividerHeight="1dp"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_nonetwork"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/loadfail" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y50"
+                    android:text="内容被外星人劫持了"
+                    android:textColor="@color/linegray"
+                    android:textSize="@dimen/y32" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y50"
+                    android:gravity="center_horizontal"
+                    android:text="点击刷新"
+                    android:textColor="@color/backgroundblue"
+                    android:textSize="@dimen/y36" />
+
+                <ImageView
+                    android:id="@+id/iv_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/refresh" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_lading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/loading" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/y50"
+                    android:text="内容加载中"
+                    android:textColor="@color/linegray"
+                    android:textSize="@dimen/y32" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

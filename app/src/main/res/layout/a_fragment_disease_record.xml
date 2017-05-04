@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@drawable/line" />
+
+            <!--<ImageView
+                android:id="@+id/iv_stance_lin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/round_icon" />-->
+            <!--<TextView
+                android:id="@+id/start_end_time"
+                android:layout_width="@dimen/x346"
+                android:layout_height="@dimen/y70"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y30"
+                android:background="@drawable/drug_tx_item"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="2017-4-11至2017-4-21"
+                android:textColor="#f87055"
+                android:textSize="@dimen/x26" />-->
+
+            <RelativeLayout
+                android:id="@+id/rl_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/start_end_time"
+                    android:layout_width="@dimen/x346"
+                    android:layout_height="@dimen/y70"
+                    android:layout_marginTop="@dimen/y30"
+                    android:background="@drawable/drug_tx_item"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="2017-4-11至2017-4-21"
+                    android:textColor="#f87055"
+                    android:textSize="@dimen/x26" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/start_end_time"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_stance_lin1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/round_icon" />
+
+                    <LinearLayout
+                        android:id="@+id/detail1"
+                        android:layout_width="@dimen/x640"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_marginTop="@dimen/y20"
+                        android:background="@drawable/drug_ll_item"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:layout_marginTop="@dimen/y30"
+                            android:text="疾病：感冒"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x26" />
+
+                        <TextView
+                            android:id="@+id/tv_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:layout_marginTop="@dimen/y10"
+                            android:text="科室：内科"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x26" />
+
+                        <TextView
+                            android:id="@+id/tv_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:layout_marginTop="@dimen/y10"
+                            android:text="医院：成都天使儿童医院"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x26" />
+
+                        <TextView
+                            android:id="@+id/tv_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/y30"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:layout_marginTop="@dimen/y10"
+                            android:text="医生：安卓"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x26" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/set_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/fl_icon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y118"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_bottom_navigation" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rb_home_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/icon_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/y10"
+                    android:background="@drawable/lecture_onclick" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/icon_task"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="首页"
+                    android:textColor="@drawable/encyclopedia_color"
+                    android:textSize="@dimen/y24" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rb_baike_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_orders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:background="@drawable/encyclopedia_onclick" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/icon_orders"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="百科"
+                    android:textColor="@drawable/encyclopedia_color"
+                    android:textSize="@dimen/y24" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rb_growing_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:background="@drawable/diagnosis_onclick" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/icon_message"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="成长"
+                    android:textColor="@drawable/encyclopedia_color"
+                    android:textSize="@dimen/y24" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rb_my_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:background="@drawable/my_onclick" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/icon_user"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="我的"
+                    android:textColor="@drawable/encyclopedia_color"
+                    android:textSize="@dimen/y24" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

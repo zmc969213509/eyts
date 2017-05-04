@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dise_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundgray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/x180"
+        android:layout_height="@dimen/y120"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_dislistv"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
+                android:layout_marginTop="@dimen/y10"
+                android:src="@drawable/action_listv" />
+            <ImageView
+                android:id="@+id/iv_dislistv1"
+                android:visibility="gone"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
+                android:layout_marginTop="@dimen/y10"
+                android:src="@drawable/action_listv" />
+
+        </FrameLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_dislistv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="行为发育"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+
+</LinearLayout>

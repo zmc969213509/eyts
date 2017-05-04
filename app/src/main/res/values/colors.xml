@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#323232</color>
+    <color name="white">#ffffff</color>
+    <color name="backgroundblue">#6fc9e6</color>
+    <color name="backgroundgray">#f4f4f4</color>
+    <color name="xmgray">#999999</color>
+    <color name="fontcolor">#323232</color>
+    <color name="linegray">#e0e0e0</color>
+    <color name="linegray1">#bbbbbb</color>
+    <color name="fontgray">#666666</color>
+    <color name="pink">#fb878f</color>
+    <color name="a">#e4e4e4</color>
+    <color name="homefont">#6e6e6e</color>
+    <color name="black">#000000</color>
+    <color name="red1">#fb6165</color>
+    <color name="payorder">#313131</color>
+    <color name="payorderdoctor">#999999</color>
+    <color name="couponshealthy">#6fc9e6</color>
+    <color name="couponsregistr">#eb696c</color>
+    <color name="couponsshare">#a5ce57</color>
+    <color name="empty">#00000000</color>
+    <color name="view">#17c2ed</color>
+    <color name="lineback">#e6e6e6</color>
+</resources>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundgray"
+    android:orientation="vertical"
+    tools:context="com.guojianyiliao.eryitianshi.View.activity.RemindsetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_remidsetreturn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y36"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@drawable/opinion_return" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x8"
+                android:text="设置"
+                android:textColor="@color/backgroundblue"
+                android:textSize="@dimen/x32" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="提醒设置"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x36" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="声音"
+                    android:textColor="@color/fontcolor"
+                    android:textSize="@dimen/y32" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y50"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/remindset_togglebutton"
+                    android:textOff=""
+                    android:textOn="" />
+
+                <View
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x30"
+            android:background="@color/linegray" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y90"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="震动"
+                    android:textColor="@color/fontcolor"
+                    android:textSize="@dimen/y32" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y50"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/remindset_togglebutton"
+                    android:textOff=""
+                    android:textOn="" />
+
+                <View
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="消息提醒"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y32" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <ToggleButton
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y50"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/remindset_togglebutton"
+                android:textOff=""
+                android:textOn="" />
+
+            <View
+                android:layout_width="@dimen/x30"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="用药提醒"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y32" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <ToggleButton
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y50"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/remindset_togglebutton"
+                android:textOff=""
+                android:textOn="" />
+
+            <View
+                android:layout_width="@dimen/x30"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/linegray" />
+
+
+</LinearLayout>

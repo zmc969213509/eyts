@@ -1,0 +1,114 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/x28</item>
+    </style>
+
+    <style name="Theme.picker" parent="android:Theme.Holo.Light">
+        <item name="android:editTextStyle">@style/Widget.EditText.White</item>
+    </style>
+
+    <style name="Widget.EditText.White" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/fontcolor</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/y28</item>
+    </style>
+
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.D1NoTitleDim" parent="android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:background">@drawable/registration_spinner_case</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingLeft">5dip</item>
+    </style>
+
+    <style name="WelcomeStyle" parent="android:Theme">
+        <item name="android:windowBackground">@color/backgroundblue</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Appwelcome" parent="android:Theme.NoTitleBar.Fullscreen"></style>
+
+    <style name="LauncherTheme">
+        <item name="android:windowBackground">@color/backgroundblue</item>
+    </style>
+
+
+    <style name="defaultTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="lucency" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="GuideHelperDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <!--  <item name="android:paddingBottom">3dp</item>-->
+    </style>
+
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#17c2ed</item>
+        <item name="colorControlActivated">#17c2ed</item>
+    </style>
+
+    <style name="AcitivtyBlue" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--状态栏-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--中间部分-->
+        <!--<item name="colorAccent">@color/colorPrimary</item>-->
+        <!-- 底部导航栏颜色 -->
+        <!-- <item name="android:navigationBarColor">#4876FF</item>-->
+        <!-- 窗口的背景颜色 -->
+        <!--<item name="android:windowBackground">@android:color/white</item>-->
+        <!-- app bar字体的颜色 -->
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+    </style>
+
+    <style name="AcitivtyWhite" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">#00000000</item>
+        //头
+    </style>
+
+    <style name="transparentFrameWindowStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/photo_choose_bg</item>
+    </style>
+
+    <style name="main_menu_animstyle">
+        <item name="android:windowEnterAnimation">@anim/photo_dialog_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/photo_dialog_out_anim</item>
+    </style>
+
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundgray">
+
+
+    <RelativeLayout
+        android:id="@+id/ll_root"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96">
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="关闭"
+            android:textColor="@color/backgroundblue"
+            android:textSize="@dimen/x32" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="一键挂号"
+            android:textColor="@color/fontcolor"
+            android:textSize="@dimen/x36" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_root"
+        android:background="@drawable/page_upgrade" />
+
+    <Button
+        android:id="@+id/bt_close"
+        android:layout_width="@dimen/x220"
+        android:layout_height="@dimen/y60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/y460"
+        android:layout_marginLeft="@dimen/y356"
+        android:background="@drawable/btn_pageup"
+        android:text="去其他页面瞧瞧"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x24" />
+
+
+</RelativeLayout>

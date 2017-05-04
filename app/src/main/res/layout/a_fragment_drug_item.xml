@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/start_end_time"
+            android:layout_width="@dimen/x346"
+            android:layout_height="@dimen/y70"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/drug_tx_item"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="2017-4-11至2017-4-21"
+            android:textColor="#f87055"
+            android:textSize="@dimen/x26" />
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_stance_red1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@drawable/line" />
+
+
+            <ImageView
+                android:id="@+id/iv_stance_lin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_stance_red1"
+                android:background="@drawable/round_icon" />
+
+            <LinearLayout
+                android:id="@+id/detail1"
+                android:layout_width="@dimen/x640"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x1"
+                android:layout_toRightOf="@id/iv_stance_lin1"
+                android:background="@drawable/drug_ll_item"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="用药时间：8:00"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+                <TextView
+                    android:id="@+id/content_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_marginBottom="@dimen/y30"
+                    android:text="成都天使儿童医院"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_stance_red2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@drawable/line" />
+
+
+            <ImageView
+                android:id="@+id/iv_stance_lin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_stance_red2"
+                android:background="@drawable/round_icon" />
+
+            <LinearLayout
+                android:id="@+id/detail2"
+                android:layout_width="@dimen/x640"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x1"
+                android:layout_marginTop="@dimen/y30"
+                android:layout_toRightOf="@id/iv_stance_lin2"
+                android:background="@drawable/drug_ll_item"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="用药时间：13:00"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+                <TextView
+                    android:id="@+id/content_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_marginBottom="@dimen/y30"
+                    android:text="成都天使儿童医院"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_stance_red3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@drawable/line" />
+
+
+            <ImageView
+                android:id="@+id/iv_stance_lin3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_stance_red3"
+                android:background="@drawable/round_icon" />
+
+            <LinearLayout
+                android:id="@+id/detail3"
+                android:layout_width="@dimen/x640"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x1"
+                android:layout_marginTop="@dimen/y30"
+                android:layout_toRightOf="@id/iv_stance_lin3"
+                android:background="@drawable/drug_ll_item"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/time_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:text="用药时间：18:00"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+                <TextView
+                    android:id="@+id/content_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_marginBottom="@dimen/y30"
+                    android:text="成都天使儿童医院"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x26" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

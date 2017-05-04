@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_home_doctor_icon"
+                    android:layout_width="@dimen/x112"
+                    android:layout_height="@dimen/y112"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginTop="@dimen/y20" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x26"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y20"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/fontcolor"
+                            android:textSize="@dimen/y30" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/y34"
+                            android:layout_marginLeft="@dimen/x24"
+                            android:layout_marginTop="@dimen/y5"
+                            android:background="@drawable/home_doctor_title_case"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_home_docotor_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/x14"
+                                android:layout_marginRight="@dimen/x14"
+                                android:textColor="@color/backgroundblue"
+                                android:textSize="@dimen/y20" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_home_doctor_section"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y5"
+                        android:textColor="@color/xmgray"
+                        android:textSize="@dimen/y24" />
+
+                    <TextView
+                        android:id="@+id/tv_home_doctor_adept"
+                        android:layout_width="@dimen/x350"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/y20"
+                        android:layout_marginTop="@dimen/y5"
+                        android:ellipsize="end"
+                        android:maxEms="12"
+                        android:singleLine="true"
+                        android:textColor="@color/xmgray"
+                        android:textSize="@dimen/y24" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y30"
+                    android:gravity="center_vertical">
+
+                    <FrameLayout
+                        android:id="@+id/fl_chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x30">
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/x155"
+                            android:layout_height="@dimen/y72"
+                            android:layout_marginTop="@dimen/x13">
+
+                            <Button
+                                android:id="@+id/btn_home_doctor_chatCost"
+                                android:layout_width="@dimen/x120"
+                                android:layout_height="@dimen/y60"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/inquiry_btn_case"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:textColor="#fb878f"
+                                android:textSize="@dimen/y26" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/x30"
+                            android:layout_height="@dimen/y30"
+                            android:layout_marginTop="@dimen/x13"
+                            android:src="@drawable/inquiry_isclick" />
+
+                        <ImageView
+                            android:id="@+id/iv_istrue_home"
+                            android:layout_width="@dimen/x80"
+                            android:layout_height="@dimen/y34"
+                            android:layout_marginLeft="@dimen/x62" />
+                        <!--android:src="@drawable/home_doctor_state"-->
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_marginLeft="@dimen/x30"
+        android:background="@color/linegray" />
+
+</LinearLayout>

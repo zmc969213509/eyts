@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y30" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y35"
+                android:includeFontPadding="false"
+                android:lineSpacingMultiplier="0.9"
+                android:textColor="@color/fontgray"
+                android:textSize="@dimen/y24" />
+
+            <TextView
+                android:id="@+id/tv_comment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y5"
+                android:includeFontPadding="false"
+                android:lineSpacingMultiplier="0.9"
+                android:textColor="@color/linegray1"
+                android:textSize="@dimen/y20" />
+
+            <TextView
+                android:id="@+id/tv_comment_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y18"
+                android:textColor="@color/fontcolor"
+                android:textSize="@dimen/y28"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/x110"
+        android:layout_marginTop="@dimen/y28"
+        android:background="@color/linegray" />
+
+</LinearLayout>

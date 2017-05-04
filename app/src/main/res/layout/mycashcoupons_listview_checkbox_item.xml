@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_mycash_use_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y225"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@drawable/my_cashcoupon_haveaccessto_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x63"
+                    android:layout_marginTop="@dimen/y30"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:text="￥25"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/y42" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x63"
+                    android:layout_marginTop="@dimen/y20"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:padding="0dp"
+                    android:text="代金券"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/y40" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x130"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_cash_coupons_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y30"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:text="快速问诊劵"
+                    android:textColor="@color/fontgray"
+                    android:textSize="@dimen/y42" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y28"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:text="仅限在线问诊使用"
+                    android:textColor="@color/fontgray"
+                    android:textSize="@dimen/y26" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cb_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#ffff00"
+                android:layout_marginLeft="@dimen/x30" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_valid_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/y18"
+                    android:layout_marginLeft="@dimen/x33"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:text=""
+                    android:textColor="@color/fontcolor"
+                    android:textSize="@dimen/y24" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_mycash_use_stater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/y18"
+                    android:layout_marginRight="@dimen/x33"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:text=""
+                    android:textColor="@color/fontcolor"
+                    android:textSize="@dimen/y24" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
