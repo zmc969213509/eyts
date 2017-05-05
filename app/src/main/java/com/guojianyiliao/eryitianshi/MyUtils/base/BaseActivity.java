@@ -12,6 +12,7 @@ import com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.LoadingPage;
 
 public class BaseActivity extends AppCompatActivity {
 
+    //提交测试
     private LoadingPage mLoadingPage;
 
     @Override
