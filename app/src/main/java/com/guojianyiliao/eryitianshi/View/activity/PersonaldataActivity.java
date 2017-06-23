@@ -119,7 +119,7 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
 
     @OnClick(R.id.ll_sex)
     public void setGender() {
-        startActivity(new Intent(PersonaldataActivity.this, SexpageActivity.class));
+        startActivityForResult(new Intent(PersonaldataActivity.this, SexpageActivity.class),10);
     }
 
     @Override
@@ -155,6 +155,12 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
             String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
             user = gson.fromJson(s, UserInfoLogin.class);
             tvName.setText(user.getName());
+            setResult(RESULT_OK);
+        }
+        if(requestCode == 10 && resultCode == 10){
+            String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+            user = gson.fromJson(s, UserInfoLogin.class);
+            tvSex.setText(user.getGender());
             setResult(RESULT_OK);
         }
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {

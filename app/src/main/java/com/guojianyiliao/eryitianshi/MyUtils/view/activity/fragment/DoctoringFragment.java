@@ -20,6 +20,7 @@ import com.guojianyiliao.eryitianshi.MyUtils.adaper.zmc_PageBaikeRecycleviewAdap
 import com.guojianyiliao.eryitianshi.MyUtils.bean.TypeDis;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.SearchDetailsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.customView.FullyLinearLayoutManager;
+import com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView;
 import com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
@@ -49,7 +50,7 @@ public class DoctoringFragment extends Fragment implements zmc_PageBaikeRecyclev
     ShowTextLinearLayout showTextLinearLayout;
 
     @BindView(R.id.zmc_page_dis_recycleview)
-    RecyclerView recyclerView;
+    MyRecycleView recyclerView;
 
     zmc_PageBaikeRecycleviewAdapter adapter;
 

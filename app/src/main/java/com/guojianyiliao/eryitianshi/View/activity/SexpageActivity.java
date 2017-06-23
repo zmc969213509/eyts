@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.AnimLoadingUtil;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
@@ -33,6 +34,9 @@ public class SexpageActivity extends MyBaseActivity {
     Gson gson;
     UserInfoLogin user ;
 
+    View animView;
+    AnimLoadingUtil animLoadingUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,10 @@ public class SexpageActivity extends MyBaseActivity {
         gson = new Gson();
         String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
         user = gson.fromJson(s, UserInfoLogin.class);
+
+        animView = findViewById(R.id.anim_view_layout);
+        animLoadingUtil = new AnimLoadingUtil(animView);
+
         try {
 
             findView();
@@ -58,6 +66,7 @@ public class SexpageActivity extends MyBaseActivity {
         ll_rutgender.setOnClickListener(listener);
         rb_man.setOnClickListener(listener);
         rb_nman.setOnClickListener(listener);
+        tv_send.setOnClickListener(listener);
 
 
         if (gender.equals("男")) {
@@ -95,6 +104,8 @@ public class SexpageActivity extends MyBaseActivity {
             return;
         }
 
+        animLoadingUtil.startAnim("数据提交中...");
+
         OkHttpUtils
                 .post()
                 .url(Http_data.http_data + "user/updateUser")
@@ -104,14 +115,17 @@ public class SexpageActivity extends MyBaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        animLoadingUtil.finishAnim();
                         Toast.makeText(SexpageActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        animLoadingUtil.finishAnim();
                         if (response.equals("true")) {
                             user.setGender(gender);
                             SharedPreferencesTools.SaveUserInfo(SexpageActivity.this, "userSave", "userInfo",gson.toJson(user));
+                            setResult(10);
                             finish();
                         } else {
                             Toast.makeText(SexpageActivity.this, "修改失败", Toast.LENGTH_SHORT).show();

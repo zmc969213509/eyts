@@ -26,6 +26,7 @@ import com.guojianyiliao.eryitianshi.MyUtils.bean.myCashCouponsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_ArtDetail;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_CollDoc;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_UserGHInfo;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_YYGHtotal;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_docInfo;
 
 import java.util.List;
@@ -480,4 +481,11 @@ public interface GetService {
      */
     @GET("comment/addComment")
     Call<String> addDocComment(@Query("userid") String userid,@Query("doctorid") String doctorid,@Query("content") String content,@Query("ctime") String ctime,@Query("regid") String regid);
+
+
+    /**
+     * 获取所有预约挂号总数
+     */
+    @GET("registration/getRegistartions")
+    Call<zmc_YYGHtotal> getYYGHTotal(@Query("pageNum") String pageNum);
 }

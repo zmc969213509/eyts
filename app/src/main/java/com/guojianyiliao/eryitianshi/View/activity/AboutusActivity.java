@@ -103,6 +103,7 @@ public class AboutusActivity extends MyBaseActivity {
         String version_number = version_numberSP.getversionNumber();
         // tv_aboutus_version_umber.setText("版本号" + version_number);
         tv_aboutus_version_umber.setText("版本号" + getVersionName());
+        tv_hint_version_number.setText(getVersionName());
     }
 
     private String getVersionName() throws Exception {
@@ -160,7 +161,7 @@ public class AboutusActivity extends MyBaseActivity {
 
             switch (msg.what) {
                 case 0:
-                    tv_hint_version_number.setText("版本号 " + update.getVersion());
+                        tv_hint_version_number.setText("版本号 " + update.getVersion());
                     break;
             }
         }

@@ -15,37 +15,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/y96"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:id="@+id/ll_return"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            android:background="@color/view">
 
                 <ImageView
-                    android:layout_width="@dimen/x20"
-                    android:layout_height="@dimen/y36"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/x30"
-                    android:src="@drawable/opinion_return" />
-
-                <TextView
+                    android:id="@+id/ll_return"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/x8"
-                    android:text="返回"
-                    android:textColor="@color/backgroundblue"
-                    android:textSize="@dimen/x32" />
-            </LinearLayout>
+                    android:src="@drawable/left_icon"
+                    android:padding="@dimen/x30"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="用户协议"
-                android:textColor="@color/fontcolor"
+                android:textColor="@color/white"
                 android:textSize="@dimen/x36" />
         </RelativeLayout>
 

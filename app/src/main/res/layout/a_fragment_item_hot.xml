@@ -29,14 +29,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/x30"
-            android:layout_marginTop="@dimen/y2"
+            android:layout_marginTop="@dimen/y8"
+            android:lineSpacingMultiplier="1.3"
+            android:lines="2"
             android:ellipsize="end"
-            android:maxEms="15"
-            android:singleLine="true"
             android:textColor="#323232"
             android:textSize="@dimen/x28" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_hot_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:lineSpacingMultiplier="1.2"
             android:lines="2"
             android:textColor="#bab9b9"
-            android:textSize="@dimen/x26" />
+            android:textSize="@dimen/x26" />-->
 
     </LinearLayout>
 

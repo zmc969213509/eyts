@@ -399,13 +399,21 @@ public class MyPageUserFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        UMShareAPI.get( getActivity() ).onActivityResult( requestCode, resultCode, data);
-        if(requestCode == 0){
-            if(resultCode == Activity.RESULT_OK){
+        UMShareAPI.get(getActivity()).onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
                 String s = SharedPreferencesTools.GetUsearInfo(getActivity(), "userSave", "userInfo");
                 user = gson.fromJson(s, UserInfoLogin.class);
-                ImageLoader.getInstance().displayImage(user.getIcon(),ivIcon);
+                ImageLoader.getInstance().displayImage(user.getIcon(), ivIcon);
                 tvName.setText(user.getName());
+                String gender = user.getGender();
+                if (gender.equals("男")) {
+                    MyLogcat.jLog().e("true");
+                    ivGender.setSelected(true);
+                } else {
+                    MyLogcat.jLog().e("false");
+                    ivGender.setSelected(false);
+                }
             }
         }
     }

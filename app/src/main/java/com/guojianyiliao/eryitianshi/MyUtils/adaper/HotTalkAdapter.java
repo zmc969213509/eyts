@@ -73,13 +73,13 @@ public class HotTalkAdapter extends BaseAdapter {
             if(flag == 0){
                 ImageLoader.getInstance().displayImage(hotData.get(position).getIcon(), Myholder.icon);
                 Myholder.title.setText(hotData.get(position).getTitle());
-                Myholder.content.setText(hotData.get(position).getContent());
+//                Myholder.content.setText(hotData.get(position).getContent());
                 Myholder.time.setText(hotData.get(position).getCtime());
                 Myholder.collectnumber.setText(hotData.get(position).getCollectcount() + "");
             }else if(flag == 1){
                 ImageLoader.getInstance().displayImage(baikehotData.get(position).getIcon(), Myholder.icon);
                 Myholder.title.setText(baikehotData.get(position).getTitle());
-                Myholder.content.setText(baikehotData.get(position).getContent());
+//                Myholder.content.setText(baikehotData.get(position).getContent());
                 Myholder.time.setText(baikehotData.get(position).getCtime());
                 Myholder.collectnumber.setText(baikehotData.get(position).getCollectcount() + "");
             }
@@ -103,14 +103,14 @@ public class HotTalkAdapter extends BaseAdapter {
 
         private RoundCornerImageView icon;
         private TextView title;
-        private TextView content;
+//        private TextView content;
         private TextView time;
         private TextView collectnumber;
 
         public Myholder(View itemView) {
             icon = (RoundCornerImageView) itemView.findViewById(R.id.iv_hot_icon);
             title = (TextView) itemView.findViewById(R.id.tv_hot_title);
-            content = (TextView) itemView.findViewById(R.id.tv_hot_content);
+//            content = (TextView) itemView.findViewById(R.id.tv_hot_content);
             time = (TextView) itemView.findViewById(R.id.tv_hot_time);
             collectnumber = (TextView) itemView.findViewById(R.id.tv_hot_collectnumber);
         }

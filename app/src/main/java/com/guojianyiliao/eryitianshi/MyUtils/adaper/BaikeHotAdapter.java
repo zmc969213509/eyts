@@ -57,7 +57,7 @@ public class BaikeHotAdapter extends RecyclerView.Adapter {
         try {
             ImageLoader.getInstance().displayImage(hotData.get(position).icon, viewholder.icon);
             viewholder.title.setText(hotData.get(position).title);
-            viewholder.content.setText(hotData.get(position).content);
+//            viewholder.content.setText(hotData.get(position).content);
             viewholder.time.setText(hotData.get(position).ctime);
             viewholder.collectnumber.setText(hotData.get(position).collectcount + "");
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class BaikeHotAdapter extends RecyclerView.Adapter {
     class HotTalkHolder extends RecyclerView.ViewHolder {
         private RoundCornerImageView icon;
         private TextView title;
-        private TextView content;
+//        private TextView content;
         private TextView time;
         private TextView collectnumber;
         private RelativeLayout collect;
@@ -113,7 +113,7 @@ public class BaikeHotAdapter extends RecyclerView.Adapter {
             super(itemView);
             icon = (RoundCornerImageView) itemView.findViewById(R.id.iv_hot_icon);
             title = (TextView) itemView.findViewById(R.id.tv_hot_title);
-            content = (TextView) itemView.findViewById(R.id.tv_hot_content);
+//            content = (TextView) itemView.findViewById(R.id.tv_hot_content);
             time = (TextView) itemView.findViewById(R.id.tv_hot_time);
             collectnumber = (TextView) itemView.findViewById(R.id.tv_hot_collectnumber);
             collect = (RelativeLayout) itemView.findViewById(R.id.rl_foot_collect);

@@ -95,6 +95,8 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
     public static HomeAcitivtyMy homeAcitivtyMy;
     /**是否需要接受消息标识**/
     public static boolean isNeedReceive = true;
+    /**医院医生数**/
+    public static int docNum = 28;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

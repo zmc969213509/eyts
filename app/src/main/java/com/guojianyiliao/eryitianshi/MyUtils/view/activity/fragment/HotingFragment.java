@@ -162,7 +162,7 @@ public class HotingFragment extends Fragment implements ShowTextLinearLayout.onI
                             if(body == null || body.size() == 0){
                                 haveMoreData = false;
                                 adapter.setDataNoMore(true);
-                                Toast.makeText(getActivity(), "数据见底啦", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getActivity(), "数据见底啦", Toast.LENGTH_SHORT).show();
                             }else{
                                 for (BaikeHotTalkBean bean : body) {
                                     itemHotData.add(bean);
