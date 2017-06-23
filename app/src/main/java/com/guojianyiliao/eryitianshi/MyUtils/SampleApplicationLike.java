@@ -77,7 +77,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         UMShareAPI.get(mcontext);
         PlatformConfig.setWeixin("wx3f904bdd5496a1f3", "32b7fcb2b3e25d4d5ff2e57167c6688f");
         PlatformConfig.setQQZone("1105577776", "ooJU4TpecWWpvaQv");
-        PlatformConfig.setSinaWeibo("3039479683", "63abeac9ceb22b215e323e8772945f3d", "http://mobile.umeng.com/social");
+        PlatformConfig.setSinaWeibo("3039479683", "63abeac9ceb22b215e323e8772945f3d", "https://sns.whalecloud.com/sina2/callback");
 
         JMessageClient.setDebugMode(true);
         JMessageClient.init(mcontext);

@@ -22,14 +22,58 @@ public class UserEssaies {
      * userid : b5df631f62cc40e6b932acd997cdc5c9
      */
 
-   public int eagrees;
+   /**评论数**/
    public int ecommontcount;
+   /**说说内容**/
    public String econtent;
+   /**评论id**/
    public String eid;
+   /**图片url 以分号相隔**/
    public String eimages;
+   /**备注**/
    public String ememo;
+   /**发布时间**/
    public long epubtime;
+   /**浏览次数**/
    public int etimes;
+   /**发布人的id**/
    public String userid;
-    
+   /**点赞数量**/
+   public int eagrees;
+
+   public int getEcommontcount() {
+      return ecommontcount;
+   }
+
+   public String getEcontent() {
+      return econtent;
+   }
+
+   public String getEid() {
+      return eid;
+   }
+
+   public String getEimages() {
+      return eimages;
+   }
+
+   public String getEmemo() {
+      return ememo;
+   }
+
+   public long getEpubtime() {
+      return epubtime;
+   }
+
+   public int getEtimes() {
+      return etimes;
+   }
+
+   public String getUserid() {
+      return userid;
+   }
+
+   public int getEagrees() {
+      return eagrees;
+   }
 }

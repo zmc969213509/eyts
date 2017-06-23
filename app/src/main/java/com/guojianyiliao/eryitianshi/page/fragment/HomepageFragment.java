@@ -35,7 +35,6 @@ import com.guojianyiliao.eryitianshi.Utils.db.HomeFindAllHotDao;
 import com.guojianyiliao.eryitianshi.View.activity.ConsultPageActivity;
 import com.guojianyiliao.eryitianshi.View.activity.DoctorparticularsActivity;
 import com.guojianyiliao.eryitianshi.View.activity.HealthconditionActivity;
-import com.guojianyiliao.eryitianshi.View.activity.InquiryActivity;
 import com.guojianyiliao.eryitianshi.View.activity.LectureoomActivity;
 import com.guojianyiliao.eryitianshi.View.activity.RegistrationAtivity;
 import com.guojianyiliao.eryitianshi.View.activity.WebActivity;
@@ -656,8 +655,8 @@ public class HomepageFragment extends Fragment {
                     break;
 
                 case R.id.ll_home_doctor_more:
-                    Intent intent3 = new Intent(getContext(), InquiryActivity.class);
-                    startActivity(intent3);
+//                    Intent intent3 = new Intent(getContext(), InquiryActivity.class);
+//                    startActivity(intent3);
                     break;
                 //
                 case R.id.ll_diagnosistreat_manage:

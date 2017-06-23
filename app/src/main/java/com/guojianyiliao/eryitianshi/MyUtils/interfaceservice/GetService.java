@@ -3,23 +3,30 @@ package com.guojianyiliao.eryitianshi.MyUtils.interfaceservice;
 import com.guojianyiliao.eryitianshi.Data.entity.DiseaseBanner;
 import com.guojianyiliao.eryitianshi.Data.entity.User;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.AllLecturesBean;
-import com.guojianyiliao.eryitianshi.MyUtils.bean.AllTypesSecListBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.DocCommend;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.TypeDis;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.BaikeHotTalkBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.BaikeVideoData;
-import com.guojianyiliao.eryitianshi.MyUtils.bean.CommonDisData;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.DiseaseLibraryBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.DocArrangement;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.DrugRemindBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.EcommentsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.EssayInfoBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.GetAllTypesTalkBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.HotTalkBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.HotWords;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.MyFocus;
-import com.guojianyiliao.eryitianshi.MyUtils.bean.RandOrderBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.RemidBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.SearchDetailsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.UserCollectBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.UserEssaies;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.myCasesBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.myCashCouponsBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_ArtDetail;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_CollDoc;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_UserGHInfo;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_docInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -42,7 +49,8 @@ import retrofit2.http.Query;
  * RetrofitClient.getinstance(this).create(GetService.class)
  * <p>
  * String userid = SpUtils.getInstance(this).get("userid",null);
- * b5df631f62cc40e6b932acd997cdc5c9
+ * b5df631f62cc40e6b932acd997cdc5c9 安卓
+ * 22476ffbe1b24590bb0cf9be501aec90 rip
  * <p>
  * if (response.isSuccessful()){MyLogcat.jLog().e("onResponse:"+response.body().toString());}
  * <p>
@@ -65,9 +73,34 @@ public interface GetService {
     @POST("user/Login")
     Call<User> HttpLogin(@Field("phone") String phone, @Field("password") String pas);
 
+    /**
+     * qq登录绑定手机
+     */
     @FormUrlEncoded
-    @POST("http://192.168.1.11:10010/AppServer/user/umLogin")
-    Call<String> BindingPhone(@Field("phone") String phone, @Field("name") String name, @Field("gender") String gender, @Field("icon") String icon, @Field("uid") String uid, @Field("type") String type);
+    @POST("user/bindPhone")
+    Call<Object> BindingPhoneqq(@Field("phone") String phone, @Field("name") String name, @Field("gender") String gender, @Field("icon") String icon, @Field("qq") String qq, @Field("code") String code);
+
+    /**
+     * 微信登录绑定手机
+     */
+    @FormUrlEncoded
+    @POST("user/bindPhone")
+    Call<Object> BindingPhonewc(@Field("phone") String phone, @Field("name") String name, @Field("gender") String gender, @Field("icon") String icon, @Field("wechat") String wechat, @Field("code") String code);
+
+    /**
+     * 微博登录绑定手机
+     */
+    @FormUrlEncoded
+    @POST("user/bindPhone")
+    Call<Object> BindingPhonewb(@Field("phone") String phone, @Field("name") String name, @Field("gender") String gender, @Field("icon") String icon, @Field("weibo") String weibo, @Field("code") String code);
+
+    /**
+     * 查看当前第三方应用uid是否已经注册了账号
+     * @param uid
+     * @return
+     */
+    @GET("user/umLogin")
+    Call<UserInfoLogin> isRegistered(@Query("uid") String uid );
 
 
     @GET("user/updateUser")
@@ -81,16 +114,16 @@ public interface GetService {
     Call<List<DiseaseBanner>> BannerData();//广告条
 
     @GET("doctor/getRanDomDr")
-    Call<List<RandOrderBean>> RanDomDrData();//首页随机医生
+    Call<List<SearchDetailsBean.Doctors>> RanDomDrData();//首页随机医生
 
     @GET("cyclopedia/getTwoCycl")
     Call<List<HotTalkBean>> HotTalkData();//首页热门文章
 
     @GET("disease/getCommonDis")
-    Call<List<CommonDisData>> getCommonDis();//常见疾病
+    Call<List<SearchDetailsBean.Diseases>> getCommonDis();//常见疾病
 
     @GET("section/getSecList")
-    Call<List<AllTypesSecListBean>> AllTypesDecList();//百科疾病 科室疾病，动态获取
+    Call<List<TypeDis>> AllTypesDecList();//百科疾病 科室疾病，动态获取
 
     @GET("cyclType/getAllTypes")
     Call<List<GetAllTypesTalkBean>> GetAllTypesTalk();//百科文章分类
@@ -117,7 +150,21 @@ public interface GetService {
 
     /**
      * 添加用药提醒 reminddate,time1,content,userid,enddate reminddate:精确到 yyyy-MM-dd的前一天;
-     * time和content顺序往后加
+     * 添加一条用药记录
+     */
+    @FormUrlEncoded
+    @POST("remind/addRemind")
+    Call<String> addRemind(@Field("reminddate") String reminddate, @Field("enddate") String enddate, @Field("time1") String time1,@Field("content1") String content1, @Field("userid") String userid);//
+    /**
+     * 添加用药提醒 reminddate,time1,content,userid,enddate reminddate:精确到 yyyy-MM-dd的前一天;
+     * 添加两条条用药记录
+     */
+    @FormUrlEncoded
+    @POST("remind/addRemind")
+    Call<String> addRemind(@Field("reminddate") String reminddate, @Field("enddate") String enddate, @Field("time1") String time1, @Field("time2") String time2, @Field("content1") String content1, @Field("content2") String content2, @Field("userid") String userid);//
+    /**
+     * 添加用药提醒 reminddate,time1,content,userid,enddate reminddate:精确到 yyyy-MM-dd的前一天;
+     * 添加三条用药记录
      */
     @FormUrlEncoded
     @POST("remind/addRemind")
@@ -126,11 +173,25 @@ public interface GetService {
 
     /**
      * 修改用药提醒
-     * reminddate:不用取前一天,保持原样就好
+     * 只有一条数据修改
      */
     @FormUrlEncoded
     @POST("remind/editRemind")
-    Call<String> editRemind(@Field("remindid") String remindid, @Field("reminddate") String reminddate, @Field("enddate") String enddate, @Field("time1") String time1, @Field("time2") String time2, @Field("time3") String time3, @Field("content1") String content1, @Field("content2") String content2, @Field("content3") String content3, @Field("userid") String userid);//
+    Call<String> editRemind(@Field("remindid") String remindid, @Field("reminddate") String reminddate,@Field("enddate") String enddate, @Field("time1") String time1, @Field("content1") String content1);
+    /**
+     * 修改用药提醒
+     * 两条数据修改
+     */
+    @FormUrlEncoded
+    @POST("remind/editRemind")
+    Call<String> editRemind(@Field("remindid") String remindid, @Field("reminddate") String reminddate ,@Field("enddate") String enddate, @Field("time1") String time1, @Field("time2") String time2, @Field("content1") String content1, @Field("content2") String content2);//
+    /**
+     * 修改用药提醒
+     * 三条数据修改
+     */
+    @FormUrlEncoded
+    @POST("remind/editRemind")
+    Call<String> editRemind(@Field("remindid") String remindid, @Field("reminddate") String reminddate ,@Field("enddate") String enddate, @Field("time1") String time1, @Field("time2") String time2, @Field("time3") String time3, @Field("content1") String content1, @Field("content2") String content2, @Field("content3") String content3);//
 
     /**
      * 获取用药提醒详情
@@ -247,7 +308,8 @@ public interface GetService {
 
     /**
      * 添加关注
-     * fuserid:用户ID;username:用户昵称;focusedid:被关注人ID;focusedname:被关注人昵称
+     * fuserid:用户ID;username:用户昵称;
+     * focusedid:被关注人ID;focusedname:被关注人昵称
      * username和focusedname可选
      */
     @FormUrlEncoded
@@ -312,4 +374,110 @@ public interface GetService {
     @POST("essay/getUserEssaies")
     Call<List<UserEssaies>> getUserEssaies(@Field("userid") String userid, @Field("pageNum") String pageNum);
 
+
+    /**
+     * 获取热词
+     */
+    @POST("hotSearch/getHotSearch")
+    Call<List<HotWords>> getHotWords();
+
+    /**
+     * 搜索
+     */
+    @FormUrlEncoded
+    @POST("hotSearch/getSearchRst")
+    Call<SearchDetailsBean> getSear(@Field("content") String content);
+
+    /**
+     * 获取医生排班信息
+     */
+    @GET("docArrangement/getDocArrange")
+    Call<DocArrangement> getArrangement(@Query("docid") String docid);
+
+    /**
+     * 获取医生详情
+     */
+    @GET("doctor/getDrInfo")
+    Call<zmc_docInfo> getdocInfo(@Query("docId") String docId,@Query("userid") String userid);
+
+    /**
+     * 获取疾病详情
+     */
+    @GET("disease/getDiseaseById")
+    Call<DiseaseLibraryBean> getDis(@Query("diseaseId") String diseaseId);
+
+    /**
+     * 获取所有医生列表
+     */
+    @POST("doctor/getDrList")
+    Call<List<SearchDetailsBean.Doctors>> getAlldoctor();
+
+    /**
+     * 获取医生的评论
+     */
+    @GET("comment/getUserComment")
+    Call<List<DocCommend>> getDocCom(@Query("docId") String docid);
+
+    /**
+     * 获取用户收藏医生
+     */
+    @GET("myDoctor/getMyDoctor")
+    Call<List<zmc_CollDoc>> getMyDoc(@Query("userid") String userid );
+
+    /**
+     * 收藏医生
+     */
+    @GET("myDoctor/addMyDoctor")
+    Call<String> collDoc(@Query("userid") String userid ,@Query("doctorid") String doctorid);
+
+
+    /**
+     * 取消收藏医生
+     */
+    @GET("myDoctor/delMyDoctor")
+    Call<String> delCollDoc(@Query("userid") String userid ,@Query("docid") String docid);
+
+    /**
+     * 获取文章内容
+     */
+    @FormUrlEncoded
+    @POST("cyclopedia/getCyclInfo")
+    Call<zmc_ArtDetail> getArtDetail(@Field("cyclId") String cyclId);
+
+    /**
+     * 重置密码
+     */
+    @GET("user/resetPwd")
+    Call<String> resetPsw(@Query("phone") String phone,@Query("code") String code , @Query("password") String password);
+
+    /**
+     * 获取在线医生
+     */
+    @GET("doctor/getTodayDoctor")
+    Call<List<SearchDetailsBean.Doctors>> getOnlineDoc();
+
+    /**
+     * 添加挂号信息
+     */
+    @FormUrlEncoded
+    @POST("registration/addRegistration")
+    Call<String> addRegistered(@Field("reservationdate") String reservationdate,@Field("name") String name,@Field("gender") String gender,@Field("age") String age,@Field("phone") String phone,@Field("money") String money,@Field("doctorid") String doctorid,@Field("userid") String userid);
+
+    /**
+     * 获取用户挂号信息
+     */
+    @GET("registration/getMyRegistration")
+    Call<List<zmc_UserGHInfo>> getReservation(@Query("userid") String userid);
+
+    /**
+     * 添加医生评价（医患聊天评价）
+     */
+    @GET("comment/addComment")
+    Call<String> addDocComment(@Query("userid") String userid,@Query("doctorid") String doctorid,@Query("content") String content,@Query("ctime") String ctime);
+
+    /**
+     * 添加医生评价（预约挂号评价）
+     */
+    @GET("comment/addComment")
+    Call<String> addDocComment(@Query("userid") String userid,@Query("doctorid") String doctorid,@Query("content") String content,@Query("ctime") String ctime,@Query("regid") String regid);
 }

@@ -1,11 +1,13 @@
 package com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment;
 
-import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,25 +19,35 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
-import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
-import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.AllDoctorActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.MyDoctorActivity;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.MyInquiryActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.MycollectActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.TODOActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.YYGHHisActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.imChatHistoryActivity;
 import com.guojianyiliao.eryitianshi.R;
-import com.guojianyiliao.eryitianshi.View.activity.InquiryActivity;
-import com.guojianyiliao.eryitianshi.View.activity.InquiryrecordActivity;
 import com.guojianyiliao.eryitianshi.View.activity.MyCashCouponsActivity;
-import com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity;
-import com.guojianyiliao.eryitianshi.View.activity.MycollectActivity;
+//import com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity;
+//import com.guojianyiliao.eryitianshi.View.activity.MycollectActivity;
 import com.guojianyiliao.eryitianshi.View.activity.PersonaldataActivity;
-import com.guojianyiliao.eryitianshi.View.activity.ReservationActivity;
 import com.guojianyiliao.eryitianshi.View.activity.SetPageActivity;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
 import com.umeng.socialize.media.UMWeb;
+import com.umeng.socialize.media.UMusic;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -48,12 +60,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
-import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 个人界面
  */
-public class MyPageUserFragment extends Fragment implements EasyPermissions.PermissionCallbacks {
+public class MyPageUserFragment extends Fragment {
 
     private static final int INT_SHARE = 1;
     @BindView(R.id.iv_icon)
@@ -85,10 +96,13 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
 
     String userid;
 
+    Gson gson;
+    UserInfoLogin user ;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userid = SpUtils.getInstance(getActivity()).get("userid", null);
+        userid = SharedPreferencesTools.GetUsearId(getActivity(),"userSave","userId");
     }
 
     @Override
@@ -101,6 +115,9 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_fragment_mypage, container, false);
         ButterKnife.bind(this, view);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(getActivity(), "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
         return view;
     }
 
@@ -108,10 +125,32 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        String name = SpUtils.getInstance(getActivity()).get("name", null);
-        String gender = SpUtils.getInstance(getActivity()).get("gender", null);
+        String name = user.getName();
+        String gender = user.getGender();
 
-        MyLogcat.jLog().e("name:" + name + " //gender:" + gender);
+        String icon = user.getIcon();
+        if(TextUtils.isEmpty(icon)){
+            ivIcon.setImageResource(R.drawable.default_icon);
+        }else{
+            ImageLoader.getInstance().loadImage(icon, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String imageUri, View view) {
+                    ivIcon.setImageResource(R.drawable.default_icon);
+                }
+                @Override
+                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+                }
+                @Override
+                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                    ivIcon.setImageBitmap(loadedImage);
+                }
+                @Override
+                public void onLoadingCancelled(String imageUri, View view) {
+                }
+            });
+        }
+
 
         tvName.setText(name);
         if (gender.equals("男")) {
@@ -150,7 +189,7 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
      */
     @OnClick(R.id.rl_mypage_share)
     public void myShare() {
-        // showUmeng();
+         showUmeng();
     }
 
     /**
@@ -194,7 +233,8 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
      */
     @OnClick(R.id.ll_ordered)
     public void myYuyueOrdered() {
-        startActivity(new Intent(getContext(), ReservationActivity.class));
+        startActivity(new Intent(getActivity(), YYGHHisActivity.class));
+//        startActivity(new Intent(getContext(), ReservationActivity.class));
     }
 
     /**
@@ -202,84 +242,15 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
      */
     @OnClick(R.id.ll_inquiry)
     public void myInquiry() {
-        startActivity(new Intent(getContext(), InquiryrecordActivity.class));
+        startActivity(new Intent(getActivity(), imChatHistoryActivity.class));
     }
 
     /**
-     * 设置头像
+     * 用户修改信息
      */
     @OnClick(R.id.iv_icon)
     public void GetHttpHeadIcon() {
-        startActivity(new Intent(getContext(), PersonaldataActivity.class));//设置头像
-    }
-
-    String[] permss;
-    UMWeb web;
-
-    private void showUmeng() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            permss = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-            if (EasyPermissions.hasPermissions(getActivity(), permss)) {
-                MyLogcat.jLog().e("已经有这个权限了");
-                web = new UMWeb("http://www.eryitianshi.com");
-                web.setTitle("儿医天使（儿科名医）");//标题
-                web.setThumb(new UMImage(getActivity(), R.drawable.app_log));  //缩略图
-                web.setDescription("一键登录，三秒问诊，三甲儿科医生在线解决了我的问题，你也来试试");//描述
-            } else {
-                EasyPermissions.requestPermissions(getActivity(), "",
-                        INT_SHARE, permss);
-                MyLogcat.jLog().e("正在申请");
-            }
-        } else {
-            MyLogcat.jLog().e("sdk<23");
-            web = new UMWeb("http://www.eryitianshi.com");
-            web.setTitle("儿医天使（儿科名医）");//标题
-            web.setThumb(new UMImage(getActivity(), R.drawable.app_log));  //缩略图
-            web.setDescription("一键登录，三秒问诊，三甲儿科医生在线解决了我的问题，你也来试试");//描述
-        }
-        /*try {
-            if (Build.VERSION.SDK_INT >= 23) {
-                String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-                ActivityCompat.requestPermissions(getActivity(), mPermissionList, 123);
-                web = new UMWeb("http://www.eryitianshi.com");
-                web.setTitle("儿医天使");//标题
-                web.setThumb(new UMImage(getActivity(), R.drawable.app_log));  //缩略图
-                web.setDescription("http://www.eryitianshi.com");//描述
-            } else {*/
-        //  web = new UMWeb("http://www.eryitianshi.com");
-        // web.setTitle("儿医天使");//标题
-        //  web.setThumb(new UMImage(getActivity(), R.drawable.app_log));  //缩略图
-        // web.setDescription("http://www.eryitianshi.com");//描述
-        //   }
-        //  } catch (Exception e) {
-        //ToolUtils.showToast(getActivity(), "没有访问权限！", Toast.LENGTH_LONG);
-        //  }
-
-
-        new ShareAction(getActivity())
-                .withMedia(web)
-                .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.SINA)
-                .setCallback(new UMShareListener() {
-                    @Override
-                    public void onStart(SHARE_MEDIA share_media) {
-                    }
-
-                    @Override
-                    public void onResult(SHARE_MEDIA share_media) {
-                        Httprefresh();
-                        giveCashCoupons();
-                    }
-
-                    @Override
-                    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-                        ToolUtils.showToast(getActivity(), "请去设置查看", Toast.LENGTH_SHORT);
-                    }
-
-                    @Override
-                    public void onCancel(SHARE_MEDIA share_media) {
-                        MyLogcat.jLog().e("onCancel");
-                    }
-                }).open();
+        startActivityForResult(new Intent(getContext(), PersonaldataActivity.class),0);
     }
 
     Random random;
@@ -360,24 +331,83 @@ public class MyPageUserFragment extends Fragment implements EasyPermissions.Perm
             @Override
             public void onClick(View v) {
                 setHeadDialog.dismiss();
-                Intent intent = new Intent(getActivity(), InquiryActivity.class);
+                Intent intent = new Intent(getActivity(), AllDoctorActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-        if (requestCode == INT_SHARE) {
-            web = new UMWeb("http://www.eryitianshi.com");
-            web.setTitle("儿医天使");//标题
-            web.setThumb(new UMImage(getActivity(), R.drawable.app_log));  //缩略图
-            web.setDescription("http://www.eryitianshi.com");//描述
+    /**
+     * 分享
+     */
+    private void showUmeng() {
+
+        final SHARE_MEDIA[] displaylist = new SHARE_MEDIA[]
+                {
+                        SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,
+                        SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.SINA
+                };
+        //分享成功后显示的图片
+        UMImage image = new UMImage(getActivity(),
+                BitmapFactory.decodeResource(getResources(), R.drawable.app_log));
+        //分享的视频
+        UMVideo video = new UMVideo("http://video.sina.com.cn/p/sports/cba/v/2013-10-22/144463050817.html");
+        //分享的音乐
+        UMusic music = new UMusic("http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3");
+        music.setTitle("儿医天使（儿科名医）");
+        music.setThumb(new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/chart_1.png"));
+
+        UMWeb web = new UMWeb("http://www.eryitianshi.com/index.html");
+        web.setTitle("儿医天使（儿科名医）");
+        web.setDescription("一键登录，三秒问诊，三甲儿科医生在线解决了我的问题，你也来试试");
+        web.setThumb(image);
+
+        new ShareAction(getActivity()).setDisplayList(displaylist)
+                .withMedia(web)
+                .setListenerList(new umShareListener())
+                .open();
+    }
+    class umShareListener implements UMShareListener {
+
+        @Override
+        public void onCancel(SHARE_MEDIA arg0) {
+            // TODO Auto-generated method stub
+//            Log.e("ArticleDetailActivity","onCancel  arg0 = "+arg0);
+//            Toast.makeText(getActivity(), " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA arg0, Throwable arg1) {
+            // TODO Auto-generated method stub
+//            Log.e("ArticleDetailActivity","onError  arg0 = "+arg0 +"  ,   arg1 = "+arg1.getMessage());
+            Toast.makeText(getActivity()," 分享失败,请检查配置", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onStart(SHARE_MEDIA share_media) {
+//            Log.e("ArticleDetailActivity","onStart  share_media = "+share_media);
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA arg0) {
+            // TODO Auto-generated method
+//            Log.e("ArticleDetailActivity","onResult  arg0 = "+arg0);
+//            Toast.makeText(getActivity(), " 分享成功啦", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-        MyLogcat.jLog().e("失败 onPermissionsDenied 回调");
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get( getActivity() ).onActivityResult( requestCode, resultCode, data);
+        if(requestCode == 0){
+            if(resultCode == Activity.RESULT_OK){
+                String s = SharedPreferencesTools.GetUsearInfo(getActivity(), "userSave", "userInfo");
+                user = gson.fromJson(s, UserInfoLogin.class);
+                ImageLoader.getInstance().displayImage(user.getIcon(),ivIcon);
+                tvName.setText(user.getName());
+            }
+        }
     }
+
 }

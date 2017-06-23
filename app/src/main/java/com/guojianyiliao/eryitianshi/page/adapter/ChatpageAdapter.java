@@ -77,6 +77,7 @@ public class ChatpageAdapter extends BaseAdapter {
         if (convertView == null) {
             switch (type) {
                 case TYPE1:
+//                    convertView = inflater.inflate(R.layout.zmc_item_chat_doc, parent, false);
                     convertView = inflater.inflate(R.layout.chatpage_listv_rightitem, parent, false);
                     viewHolder1 = new ViewHolder1();
                     viewHolder1.tv_right_text = (TextView) convertView.findViewById(R.id.tv_right_text);
@@ -119,12 +120,9 @@ public class ChatpageAdapter extends BaseAdapter {
                     viewHolder1.tv_right_text.setVisibility(View.GONE);
                     if (list.get(position).getFile() != null) {
                         ImageLoader.getInstance().displayImage("file:///" + list.get(position).getFile(), viewHolder1.iv_right_chat);
-
                     } else {
 
                     }
-
-
                 } else {
                     viewHolder1.iv_right_chat.setVisibility(View.GONE);
                     viewHolder1.tv_right_text.setVisibility(View.VISIBLE);
@@ -140,12 +138,10 @@ public class ChatpageAdapter extends BaseAdapter {
                     viewHolder2.tv_left_text.setVisibility(View.GONE);
                     viewHolder2.iv_left_chat.setVisibility(View.VISIBLE);
                     if (list.get(position).getFile() != null) {
-
                         ImageLoader.getInstance().displayImage("file:///" + list.get(position).getFile(), viewHolder2.iv_left_chat);
                     } else {
 
                     }
-
                 } else {
                     viewHolder2.iv_left_chat.setVisibility(View.GONE);
                     viewHolder2.tv_left_text.setVisibility(View.VISIBLE);
@@ -154,9 +150,6 @@ public class ChatpageAdapter extends BaseAdapter {
                 break;
 
         }
-
-
-
         return convertView;
     }
 

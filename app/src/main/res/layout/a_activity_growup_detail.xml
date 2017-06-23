@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ngl="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -12,12 +11,15 @@
 
 
     <FrameLayout
+        android:layout_below="@+id/detal_foot"
         android:id="@+id/fl_foot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/detal_foot">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-        <ScrollView
+        <com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -80,7 +82,8 @@
                         android:gravity="center"
                         android:text="+ 关注"
                         android:textColor="#17c2ed"
-                        android:textSize="@dimen/x22" />
+                        android:textSize="@dimen/x22"
+                        android:visibility="invisible"/>
                 </RelativeLayout>
 
                 <TextView
@@ -94,45 +97,20 @@
                     android:ellipsize="end"
                     android:lineSpacingMultiplier="1"
                     android:maxLines="3"
-                    android:text="内容"
                     android:textColor="#777777"
-                    android:textSize="@dimen/x26"
-                    android:visibility="gone" />
-
-                <!-- <com.lzy.ninegrid.NineGridView
-                     android:id="@+id/nineGrid"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_below="@id/tv_grow_content"
-                     android:layout_centerVertical="true"
-                     android:layout_marginLeft="@dimen/x20"
-                     android:layout_marginRight="@dimen/x20"
-                     android:layout_marginTop="@dimen/y10"
-                     android:visibility="gone"
-                     app:imgGap="8dp" />-->
+                    android:textSize="@dimen/x26" />
 
                 <com.jaeger.ninegridimageview.NineGridImageView
                     android:id="@+id/ngl_images"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_grow_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/x20"
-                    android:layout_marginRight="@dimen/x20"
-                    android:layout_marginTop="@dimen/y10"
-                    android:visibility="gone"
-                    ngl:imgGap="3dp"
-                    ngl:showStyle="fill"
-                    ngl:singleImgSize="160dp" />
-                <!--<com.jaeger.ninegridimageview.NineGridImageView
-                    android:id="@+id/nineGrid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    app:imgGap="3dp"
+                    app:showStyle="grid"
+                    app:singleImgSize="500dp"
                     android:layout_marginTop="@dimen/y20"
-                    android:paddingRight="5dp"
-                    android:paddingTop="6dp" />
-            -->
+                    android:padding="5dp"
+                    android:visibility="gone"/>
+
                 <RelativeLayout
                     android:id="@+id/fl_foot_content"
                     android:layout_width="match_parent"
@@ -187,17 +165,16 @@
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/iv_grow_evaluate"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="18dp"
-                        android:layout_marginRight="18dp"
+                        android:padding="@dimen/x15"
                         android:layout_toLeftOf="@+id/tv_grow_eagrees"
                         android:layout_toStartOf="@+id/tv_grow_eagrees"
-                        android:background="@drawable/af_imabtn_def" />
+                        android:src="@drawable/af_imabtn_def" />
                 </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/ll_foot"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/fl_foot_content"
                     android:layout_marginLeft="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -213,26 +190,34 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/x20"
+                        android:layout_marginTop="@dimen/y20"
+                        android:layout_marginBottom="@dimen/y20"
                         android:background="@drawable/af_imabtn_def" />
 
 
-                    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.XCFlowLayout
+                    <!--<com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.XCFlowLayout
                         android:id="@+id/iv_hot_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/x20" />
-                    <!--<com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.RoundCornerImageView
-                        android:id="@+id/iv_hot_icon"
-                        android:layout_width="@dimen/x50"
-                        android:layout_height="@dimen/y50"
+                        android:layout_marginLeft="@dimen/x20" />-->
+
+                    <com.guojianyiliao.eryitianshi.MyUtils.customView.DianZanView
+                        android:id="@+id/show_zan_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/iv_grow_def_detal"
                         android:layout_marginLeft="@dimen/x20"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop" />-->
+                        android:layout_marginRight="@dimen/x20"
+                        android:layout_marginTop="@dimen/y20"
+                        app:dz_img_padding="@dimen/x6"
+                        app:img_height="@dimen/x50"
+                        app:img_width="@dimen/x50"/>
 
-                </LinearLayout>
 
-                <android.support.v7.widget.RecyclerView
+                </RelativeLayout>
+
+                <com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -240,11 +225,11 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/y99" />
+                    android:layout_height="@dimen/y101" />
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>
         <!--底部评论-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -257,70 +242,13 @@
                 android:layout_height="@dimen/y1"
                 android:background="#e6e6e6" />
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/y98"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/addEComment"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/y98"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/evaluate_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x20"
-                        android:text="评论"
-                        android:textColor="#aaaaaa"
-                        android:textSize="@dimen/x26" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="@dimen/x2"
-                    android:layout_height="@dimen/y60"
-                    android:layout_gravity="center_vertical"
-                    android:background="#e6e6e6" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/y98"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/point_def_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x20"
-                        android:text="点赞"
-                        android:textColor="#aaaaaa"
-                        android:textSize="@dimen/x26" />
-
-                </LinearLayout>
-
-            </LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y98"
-                android:layout_marginRight="@dimen/x30"
+                android:paddingRight="@dimen/x30"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/white">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -345,7 +273,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/x20"
                         android:background="@null"
-
                         android:hint="请输入您的评论"
                         android:textColor="#cccccc"
                         android:textColorHint="#cccccc"

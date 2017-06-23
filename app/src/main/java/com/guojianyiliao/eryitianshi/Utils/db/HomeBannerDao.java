@@ -41,7 +41,7 @@ public class HomeBannerDao {
             String id = cursor.getString(cursor.getColumnIndex("id"));
             String cover = cursor.getString(cursor.getColumnIndex("cover"));
             String cyclopediaId = cursor.getString(cursor.getColumnIndex("cyclopediaId"));
-            DiseaseBanner banner = new DiseaseBanner(site, id, cover, cyclopediaId);
+            DiseaseBanner banner = new DiseaseBanner("",site, id, cover, cyclopediaId);
             bannerArrayList.add(banner);
 
         }

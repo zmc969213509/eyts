@@ -2,6 +2,7 @@ package com.guojianyiliao.eryitianshi.MyUtils.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -10,10 +11,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
 import com.guojianyiliao.eryitianshi.MyUtils.base.BaseActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
@@ -51,6 +55,8 @@ public class BindingInfoData extends BaseActivity {
     @BindView(R.id.rl_stance_woman)
     RelativeLayout rlStanceWoman;
 
+    Gson gson;
+    UserInfoLogin user ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,9 @@ public class BindingInfoData extends BaseActivity {
         setContentView(R.layout.a_activity_binding_info_data);
         ButterKnife.bind(this);
         tvFootCenter.setText("个人基本资料");
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
     }
 
     @OnClick(R.id.ivb_back_finsh)
@@ -83,9 +92,12 @@ public class BindingInfoData extends BaseActivity {
 
     @OnClick(R.id.btn_binding_info_data)
     public void HttpBindingData() {
-        String userid = SpUtils.getInstance(this).get("Userid", null);
+
+        String userid = user.getUserid();
         String name = edBindingName.getText().toString();
-        MyLogcat.jLog().e("userid: " + userid + "/gender" + gender);
+        Log.e("BindingInfoData","userid = "+userid);
+        Log.e("BindingInfoData","gender = "+gender);
+        Log.e("BindingInfoData","name = "+name);
         if (StringUtils.isEmpty(name)) {
             ToolUtils.showToast(BindingInfoData.this, "请正确填写昵称！", Toast.LENGTH_SHORT);
             return;
@@ -102,13 +114,17 @@ public class BindingInfoData extends BaseActivity {
         getService.BindingInfoData(userid, name, gender).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    Log.e("BindingInfoData","response = "+response.body());
+                }
                 if (response.body().toString().equals("true")) {
                 }
                 ToolUtils.showToast(BindingInfoData.this, "更新昵称成功！", Toast.LENGTH_SHORT);
 
                 /**保存 昵称，性别*/
-                SpUtils.getInstance(BindingInfoData.this).put("name", edBindingName.getText().toString());
-                SpUtils.getInstance(BindingInfoData.this).put("gender", gender);
+                user.setGender(gender);
+                user.setName(edBindingName.getText().toString());
+                SharedPreferencesTools.SaveUserInfo(BindingInfoData.this,"userSave","userInfo",gson.toJson(user));
 
                 startActivity(new Intent(BindingInfoData.this, HomeAcitivtyMy.class));
                 finish();

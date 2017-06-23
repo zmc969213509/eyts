@@ -320,7 +320,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
+   <!-- <RelativeLayout
         android:id="@+id/rl_nonetwork"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -375,7 +375,7 @@
                 android:textColor="@color/linegray"
                 android:textSize="@dimen/y32" />
         </LinearLayout>
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
 </FrameLayout>

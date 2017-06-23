@@ -18,22 +18,40 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_ChatBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.zmc_DocChat;
+import com.guojianyiliao.eryitianshi.MyUtils.db.ChatDao;
+import com.guojianyiliao.eryitianshi.MyUtils.db.DoctorDao;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
-import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment.BaikePageFragment;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment.GrowingPageFragment;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment.MyPageUserFragment;
-import com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment.NewHomePageFragment;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.fragment.zmc_NewHomePageFrament;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.AndroidWorkaround;
 import com.guojianyiliao.eryitianshi.R;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.socialize.UMShareAPI;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jpush.android.api.JPushInterface;
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.content.ImageContent;
+import cn.jpush.im.android.api.content.TextContent;
+import cn.jpush.im.android.api.event.MessageEvent;
+import cn.jpush.im.android.api.event.NotificationClickEvent;
+import cn.jpush.im.android.api.model.Message;
+import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
 
 /**
@@ -67,41 +85,49 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
     @BindView(R.id.icon_user)
     ImageView iconUser;
 
+    /**保存聊天医生信息**/
+    private DoctorDao docDao = new DoctorDao(this);
+    /**聊天操作类**/
+    private ChatDao dao;
+    Gson gson;
+    UserInfoLogin user;
+
+    public static HomeAcitivtyMy homeAcitivtyMy;
+    /**是否需要接受消息标识**/
+    public static boolean isNeedReceive = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //控制底部虚拟键盘
-       /* getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-   //                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-//                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE);*/
         setContentView(R.layout.a_activity_home);
-//状态栏 @ 顶部
-       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A  透明状态栏
-//导航栏 @ 底部
 
 
         if (AndroidWorkaround.checkDeviceHasNavigationBar(this)) {
             MyLogcat.jLog().e("虚拟键 w");
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-          //  AndroidWorkaround.assistActivity(findViewById(android.R.id.content));
         }
 
         ButterKnife.bind(this);
-        String userid = SpUtils.getInstance(this).get("Userid", null);
-        String phone = SpUtils.getInstance(this).get("phone", null);
+        EventBus.getDefault().register(this);
+        SharedPreferencesTools.SaveLoginStatus(this,"userSave","userLoginStatus",true);
+
+        dao = new ChatDao(this);
+        docDao = new DoctorDao(this);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
+
+        String userid = user.getUserid();
+        String phone = user.getPhone();
         CrashReport.putUserData(UIUtils.getContext(), "userkey", userid + "phone:" + phone);/**carsh 上报 ID*/
         MyLogcat.jLog().e("user info id:" + userid + "/" + "phone:" + phone);
 
-        //     JMessageClient.registerEventReceiver(this);
-        //     JMessageClient.setNotificationMode(JMessageClient.NOTI_MODE_DEFAULT);
+        JMessageClient.registerEventReceiver(this);
+        JMessageClient.setNotificationMode(JMessageClient.NOTI_MODE_DEFAULT);
+        jmessageLogin(phone);
 
         if (Http_data.giveCashState == 2) {
-            //       giveCashCoupons();
+//                   giveCashCoupons();
             Http_data.giveCashState = 1;
         }
 
@@ -109,23 +135,92 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
         initEvent();
         setSelect(0);
 
-
+        homeAcitivtyMy = this;
     }
 
+    /**
+     * 极光接收到消息后  通知回调
+     *
+     * @param event
+     */
+    public void onEvent(NotificationClickEvent event) {
+        Log.e("HomeAcitivtyMy","极光接收到消息后  通知回调");
+        DoctorDao dao = new DoctorDao(this);
+        Message message = event.getMessage();
+        UserInfo info = (UserInfo) message.getTargetInfo();
+        Log.e("HomeAcitivtyMy","UserName = "+info.getUserName());
+        zmc_DocChat docInfo = dao.getDocInfo(info.getUserName());
+
+        Intent intent = new Intent(HomeAcitivtyMy.this, imChatActivity.class);
+        intent.putExtra("doctorID", docInfo.getDocId());
+        intent.putExtra("name", docInfo.getDocName());
+        intent.putExtra("icon", docInfo.getDocIcon());
+        intent.putExtra("username", docInfo.getUserName());
+        intent.putExtra("flag", "1");
+        startActivity(intent);
+    }
+
+    /**
+     * 极光接受到消息后回调
+     *
+     * @param event
+     */
+    public void onEventMainThread(MessageEvent event) {
+        if(isNeedReceive){
+            Message msg = event.getMessage();
+            switch (msg.getContentType()) {
+                case text:
+                    TextContent textContent = (TextContent) msg.getContent();
+                    UserInfo info = (UserInfo) msg.getTargetInfo();
+                    Log.e("imChatActivity", "userName = " + info.getUserName());
+
+                    Date date = new Date();
+                    long time = date.getTime();
+                    zmc_ChatBean chat = new zmc_ChatBean(info.getUserName(), user.getPhone(), textContent.getText(), "", time + "", "2",1+"");
+                    dao.add(chat);
+                    break;
+                case image:
+                    //处理图片消息
+                    ImageContent imageContent = (ImageContent) msg.getContent();
+                    imageContent.getLocalPath();//图片本地地址
+                    imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
+                    break;
+            }
+        }
+    }
+
+
+    //evenbus接受消息
+    @Subscribe
+    public void onEventMainThread(String msg) {
+        if (msg.equals("baike_dis")) {
+            resetImgs();
+            setSelect(1);
+            EventBus.getDefault().post("dis");
+        } else if (msg.equals("baike_article")) {
+            resetImgs();
+            setSelect(1);
+            EventBus.getDefault().post("article");
+        } else if (msg.equals("baike_school")) {
+            resetImgs();
+            setSelect(1);
+            EventBus.getDefault().post("school");
+        }
+    }
 
     private void initEvent() {
         rbHomePage.setOnClickListener(this);
         rbBaikePage.setOnClickListener(this);
         rbGrowingPage.setOnClickListener(this);
         rbMyPage.setOnClickListener(this);
-
     }
 
     private void initView() {
 
     }
 
-    NewHomePageFragment mTab01;
+    zmc_NewHomePageFrament mTab01;
+    //    NewHomePageFragment mTab01;
     BaikePageFragment mTab02;
     GrowingPageFragment mTab03;
     MyPageUserFragment mTab04;
@@ -139,7 +234,7 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
         switch (page) {
             case 0:
                 if (mTab01 == null) {
-                    mTab01 = new NewHomePageFragment();
+                    mTab01 = new zmc_NewHomePageFrament();
                     transaction.add(R.id.fl_icon, mTab01);
                 } else {
                     transaction.show(mTab01);
@@ -308,45 +403,46 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
 
     @Override
     protected void onDestroy() {
-        //     JMessageClient.unRegisterEventReceiver(this);
+        JMessageClient.unRegisterEventReceiver(this);
+        EventBus.getDefault().unregister(this);
+        dao.close();
+        docDao.close();
         super.onDestroy();
     }
 
-    private void jmessage() {
-        //sp.getTag().getId();
-        String phone = SpUtils.getInstance(this).get("phone", null);
-
-      /*  if (User_Http.user.getPhone() == null) {
-            username = sp.getTag().getPhone();
-        } else {
-            username = User_Http.user.getPhone();
-        }*/
-        // String password = "123456"+username;
-
-        JMessageClient.register(phone, "123456", new BasicCallback() {
-            @Override
-            public void gotResult(int i, String s) {
-                MyLogcat.jLog().e("js :" + i);
-                if (i == 0) {
-                    MyLogcat.jLog().e("js :" + "succ");
-                } else if (i == 898001) {
-                    MyLogcat.jLog().e("js :" + "falid");
-                } else {
-                    MyLogcat.jLog().e("js :" + "else" + i);
-
-                }
-
-            }
-        });
-
+    /**
+     * 极光登录
+     */
+    private void jmessageLogin(final String phone) {
         JMessageClient.login(phone, "123456", new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
-                MyLogcat.jLog().e("js login: " + i);
                 if (i == 0) {
                     Log.e("jmessage", "登录成功");
+                } else if (i == 801003) {// user not exist
+                    jmessageRegister(phone);
                 } else {
                     Log.e("jmessage", "登录失败");
+                }
+            }
+        });
+    }
+
+    /**
+     * 极光注册
+     */
+    private void jmessageRegister(final String phone) {
+        JMessageClient.register(phone, "123456", new BasicCallback() {
+            @Override
+            public void gotResult(int i, String s) {
+                MyLogcat.jLog().e("jmessage :" + s);
+                MyLogcat.jLog().e("jmessage :" + i);
+                if (i == 0) {//succ
+                    jmessageLogin(phone);
+                } else if (i == 898001) {
+                    MyLogcat.jLog().e("jmessage :" + "falid");
+                } else {
+                    MyLogcat.jLog().e("jmessage :" + "else" + i);
                 }
             }
         });
@@ -355,14 +451,16 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
     @Override
     protected void onPause() {
         super.onPause();
-        //     JPushInterface.onPause(this);
+        JPushInterface.onPause(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //       JPushInterface.onResume(this);
+        JPushInterface.onResume(this);
     }
+
+
 
     private Dialog setHeadDialog;
     private View dialogView;
@@ -418,7 +516,6 @@ public class HomeAcitivtyMy extends FragmentActivity implements View.OnClickList
                 this.finish();
                 // System.exit(0);
                 //杀死该应用进程
-
             }
             return true;
         }

@@ -13,18 +13,23 @@ public class DiseaseBanner {
      * site :
      */
 
+    private String categorycode;
     private String cover;
     private String cyclopediaid;
     private String id;
     private String site;
 
-    public DiseaseBanner(String cover, String cyclopediaid, String id, String site) {
+    public DiseaseBanner(String categorycode, String cover, String cyclopediaid, String id, String site) {
+        this.categorycode = categorycode;
         this.cover = cover;
         this.cyclopediaid = cyclopediaid;
         this.id = id;
         this.site = site;
     }
 
+    public String getCategorycode() {
+        return categorycode;
+    }
 
     public String getCover() {
         return cover;

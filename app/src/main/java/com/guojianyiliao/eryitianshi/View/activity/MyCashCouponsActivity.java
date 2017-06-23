@@ -13,9 +13,8 @@ import com.guojianyiliao.eryitianshi.MyUtils.bean.myCashCouponsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
-import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
-import com.guojianyiliao.eryitianshi.MyUtils.view.activity.InquiryActivityNew;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.OnReFlashListView.ReFlashListView;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.page.adapter.MyCashCouponsAdapter;
@@ -90,7 +89,7 @@ public class MyCashCouponsActivity extends BaseActivity implements ReFlashListVi
                     // setResult(200, intent);
                     // finish();
                 } else {
-                    startActivity(new Intent(MyCashCouponsActivity.this, InquiryActivityNew.class));
+//                    startActivity(new Intent(MyCashCouponsActivity.this, InquiryActivityNew.class));
                     finish();
                 }
             }
@@ -120,7 +119,7 @@ public class MyCashCouponsActivity extends BaseActivity implements ReFlashListVi
             couponsBeen.add(myCashCouponsBean);
         }
 
-        String userid = SpUtils.getInstance(this).get("userid", null);
+        String userid = SharedPreferencesTools.GetUsearId(this,"userSave","userId");
         RetrofitClient.getinstance(this).create(GetService.class).getMyVoucher(userid).enqueue(new Callback<List<myCashCouponsBean>>() {
             @Override
             public void onResponse(retrofit2.Call<List<myCashCouponsBean>> call, Response<List<myCashCouponsBean>> response) {

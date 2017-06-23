@@ -117,7 +117,7 @@ public class SetdataActivity extends MyBaseActivity implements IListener {
                 OkHttpUtils
                         .post()
                         .url(Http_data.http_data + "/AddNameAndGender")
-                        .addParams("id", SpUtils.getInstance(SetdataActivity.this).get("Userid",null)+"")
+//                        .addParams("id", SpUtils.getInstance(SetdataActivity.this).get("Userid",null)+"")
                         .addParams("name", et_nickname.getText().toString())
                         .addParams("gender", sex)
                         .build()
@@ -137,8 +137,8 @@ public class SetdataActivity extends MyBaseActivity implements IListener {
 
                                 if (response.equals("0")) {
                                     Toast.makeText(SetdataActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                                    SpUtils.getInstance(SetdataActivity.this).put("Name",et_nickname.getText().toString());
-                                    SpUtils.getInstance(SetdataActivity.this).put("gender",sex);
+//                                    SpUtils.getInstance(SetdataActivity.this).put("Name",et_nickname.getText().toString());
+//                                    SpUtils.getInstance(SetdataActivity.this).put("gender",sex);
                                     Http_data.giveCashState = 2;
                                     Intent intent = new Intent(SetdataActivity.this, HomeActivity.class);
                                     startActivity(intent);

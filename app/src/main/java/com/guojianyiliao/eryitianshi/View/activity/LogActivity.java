@@ -7,6 +7,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,12 +17,16 @@ import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
 import com.guojianyiliao.eryitianshi.Data.entity.Launch;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
+import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.BindingInfoData;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.BindingPhoneActivity;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.HomeAcitivtyMy;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.SharedPsaveuser;
@@ -39,6 +45,8 @@ import java.util.Date;
 
 import cn.jpush.android.api.JPushInterface;
 import okhttp3.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LogActivity extends AppCompatActivity {
@@ -53,6 +61,8 @@ public class LogActivity extends AppCompatActivity {
 
     Launch launch;
 
+    Gson gson;
+//    UserInfoLogin user ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +70,14 @@ public class LogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            //
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
 
         setContentView(R.layout.activity_log);
+
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+//        user = gson.fromJson(s, UserInfoLogin.class);
 
         sp = new SharedPsaveuser(LogActivity.this);
 
@@ -74,37 +85,30 @@ public class LogActivity extends AppCompatActivity {
 
         iv_log = (ImageView) findViewById(R.id.iv_log);
 
+//        try {
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//            Date curDate = new Date(System.currentTimeMillis());//
+//            String str1 = sdf.format(curDate);
+//
+//            if (sp.setStartPage().getDate() == null || sp.setStartPage().getDate().equals("")) {
+//                iv_log.setBackgroundResource(R.drawable.app_log_page);
+//            } else if (getTimeStamp(sp.setStartPage().getDate(), "yyyy-MM-dd") >= getTimeStamp(str1, "yyyy-MM-dd")) {
+//                ImageLoader.getInstance().displayImage("file:///" + sp.setStartPage().getImg(), iv_log);
+//            } else {
+//                iv_log.setBackgroundResource(R.drawable.app_log_page);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            iv_log.setBackgroundResource(R.drawable.app_log_page);
+//        }
+
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-            Date curDate = new Date(System.currentTimeMillis());//
-            String str1 = sdf.format(curDate);
-
-            if (sp.setStartPage().getDate() == null || sp.setStartPage().getDate().equals("")) {
-                iv_log.setBackgroundResource(R.drawable.app_log_page);
-            } else if (getTimeStamp(sp.setStartPage().getDate(), "yyyy-MM-dd") >= getTimeStamp(str1, "yyyy-MM-dd")) {
-                ImageLoader.getInstance().displayImage("file:///" + sp.setStartPage().getImg(), iv_log);
-            } else {
-                iv_log.setBackgroundResource(R.drawable.app_log_page);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            iv_log.setBackgroundResource(R.drawable.app_log_page);
-        }
-
-        try {
-            //
             UIUtils.getHandler().postDelayed(new Runnable() {
                 public void run() {
-
-
                     judgeWhetherRegister();
-
-                    pageInit();
-
                 }
-            }, 2000);
-
+            }, 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,141 +127,168 @@ public class LogActivity extends AppCompatActivity {
         return 0;
     }
 
-    private Gson gson;
-
+    /**
+     * 快捷登录
+     */
     private void judgeWhetherRegister() {
-        /**
-         * phone name gender userid iconurl type
-         * */
+        boolean loginStatus = SharedPreferencesTools.GetLoginStatus(this, "userSave", "userLoginStatus");
+        if(loginStatus){
+            String type = SharedPreferencesTools.GetLoginType(this,"userSave","userType");
+            Log.e("Test~~~~","登录类型："+type);
+            if(TextUtils.isEmpty(type)){
+                Toast.makeText(this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                startActivity(intent);
+                finish();
+            }else if(type.equals("phone")){
+                String s = SharedPreferencesTools.GetLoginData(this, "userSave", "userLoginData");
+                Log.e("Test~~~~","登录信息："+s);
+                if(TextUtils.isEmpty(s)){
+                    Toast.makeText(this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    try{
+                        String[] split = s.split(",");
+                        String phone = split[0];
+                        String passwrode = split[1];
+                        Log.e("LogActivity","phone = "+phone);
+                        Log.e("LogActivity","passwrode = "+passwrode);
 
-
-        SpUtils.getInstance(LogActivity.this).put("userid", "b5df631f62cc40e6b932acd997cdc5c9");
-        SpUtils.getInstance(LogActivity.this).put("name", "安卓");
-        SpUtils.getInstance(LogActivity.this).put("gender", "男");
-        SpUtils.getInstance(LogActivity.this).put("phone", "18310904818");
-        startActivity(new Intent(LogActivity.this, HomeAcitivtyMy.class));
-
-        String phone = SpUtils.getInstance(LogActivity.this).get("phone", null);
-        String passwrode = SpUtils.getInstance(LogActivity.this).get("password", null);
-
-       /* String userid = "b5df631f62cc40e6b932acd997cdc5c9";
-        String phone = "18310904818";
-        String passwrode = "FCEA920F7412B5DA7BE0CF42B8C93759";*/
-
-        if (phone != null && passwrode != null) {
-            MyLogcat.jLog().e("judge phone:" + phone + " //passwrode:" + passwrode + " //userid:");
-            gson = new Gson();
-            // HttpLoginPas(phone, passwrode);
-        } else {
-            MyLogcat.jLog().e("judge  null");
+                        if (phone != null && passwrode != null && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(passwrode)) {
+                            HttpLoginPas(phone, passwrode);
+                        } else {
+                            Toast.makeText(this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }else if(type.equals("qq") || type.equals("wechat") || type.equals("webo")){//第三方登录
+                String uid = SharedPreferencesTools.GetLoginData(this, "userSave", "userLoginData");
+                Log.e("Test~~~~","第三方登录uid："+uid);
+                if(TextUtils.isEmpty(uid)){
+                    Toast.makeText(this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    isRegistered(uid);
+                }
+            }
+        }else{
             Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
-            //startActivity(intent);
+            startActivity(intent);
             finish();
-
         }
     }
 
-    private void HttpLoginPas(String phone, String pasMD5) {
-        OkHttpUtils
-                .post()
-                .url(Http_data.http_data + "user/Login")
+    /**
+     * 判断当前第三方UID是否已经注册了
+     */
+    private void isRegistered(final String uid ){
+        Log.e("Test~~~~","第三方UID是否已经注册了");
+        RetrofitClient.getinstance(this).create(GetService.class).isRegistered(uid).enqueue(new Callback<UserInfoLogin>() {
+            @Override
+            public void onResponse(retrofit2.Call<UserInfoLogin> call, Response<UserInfoLogin> response) {
+                if(response.isSuccessful()){
+                    Log.e("Test~~~~","isRegistered---response："+response.body());
+                    try{
+                        UserInfoLogin body = response.body();
+                        String s = gson.toJson(body);
+                        SharedPreferencesTools.SaveUserInfo(LogActivity.this,"userSave","userInfo",s);
+                        SharedPreferencesTools.SaveUserId(LogActivity.this,"userSave","userId",body.getUserid());
+                        SharedPreferencesTools.SaveLoginData(LogActivity.this, "userSave", "userLoginData", uid);
+                        Intent intent = new Intent(LogActivity.this, HomeAcitivtyMy.class);
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){//未注册
+                        Toast.makeText(LogActivity.this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<UserInfoLogin> call, Throwable t) {
+                Log.e("Test~~~~","第三方UID  onFailure   e:"+t.getMessage());
+                Toast.makeText(LogActivity.this,"账号过期，请重新登录",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LogActivity.this, LoginSelectActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+
+
+    /**
+     * 账号密码登录
+     * @param phone
+     * @param pas
+     */
+    private void HttpLoginPas(String phone, String pas) {
+        String pasMD5 = StringUtils.MD5encrypt(pas).toUpperCase();
+        Log.e("LogActivity","pasMD5 = "+pasMD5);
+        OkHttpUtils.post().url(Http_data.http_data + "user/Login")
                 .addParams("phone", phone)
                 .addParams("password", pasMD5)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        MyLogcat.jLog().e("快捷登录 失败！onError");
                         startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
-                        //startActivity(new Intent(LogActivity.this, HomeAcitivtyMy.class));
+                        Toast.makeText(LogActivity.this, "快捷登录，请重新登录", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        //{"name":"??","password":"51596103F385101CE16BCC58B3C3B85B","phone":"18310904818","role":"1",
-                        // "userid":"4e4d86c1fab74d4982ccceec9c0ca38b"}
-                        MyLogcat.jLog().e("login: " + response.toString());
-                        if (response.equals("1")) {
-                            ToolUtils.showToast(LogActivity.this, "请重新登录", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
-                            finish();
-
-                        } else if (response.equals("2")) {
-                            ToolUtils.showToast(LogActivity.this, "登录异常，请重新登录", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
-                            finish();
-                        } else if (response.equals("error")) {
-                            ToolUtils.showToast(LogActivity.this, "账号或密码错误", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
-                            finish();
-                        } else {
-                            UserInfoLogin user = gson.fromJson(response, UserInfoLogin.class);
+                        Log.e("Test~~~~","HttpLoginPas---response："+response);
+                        Log.e("LogActivity","response = "+response);
+                        Log.e("LogActivity","response.leng() = "+response.length());
+                        Log.e("LogActivity","pwdError.leng() = "+"pwdError".length());
+//                        if (response.toString().equals("pwdError")) {
+//                            ToolUtils.showToast(LogActivity.this, "密码错误，请重新登录", Toast.LENGTH_SHORT);
+//                            startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
+//                            Log.e("LogActivity","密码错误，请重新登录");
+//                            finish();
+//                        } else if (response.toString().equals("phoneError")) {
+//                            ToolUtils.showToast(LogActivity.this, "电话号码错误，请重新登录", Toast.LENGTH_SHORT);
+//                            startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
+//                            Log.e("LogActivity","电话号码错误，请重新登录");
+//                            finish();
+//                        } else {
                             try {
-
-                                SpUtils.getInstance(LogActivity.this).put("userid", user.getUserid());
-                                SpUtils.getInstance(LogActivity.this).put("name", user.getName());
-                                SpUtils.getInstance(LogActivity.this).put("gender", user.getGender());
-                                SpUtils.getInstance(LogActivity.this).put("iconurl", user.getIcon());
-                                SpUtils.getInstance(LogActivity.this).put("phone", user.getPhone());
+                                UserInfoLogin user = gson.fromJson(response, UserInfoLogin.class);
+                                SharedPreferencesTools.SaveUserInfo(LogActivity.this, "useaSave", "userInfo", response);
 
                                 if (StringUtils.isEmpty(user.getName())) {
                                     Intent intent = new Intent(LogActivity.this, BindingInfoData.class);
                                     startActivity(intent);
                                 } else {
-                                    //Intent intent = new Intent(LoginSelectActivity.this, SetdataActivity.class);
                                     startActivity(new Intent(LogActivity.this, HomeAcitivtyMy.class));
                                 }
                                 finish();
                             } catch (Exception e) {
                                 ToolUtils.showToast(LogActivity.this, "登录异常，请重新登录", Toast.LENGTH_SHORT);
                                 startActivity(new Intent(LogActivity.this, LoginSelectActivity.class));
-                                MyLogcat.jLog().e("Login ex:" + e.getMessage());
+                                Log.e("LogActivity","登录异常，请重新登录");
                                 finish();
                             }
                         }
-                    }
+//                    }
                 });
     }
 
-    public void pageInit() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpUtils
-                        .post()
-                        .url(Http_data.http_data + "/launch")
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-
-                                Gson gson = new Gson();
-
-                                launch = gson.fromJson(response, Launch.class);
-
-                                if (sp.setStartPage().getDate() == null || sp.setStartPage().getDate().equals("")) {
-                                    handler.sendEmptyMessage(0);
-                                } else {
-                                    if (!sp.setStartPage().getDate().equals(launch.getDate())) {
-                                        handler.sendEmptyMessage(0);
-
-                                    } else {
-
-                                    }
-                                }
-
-                            }
-                        });
-            }
-        }).start();
-
-
-    }
 
 
     private void saveicon() {

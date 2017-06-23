@@ -98,9 +98,9 @@ public class LoginActivity extends AppCompatActivity {
                                     sp.setUserpassworde(login_password_edittext.getText().toString());
 
                                     if (user.getName() != null && !"".equals(user.getName())) {
-                                        SpUtils.getInstance(LoginActivity.this).put("phone", user.getPhone());
-                                        SpUtils.getInstance(LoginActivity.this).put("password", user.getPassword());
-                                        SpUtils.getInstance(LoginActivity.this).put("userid", user.getId());
+//                                        SpUtils.getInstance(LoginActivity.this).put("phone", user.getPhone());
+//                                        SpUtils.getInstance(LoginActivity.this).put("password", user.getPassword());
+//                                        SpUtils.getInstance(LoginActivity.this).put("userid", user.getId());
                                         Intent intent = new Intent(activity, HomeActivity.class);
                                         startActivity(intent);
                                         LoginActivity.this.finish();

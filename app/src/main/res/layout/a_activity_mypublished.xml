@@ -1,54 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
-    <FrameLayout
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y488">
-
-        <ImageView
-            android:id="@+id/iv_publish_src"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/y408" />
-
-        <ImageView
-            android:id="@+id/iv_publish_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x30"
-            android:layout_marginTop="@dimen/y40" />
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">-->
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/y488">
 
             <ImageView
+                android:id="@+id/iv_publish_src"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y408"
+                android:src="@drawable/growth_bg_img" />
+
+            <ImageView
+                android:id="@+id/iv_publish_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y40"
+                android:src="@drawable/opinion_return" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_publish_icon"
                 android:layout_width="@dimen/x140"
                 android:layout_height="@dimen/y140"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/x30" />
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/y328"
+                android:src="@drawable/default_icon"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/x1" />
 
             <TextView
                 android:id="@+id/iv_publish_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/y100"
                 android:layout_marginRight="@dimen/x20"
                 android:layout_toLeftOf="@id/iv_publish_icon"
-                android:text="andorid"
                 android:textColor="@color/white"
                 android:textSize="@dimen/x30" />
         </RelativeLayout>
-    </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_publish"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_publish"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#e4e4e4"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+   <!-- </LinearLayout>-->
+
 
 </LinearLayout>

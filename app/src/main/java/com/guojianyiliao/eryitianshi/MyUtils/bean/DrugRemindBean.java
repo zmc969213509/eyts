@@ -1,36 +1,83 @@
 package com.guojianyiliao.eryitianshi.MyUtils.bean;
 
+import java.io.Serializable;
+
 /**
  * 用药提醒的实体类
  */
 
-public class DrugRemindBean {
+public class DrugRemindBean implements Serializable {
 
+    private long addtime;
+    private String content1;
+    private String content2;
+    private String content3;
+    private long enddate;
+    private long reminddate;
+    private String remindid;
+    private String time1;
+    private String time2;
+    private String time3;
+    private String userid;
 
-    /**
-     * addtime : 1491911657000
-     * content : 该吃药了
-     * content2 : 
-     * content3 : 
-     * enddate : 1492687611000
-     * reminddate : 1491926400000
-     * remindid : 5add47ed71f847d3af9db16b9f88ca79
-     * time1 : 8:00
-     * time2 : 
-     * time3 : 
-     * userid : b5df631f62cc40e6b932acd997cdc5c9
-     */
+    @Override
+    public String toString() {
+        return "DrugRemindBean{" +
+                "addtime=" + addtime +
+                ", content1='" + content1 + '\'' +
+                ", content2='" + content2 + '\'' +
+                ", content3='" + content3 + '\'' +
+                ", enddate=" + enddate +
+                ", reminddate=" + reminddate +
+                ", remindid='" + remindid + '\'' +
+                ", time1='" + time1 + '\'' +
+                ", time2='" + time2 + '\'' +
+                ", time3='" + time3 + '\'' +
+                ", userid='" + userid + '\'' +
+                '}';
+    }
 
-    public long addtime;
-    public String content;
-    public String content2;
-    public String content3;
-    public long enddate;
-    public long reminddate;
-    public String remindid;
-    public String time1;
-    public String time2;
-    public String time3;
-    public String userid;
+    public long getAddtime() {
+        return addtime;
+    }
 
+    public String getContent1() {
+        return content1;
+    }
+
+    public String getContent2() {
+        return content2;
+    }
+
+    public String getContent3() {
+        return content3;
+    }
+
+    public long getEnddate() {
+        return enddate;
+    }
+
+    public long getReminddate() {
+        return reminddate;
+    }
+
+    public String getRemindid() {
+        return remindid;
+    }
+
+    public String getTime1() {
+        return time1;
+    }
+
+    public String getTime2() {
+        return time2;
+    }
+
+    public String getTime3() {
+        return time3;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
 }

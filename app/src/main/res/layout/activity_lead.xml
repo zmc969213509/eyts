@@ -17,7 +17,7 @@
         <Button
             android:id="@+id/tv_click"
             android:layout_width="@dimen/x460"
-            android:layout_height="@dimen/y70"
+            android:layout_height="@dimen/y85"
             android:layout_centerInParent="true"
             android:layout_marginBottom="@dimen/y212"
             android:background="@drawable/lead_item_case"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/y66">
+            android:layout_marginBottom="@dimen/y60">
 
             <ImageView
                 android:id="@+id/iv_lead_spot1"

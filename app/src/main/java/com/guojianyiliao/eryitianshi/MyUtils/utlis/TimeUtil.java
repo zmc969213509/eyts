@@ -29,10 +29,32 @@ public class TimeUtil {
     private static final int MINUTE = 60;// 分钟
 
 
+    public static String currectTime_day(long t) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date curDate = new Date(t);
+        String time = formatter.format(curDate);
+        return time;
+    }
+    public static String currectTime_day() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        String time = formatter.format(curDate);
+        return time;
+    }
     public static String currectTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date curDate = new Date(System.currentTimeMillis());
         String time = formatter.format(curDate);
+        return time;
+    }
+    public static String currectTime(long curDate) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String time = formatter.format(curDate);
+        return time;
+    }
+    public static String currectTimehour(long t) {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        String time = formatter.format(t);
         return time;
     }
 
@@ -43,7 +65,7 @@ public class TimeUtil {
         return time;
     }
 
-    public static String SJC(String time) {
+    public static String    SJC(String time) {
         // String aaa = "1492671101000";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Long itest = new Long(time.trim());

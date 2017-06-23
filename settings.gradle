@@ -1,1 +1,1 @@
-include ':app',':ninegridview',':library',':LRecyclerviewlibrary'
+include ':app', ':LRecyclerviewlibrary', ':library'

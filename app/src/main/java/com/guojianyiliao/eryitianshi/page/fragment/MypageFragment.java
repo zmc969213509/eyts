@@ -26,12 +26,11 @@ import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.SharedPsaveuser;
-import com.guojianyiliao.eryitianshi.View.activity.InquiryActivity;
 import com.guojianyiliao.eryitianshi.View.activity.InquiryrecordActivity;
 import com.guojianyiliao.eryitianshi.View.activity.LeadActivity;
 import com.guojianyiliao.eryitianshi.View.activity.MyCashCouponsActivity;
-import com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity;
-import com.guojianyiliao.eryitianshi.View.activity.MycollectActivity;
+//import com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity;
+//import com.guojianyiliao.eryitianshi.View.activity.MycollectActivity;
 import com.guojianyiliao.eryitianshi.View.activity.PersonaldataActivity;
 import com.guojianyiliao.eryitianshi.View.activity.ReservationActivity;
 import com.guojianyiliao.eryitianshi.View.activity.SetPageActivity;
@@ -167,9 +166,9 @@ public class MypageFragment extends Fragment implements EasyPermissions.Permissi
                     break;
                 case R.id.rl_mycollect:
 
-                    Intent intent1 = new Intent(getContext(), MycollectActivity.class);
-
-                    startActivity(intent1);
+//                    Intent intent1 = new Intent(getContext(), MycollectActivity.class);
+//
+//                    startActivity(intent1);
                     break;
                 case R.id.rl_myreservation:
 
@@ -185,9 +184,9 @@ public class MypageFragment extends Fragment implements EasyPermissions.Permissi
                     break;
                 case R.id.rl_mydpctor:
 
-                    Intent intent4 = new Intent(getContext(), MyDoctorActivity.class);
-
-                    startActivity(intent4);
+//                    Intent intent4 = new Intent(getContext(), MyDoctorActivity.class);
+//
+//                    startActivity(intent4);
                     break;
                 case R.id.rl_inquiryrecord:
 
@@ -673,8 +672,8 @@ public class MypageFragment extends Fragment implements EasyPermissions.Permissi
             @Override
             public void onClick(View v) {
                 setHeadDialog.dismiss();
-                Intent intent = new Intent(getActivity(), InquiryActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), InquiryActivity.class);
+//                startActivity(intent);
             }
         });
     }

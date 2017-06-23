@@ -2,59 +2,100 @@ package com.guojianyiliao.eryitianshi.MyUtils.bean;
 
 /**
  * 用户信息
- * jnluo,jnluo5889@126.com
+ *
  */
 
 public class UserInfoLogin {
 
     /**
-     * qq : null
-     * password : 51596103F385101CE16BCC58B3C3B85B
-     * role : 1
+     *
+     *
+     "age": 0,
+     "gender": "男",
+     "icon": "http://192.168.1.11:10010/AppServer/images/2/3/36e0612f6e6b42e89b7121d47ad8fd8d.png",
+     "name": "Rip",
+     "password": "F59BD65F7EDAFB087A81D4DCA06C4910",
+     "phone": "18684040826",
+     "qq": "D3AEBDF55E326F21FDAB8AEBA2A163F7",
+     "role": "1",
+     "userid": "22476ffbe1b24590bb0cf9be501aec90"
+
+     * age : null
      * gender : null
-     * weibo : null
-     * phone : 18310904818
      * icon : null
      * name : null
+     * password : 51596103F385101CE16BCC58B3C3B85B
+     * phone : 18310904818
+     * qq : null
      * wechat : null
-     * userid : 586265ced6884501b320237da74ab6ab
-     * age : null
+     * weibo : null
      * email : null
+     * role : 1
+     * userid : 586265ced6884501b320237da74ab6ab
      */
 
-    private Object qq;
-    private String password;
-    private String role;
-    private String gender;
-    private Object weibo;
-    private String phone;
-    private Object icon = "";
-    private String name = "";
-    private Object wechat;
-    private String userid;
-    private Object age;
-    private Object email;
 
-    public UserInfoLogin(Object qq, String password, String role, String gender, Object weibo, String phone, Object icon, String name, Object wechat, String userid, Object age, Object email) {
-        this.qq = qq;
-        this.password = password;
-        this.role = role;
+    private String age;
+    private String gender;
+    private String icon = "";
+    private String name = "";
+    private String password;
+    private String phone;
+    private String qq;
+    private String wechat;
+    private String weibo;
+    private String email;
+    private String role;
+    private String userid;
+    /**登录次数**/
+    private String time;
+    private String message;
+
+    public UserInfoLogin(String age, String gender, String icon, String name, String password, String phone, String qq, String wechat, String weibo, String email, String role, String userid, String time, String message) {
+        this.age = age;
         this.gender = gender;
-        this.weibo = weibo;
-        this.phone = phone;
         this.icon = icon;
         this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.qq = qq;
         this.wechat = wechat;
-        this.userid = userid;
-        this.age = age;
+        this.weibo = weibo;
         this.email = email;
+        this.role = role;
+        this.userid = userid;
+        this.time = time;
+        this.message = message;
     }
 
-    public Object getQq() {
+    public UserInfoLogin(String gender, String icon, String name, String userid) {
+        this.gender = gender;
+        this.icon = icon;
+        this.name = name;
+        this.userid = userid;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getQq() {
         return qq;
     }
 
-    public void setQq(Object qq) {
+    public void setQq(String qq) {
         this.qq = qq;
     }
 
@@ -82,11 +123,11 @@ public class UserInfoLogin {
         this.gender = gender;
     }
 
-    public Object getWeibo() {
+    public String getWeibo() {
         return weibo;
     }
 
-    public void setWeibo(Object weibo) {
+    public void setWeibo(String weibo) {
         this.weibo = weibo;
     }
 
@@ -98,11 +139,11 @@ public class UserInfoLogin {
         this.phone = phone;
     }
 
-    public Object getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(Object icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -114,11 +155,11 @@ public class UserInfoLogin {
         this.name = name;
     }
 
-    public Object getWechat() {
+    public String getWechat() {
         return wechat;
     }
 
-    public void setWechat(Object wechat) {
+    public void setWechat(String wechat) {
         this.wechat = wechat;
     }
 
@@ -130,19 +171,19 @@ public class UserInfoLogin {
         this.userid = userid;
     }
 
-    public Object getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Object age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

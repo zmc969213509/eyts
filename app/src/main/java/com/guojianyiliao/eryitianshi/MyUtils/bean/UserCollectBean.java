@@ -8,16 +8,31 @@ package com.guojianyiliao.eryitianshi.MyUtils.bean;
 public class UserCollectBean {
 
 
-    /**
-     * ctime : 2017-4-15
-     * cyclopediaid : 20
-     * id : 1fcf97659f094cf3bcc52c0e2daf7edd
-     * userid : b5df631f62cc40e6b932acd997cdc5c9
-     */
 
     public String ctime;
     public String cyclopediaid;
     public String id;
     public String userid;
+    private HotTalkBean cyclopedia;
 
+
+    public String getCtime() {
+        return ctime;
+    }
+
+    public String getCyclopediaid() {
+        return cyclopediaid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public HotTalkBean getCyclopedia() {
+        return cyclopedia;
+    }
 }

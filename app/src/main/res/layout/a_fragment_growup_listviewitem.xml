@@ -6,6 +6,11 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y15"
+        android:background="#45cccccc"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,24 +94,17 @@
         android:textSize="@dimen/x26"
         android:visibility="gone" />
 
-    <com.lzy.ninegrid.NineGridView
-        android:id="@+id/nineGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/x20"
-        android:layout_marginRight="@dimen/x20"
-        android:layout_marginTop="@dimen/y10"
-        android:visibility="gone" />
-    <!--<com.jaeger.ninegridimageview.NineGridImageView
+
+    <com.jaeger.ninegridimageview.NineGridImageView
         android:id="@+id/nineGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        app:imgGap="3dp"
+        app:showStyle="grid"
+        app:singleImgSize="500dp"
         android:layout_marginTop="@dimen/y20"
-        android:paddingRight="5dp"
-        android:paddingTop="6dp" />
--->
+        android:padding="5dp"
+        android:visibility="gone"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -139,6 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/x20"
+            android:padding="@dimen/x10"
             android:layout_toLeftOf="@id/tv_grow_comment"
             android:background="@drawable/evaluate_icon" />
 
@@ -159,8 +158,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/x20"
+            android:padding="@dimen/x15"
             android:layout_toLeftOf="@id/tv_grow_eagrees"
-            android:background="@drawable/af_imabtn_def" />
+            android:src="@drawable/af_imabtn_def" />
     </RelativeLayout>
 
 </LinearLayout>

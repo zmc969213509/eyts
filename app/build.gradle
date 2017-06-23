@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 7
         versionName "1.0.6"
+        multiDexEnabled true
         ndk {
             //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
@@ -98,14 +99,12 @@ dependencies {
     //compile 'com.nineoldandroids:library:2.4.0' //绚丽的listview左右滑动item效果
     //compile 'com.daimajia.easing:library:1.0.1@aar'
     //compile 'com.daimajia.androidanimations:library:1.1.3@aar'
-   // compile project(':listviewlibrary')
-    compile 'com.baoyz.swipemenulistview:library:1.3.0'
-    //ListView滑动菜单
+    // compile project(':listviewlibrary')
+    //    compile 'com.baoyz.swipemenulistview:library:1.3.0'//ListView滑动菜单
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
     //图片裁剪
-    //compile 'in.srain.cube:ultra-ptr:1.0.11'
-    //下拉刷新
-    compile 'com.github.fg2q1q3q:DropDownMenu:1.1.1'
+//    compile 'in.srain.cube:ultra-ptr:1.0.11'//下拉刷新
+//    compile 'com.github.fg2q1q3q:DropDownMenu:1.1.1'
     //菜单筛选
     //compile 'com.qiniu:qiniu-android-sdk:7.3.1'
     //七牛
@@ -114,12 +113,11 @@ dependencies {
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-
-
     compile 'com.squareup:otto:+'
     compile 'pub.devrel:easypermissions:0.1.9'
     //6.0权限
     compile 'com.android.support:multidex:1.0.1'
+//    compile 'com.android.support:multidex:'
     // 多dex配置
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
@@ -130,24 +128,25 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //支持rajava
-    compile 'io.reactivex:rxandroid:1.2.1'
+    //    compile 'io.reactivex:rxandroid:1.2.1'
     //Rxbus
-
     //compile 'com.umeng.analytics:analytics:latest.integration'//Umeng多渠道
     compile files('libs/jmessage-android-1.4.0.jar')
     compile 'q.rorbin:badgeview:1.1.0'
     compile 'com.android.support:cardview-v7:23.1.1'
-
     compile project(':LRecyclerviewlibrary')
-// -------------------- 发表朋友圈 ----------------------------
+    compile project(':library')
+    // -------------------- 发表朋友圈 ----------------------------
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
     compile 'cn.bingoogolapple:bga-adapter:1.1.8@aar'
-
-    compile project(':ninegridview')
-    compile project(':library')
-
+    //这种方式导入的jar包是从远程仓库里获取 存放在External Libraires下 不可修改
+    //这种依赖导入的jar包是在Android下 可修改
     compile 'com.wx.goodview:goodview:1.0.0'
-
+    //点赞+1动画
+    compile project(':library')
+    compile 'org.greenrobot:eventbus:3.0.0'
+    //仿iOS PickerView控件
+    compile 'com.contrarywind:Android-PickerView:3.2.5'
 }
 apply from: 'tinker-support.gradle'

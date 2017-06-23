@@ -20,7 +20,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y96"
-                android:background="@color/white">
+                android:background="@color/backgroundblue">
 
                 <LinearLayout
                     android:id="@+id/ll_consult_return"
@@ -29,20 +29,13 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/x20"
-                        android:layout_height="@dimen/y36"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/x30"
-                        android:src="@drawable/opinion_return" />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/x20"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/x8"
-                        android:text="问诊"
-                        android:textColor="@color/backgroundblue"
-                        android:textSize="@dimen/x32" />
+                        android:layout_marginLeft="@dimen/x15"
+                        android:src="@drawable/left_icon" />
+
                 </LinearLayout>
 
                 <TextView
@@ -50,8 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="name"
-                    android:textColor="@color/fontcolor"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/x36" />
 
                 <LinearLayout
@@ -150,7 +142,6 @@
                     android:id="@+id/btn_chat"
                     android:layout_width="@dimen/x120"
                     android:layout_height="@dimen/y65"
-
                     android:layout_marginRight="@dimen/x30"
                     android:background="@drawable/chat_send_case"
                     android:text="发送"

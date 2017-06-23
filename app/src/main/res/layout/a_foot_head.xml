@@ -12,27 +12,34 @@
         <ImageButton
             android:id="@+id/ivb_back_finsh"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
-            android:background="@drawable/left_icon" />
+            android:src="@drawable/left_icon"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:background="@null"/>
 
         <ImageButton
             android:id="@+id/ivb_published"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
-            android:background="@drawable/growth_user_icon"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:background="@null"
+            android:src="@drawable/growth_user_icon"
             android:visibility="gone" />
+
 
         <TextView
             android:id="@+id/tv_back_left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x30"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
             android:text="取消"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/x36"
             android:visibility="gone" />
@@ -49,10 +56,12 @@
         <TextView
             android:id="@+id/tv_right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x30"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:gravity="center"
             android:text="保存"
             android:textColor="@color/white"
             android:textSize="@dimen/x36"
@@ -61,22 +70,26 @@
         <ImageView
             android:id="@+id/iv_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x30"
-            android:background="@drawable/add2_icon"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:background="@null"
+            android:src="@drawable/add2_icon"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/iv_add_edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x30"
-            android:background="@drawable/publish_icon"
-            android:visibility="gone" />
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:background="@null"
+            android:src="@drawable/publish_icon"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <!--<View

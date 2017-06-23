@@ -46,6 +46,7 @@ public class HotTalkBean {
     public String cyclopediaid;
     public String icon;
     public String title;
+    
 
     public int getCollectcount() {
         return collectcount;

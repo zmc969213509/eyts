@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     android:background="#f6f6f6">
 
-    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.MyScrollView
+    <!--<com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.MyScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:fillViewport="true">
 
         <LinearLayout
@@ -277,7 +280,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/y20">
 
                 <LinearLayout
                     android:id="@+id/ll_foot_1"
@@ -582,15 +586,49 @@
                 android:id="@+id/onListview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/rl_see_hot"
                 android:divider="#e6e6e6"
-                android:dividerHeight="@dimen/y1"
-                android:layout_below="@id/rl_see_hot" />
+                android:dividerHeight="@dimen/y1" />
 
 
             <include layout="@layout/a_fragment_tab_searsch" />
         </LinearLayout>
 
     </com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.MyScrollView>
+
+
+    &lt;!&ndash;<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96">
+
+        <LinearLayout
+            android:id="@+id/sear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y76"
+            android:layout_centerInParent="true"
+            android:background="@drawable/af_search_head_order"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/all_doctor_sear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@drawable/search_icon" />
+
+            <TextView
+                android:id="@+id/sear_tv"
+                android:layout_width="@dimen/x450"
+                android:layout_height="@dimen/y64"
+                android:layout_marginLeft="@dimen/x20"
+                android:gravity="center_vertical"
+                android:text="请输入您想要搜索的关键词"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x26" />
+        </LinearLayout>
+
+
+    </RelativeLayout>&ndash;&gt;-->
 </RelativeLayout>
 
 

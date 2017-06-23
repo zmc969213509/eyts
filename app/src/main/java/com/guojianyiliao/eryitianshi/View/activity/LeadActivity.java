@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.page.adapter.LeadAdapter;
 
@@ -28,20 +29,13 @@ public class LeadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //x
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-
-
         setContentView(R.layout.activity_lead);
 
         try {
-            //
-            SharedPreferences sp = getSharedPreferences("lead", MODE_PRIVATE);
-            boolean isclick = sp.getBoolean("isclick", true);
-            if (!isclick) {
+            boolean isFirst = SharedPreferencesTools.GetUsearisFirst(this, "userSave", "userLogin");
+            if (!isFirst) {
                 Intent intent1 = new Intent(LeadActivity.this, LogActivity.class);
                 startActivity(intent1);
                 finish();
@@ -133,11 +127,9 @@ public class LeadActivity extends AppCompatActivity {
         tv_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp = getSharedPreferences("lead", MODE_PRIVATE);
-                SharedPreferences.Editor edit = sp.edit();
-                edit.putBoolean("isclick", false);
-                edit.commit();
-                Intent intent = new Intent(LeadActivity.this, LogActivity.class);
+                SharedPreferencesTools.UserLogin(LeadActivity.this, "userSave", "userLogin");
+//                Intent intent = new Intent(LeadActivity.this, LogActivity.class);
+                Intent intent = new Intent(LeadActivity.this, LoginSelectActivity.class);
                 startActivity(intent);
                 finish();
             }

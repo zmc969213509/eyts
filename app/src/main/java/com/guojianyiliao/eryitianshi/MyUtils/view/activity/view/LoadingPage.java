@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
+import com.guojianyiliao.eryitianshi.R;
+
 
 /**
  * 根据当前状态来显示不同页面的自定义控件
@@ -28,23 +31,23 @@ public abstract class LoadingPage extends FrameLayout {
 
 	public LoadingPage(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-	//	initView();
+		initView();
 	}
 
 	public LoadingPage(Context context, AttributeSet attrs) {
 		super(context, attrs);
-	//	initView();
+		initView();
 	}
 
 	public LoadingPage(Context context) {
 		super(context);
-	//	initView();
+		initView();
 	}
 
 	private void initView() {
 		// 初始化加载中的布局
 		if (mLoadingPage == null) {
-			//mLoadingPage = UIUtils.getinflate(R.layout.page_loading);
+//			mLoadingPage = UIUtils.getinflate(R.layout.page_loading);
 			addView(mLoadingPage);// 将加载中的布局添加给当前的帧布局
 		}
 

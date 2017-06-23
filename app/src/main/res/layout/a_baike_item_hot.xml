@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.XCFlowLayout
-        android:id="@+id/fl_content_set"
+    <com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout
+        android:id="@+id/zmc_frg_baike_showtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x30"
-        android:layout_marginRight="@dimen/x30"
-        android:layout_marginTop="@dimen/x30" />
+        android:orientation="vertical"
+        app:text_color="#17c2ed"
+        app:text_bg="@drawable/shape_show_tx_bg_blue"
+        app:max_padding_width="15sp"
+        app:padding_height="6sp"
+        app:margin_width="10sp"
+        app:text_size="13px"
+        android:layout_marginBottom="@dimen/y10"/>
 
-    <!--<com.aspsine.swipetoloadlayout.SwipeToLoadLayout
-        android:id="@+id/swipeToLoadLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:swipe_style="classic">
-        &lt;!&ndash;android:background="@color/style_window_background"&ndash;&gt;
-        <include
-            android:id="@id/swipe_refresh_header"
-            layout="@layout/layout_twitter_header" />
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@id/swipe_target"
+            android:id="@+id/zmc_frg_baike_rcyview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false" />
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
 
         <include
-            android:id="@id/swipe_load_more_footer"
-            layout="@layout/layout_classic_footer" />
-    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>-->
+            layout="@layout/zmc_loading_anim"/>
 
+    </RelativeLayout>
 
-    <com.github.jdsjlzx.recyclerview.LRecyclerView
-        android:id="@+id/recy_hot"
+    <!--<ListView
+        android:id="@+id/zmc_frg_baike_onListview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/y20" />
+        android:divider="#e6e6e6"
+        android:dividerHeight="@dimen/y1">
+
+    </ListView>-->
 
 </LinearLayout>

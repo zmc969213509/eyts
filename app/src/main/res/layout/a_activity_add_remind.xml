@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#f6f6f6"
     android:orientation="vertical">
-
     <include layout="@layout/a_foot_head" />
 
 
@@ -160,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x30"
                 android:background="@null"
+                android:gravity="center"
                 android:textColor="#aaaaaa"
                 android:textSize="@dimen/x28" />
 
@@ -228,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x30"
                 android:background="@null"
+                android:gravity="center"
                 android:textColor="#aaaaaa"
                 android:textSize="@dimen/x28" />
 
@@ -301,6 +302,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x30"
                 android:background="@null"
+                android:gravity="center"
                 android:textColor="#aaaaaa"
                 android:textSize="@dimen/x28" />
 

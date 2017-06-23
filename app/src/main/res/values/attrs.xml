@@ -11,4 +11,34 @@
     <declare-styleable name="HeartProgressView">
         <attr name="heartColor" format="color" />
     </declare-styleable>
+
+
+
+    <declare-styleable name="FourGridImageView">
+        <attr name="img_padding" format="dimension"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="DianZanView">
+        <attr name="img_width" format="dimension"></attr>
+        <attr name="img_height" format="dimension"></attr>
+        <attr name="dz_img_padding" format="dimension"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="ShowTextLinearLayout">
+        <attr name="margin_width" format="dimension"></attr>
+        <attr name="min_padding_width" format="dimension"></attr>
+        <attr name="max_padding_width" format="dimension"></attr>
+        <attr name="padding_height" format="dimension"></attr>
+        <attr name="text_size" format="dimension"></attr>
+        <attr name="text_color" format="color"></attr>
+        <attr name="text_bg" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="TableLinearLayout">
+        <attr name="line_color" format="color"/>
+        <attr name="view_bg" format="color"/>
+        <attr name="table_text_color" format="color"/>
+        <attr name="table_text_size" format="dimension"></attr>
+    </declare-styleable>
+
 </resources>

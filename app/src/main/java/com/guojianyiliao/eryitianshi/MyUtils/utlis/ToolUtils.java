@@ -49,7 +49,7 @@ public class ToolUtils {
 
     //时间
     public static String CurrentTime() {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         return df.format(date);
     }
@@ -71,6 +71,9 @@ public class ToolUtils {
 
     //打开软键盘
     public static void openKeyBord(EditText editText, Context context) {
+        editText.setFocusable(true);
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(editText, InputMethodManager.RESULT_SHOWN);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,

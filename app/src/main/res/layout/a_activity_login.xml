@@ -6,12 +6,6 @@
 
 
     <ImageView
-        android:id="@+id/iv_bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg" />
-
-    <ImageView
         android:id="@+id/iv_foot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_foot"
         android:layout_marginTop="@dimen/y88"
+        android:layout_marginRight="@dimen/x60"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -39,7 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x20"
-            android:layout_marginRight="@dimen/x60"
             android:hint="输入手机号"
             android:inputType="phone"
             android:maxLength="11"
@@ -56,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_foot_phone"
         android:layout_marginTop="@dimen/y40"
+        android:layout_marginRight="@dimen/x60"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -66,14 +61,20 @@
             android:layout_marginLeft="@dimen/x60"
             android:background="@drawable/password_icon" />
 
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg"
+            android:layout_weight="1" />
+
         <EditText
             android:id="@+id/et_login_pas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x20"
-            android:layout_marginRight="@dimen/x60"
             android:hint="请输入密码"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:paddingBottom="@dimen/y26"
             android:textColor="@color/backgroundblue"
             android:textColorHint="@color/linegray1"
@@ -156,4 +157,8 @@
         android:layout_alignTop="@id/ivb_wechat"
         android:layout_toRightOf="@id/ivb_wechat"
         android:background="@drawable/sina_icon" />
+
+    <include
+        layout="@layout/zmc_anim_view"/>
+
 </RelativeLayout>

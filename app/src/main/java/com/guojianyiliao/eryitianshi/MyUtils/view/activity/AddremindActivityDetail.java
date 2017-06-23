@@ -2,6 +2,8 @@ package com.guojianyiliao.eryitianshi.MyUtils.view.activity;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,19 +11,26 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.guojianyiliao.eryitianshi.MyUtils.base.BaseActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.DrugRemindBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.RemidBean;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.EventData;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.BusProvider;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.TimeUtil;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -38,10 +47,15 @@ import retrofit2.Response;
 
 public class AddremindActivityDetail extends BaseActivity {
 
+    private static final String TAG = "AddremindActivityDetail";
     @BindView(R.id.ivb_back_finsh)
     ImageButton ivbBackFinsh;
     @BindView(R.id.tv_foot_center)
     TextView tvFootCenter;
+    @BindView(R.id.tv_1)
+    TextView startTime;
+    @BindView(R.id.tv_2)
+    TextView endTime;
     @BindView(R.id.tv_right)
     TextView tvRight;
     @BindView(R.id.time_1)
@@ -59,14 +73,13 @@ public class AddremindActivityDetail extends BaseActivity {
     @BindView(R.id.btn_add_remind)
     Button btnAddRemind;
 
-    String reminddate, enddate;//开始和结束时间不可修改
-
     @BindView(R.id.ll_content1)
     LinearLayout llContent1;
     @BindView(R.id.ll_content2)
     LinearLayout llContent2;
 
-    String remindid;
+
+    DrugRemindBean drugRemindBean;
 
     @Override
     protected void onStart() {
@@ -79,12 +92,7 @@ public class AddremindActivityDetail extends BaseActivity {
         setContentView(R.layout.a_activity_add_remind);
         ButterKnife.bind(this);
 
-        EventData mEventData = new EventData();
-        mEventData.setContent("hello world!");
-        BusProvider.getInstance().post(mEventData);//发布事件
-
-        remindid = getIntent().getStringExtra("remindid");
-        MyLogcat.jLog().e("remindid:" + remindid);
+        drugRemindBean = (DrugRemindBean) getIntent().getSerializableExtra("drugremind");
 
         /**设置数据*/
         getRemind();
@@ -144,7 +152,7 @@ public class AddremindActivityDetail extends BaseActivity {
      */
     @OnClick(R.id.tv_right)
     public void submit() {
-        String userid = SpUtils.getInstance(this).get("userid", null);
+        Log.e(TAG,"submit");
 
         String t1 = time1.getText().toString();
         String dontent1 = ed1.getText().toString();
@@ -154,17 +162,50 @@ public class AddremindActivityDetail extends BaseActivity {
 
         String t3 = time3.getText().toString();
         String dontent3 = ed3.getText().toString();
-        RetrofitClient.getinstance(this).create(GetService.class).editRemind(remindid, reminddate, enddate, t1, t2, t3, dontent1, dontent2, dontent3, userid).enqueue(new Callback<String>() {
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String startTime = TimeUtil.currectTimess();
+        String endTime = df.format( System.currentTimeMillis()+(3600*26*100));
+
+        Call<String> stringCall = null;
+        Log.e(TAG,"num = " + num);
+        if(num == 1){
+            if(TextUtils.isEmpty(dontent1)){
+                ToolUtils.showToast(this, "请添加用药提醒", Toast.LENGTH_SHORT);
+                return;
+            }
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).editRemind(drugRemindBean.getRemindid(), startTime,endTime, t1, dontent1);
+        }else if(num == 2){
+            if(TextUtils.isEmpty(dontent1) || TextUtils.isEmpty(dontent2) ){
+                ToolUtils.showToast(this, "请添加用药提醒", Toast.LENGTH_SHORT);
+                return;
+            }
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).editRemind(drugRemindBean.getRemindid(), startTime,endTime, t1, t2,  dontent1, dontent2);
+        }else if(num == 3){
+            if(TextUtils.isEmpty(dontent1) || TextUtils.isEmpty(dontent2) || TextUtils.isEmpty(dontent3)){
+                ToolUtils.showToast(this, "请添加用药提醒", Toast.LENGTH_SHORT);
+                return;
+            }
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).editRemind(drugRemindBean.getRemindid(), startTime,endTime, t1, t2, t3, dontent1, dontent2, dontent3);
+        }
+
+        stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                Log.e(TAG,"onResponse:" + response.toString());
                 if (response.isSuccessful()) {
-                    MyLogcat.jLog().e("修改用药提醒 succes:" + response.body().toString());
+                    Log.e(TAG,"onResponse.isSuccessful" + num);
+                    ToolUtils.showToast(AddremindActivityDetail.this, "修改用药成功", Toast.LENGTH_SHORT);
+                    flag = 1;
+                    onBackPressed();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                MyLogcat.jLog().e("修改用药提醒 onFailure:");
+                ToolUtils.showToast(AddremindActivityDetail.this, "修改用药失败", Toast.LENGTH_SHORT);
+                Log.e(TAG,"onFailure" + num);
             }
         });
 
@@ -175,18 +216,13 @@ public class AddremindActivityDetail extends BaseActivity {
      */
     @OnClick(R.id.btn_add_remind)
     public void remove() {
-        RetrofitClient.getinstance(this).create(GetService.class).deleteRemind(remindid).enqueue(new Callback<String>() {
+        RetrofitClient.getinstance(this).create(GetService.class).deleteRemind(drugRemindBean.getRemindid()).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    MyLogcat.jLog().e("删除用药提醒 succes:" + response.body().toString());
-                    remindListener.setnotify();
-
-                    EventData mEventData = new EventData();
-                    mEventData.setContent("hello world!");
-                    BusProvider.getInstance().post(mEventData);//发布事件
-
-                    finish();
+                    Toast.makeText(AddremindActivityDetail.this,"删除用药成功",Toast.LENGTH_SHORT).show();
+                    flag = 2;
+                    onBackPressed();
                 }
             }
 
@@ -201,55 +237,43 @@ public class AddremindActivityDetail extends BaseActivity {
 
     @OnClick(R.id.ivb_back_finsh)
     public void back() {
-        finish();
+        onBackPressed();
     }
 
+    /**当前界面操作标记  0：什么也没做  1：修改用药  2：删除用药**/
+    private int flag = 0;
+    /**当前用药数**/
+    private int num = 1;
     /**
      * 获取用药提醒的详情
      */
     public void getRemind() {
 
-        RetrofitClient.getinstance(this).create(GetService.class).getRemind(remindid).enqueue(new Callback<RemidBean>() {
-            @Override
-            public void onResponse(Call<RemidBean> call, Response<RemidBean> response) {
-                if (response.isSuccessful()) {
-                    MyLogcat.jLog().e("获取用药提醒的详情 success:" + response.body().toString());
-                    RemidBean body = response.body();
+        if (!drugRemindBean.getTime2().isEmpty() && !drugRemindBean.getTime3().isEmpty()) {
+            llContent1.setVisibility(View.VISIBLE);
+            llContent2.setVisibility(View.VISIBLE);
+            num = 3;
+        }else if(!drugRemindBean.getTime2().isEmpty()){
+            llContent1.setVisibility(View.VISIBLE);
+            num = 2;
+        }
+        time1.setText(drugRemindBean.getTime1());
+        time2.setText(drugRemindBean.getTime2());
+        time3.setText(drugRemindBean.getTime3());
 
-                    reminddate = body.reminddate + "";
-                    enddate = body.enddate + "";
-                    if (body.time1.isEmpty() && body.time2.isEmpty() && body.time3.isEmpty()) {
-                        llContent1.setVisibility(View.VISIBLE);
-                        llContent2.setVisibility(View.VISIBLE);
-                    }
-                    if (body.time1.isEmpty() && body.time2.isEmpty()) {
-                        llContent1.setVisibility(View.VISIBLE);
-                    }
-                    time1.setText(body.time1);
-                    time2.setText(body.time2);
-                    time3.setText(body.time3);
+        ed1.setText(drugRemindBean.getContent1());
+        ed2.setText(drugRemindBean.getContent2());
+        ed3.setText(drugRemindBean.getContent3());
 
-                    ed1.setText(body.content1);
-                    ed2.setText(body.content2);
-                    ed3.setText(body.content3);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<RemidBean> call, Throwable t) {
-                MyLogcat.jLog().e("获取用药提醒的详情 q onFailure:");
-            }
-        });
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        startTime.setText(df.format(drugRemindBean.getReminddate())+"");
+        endTime.setText(df.format(drugRemindBean.getReminddate())+"");
     }
 
-    public RemindListener remindListener;
 
-    public void setRemindListener(RemindListener remindListener) {
-        this.remindListener = remindListener;
-    }
-
-    public interface RemindListener {
-        public void setnotify();
+    @Override
+    public void onBackPressed() {
+        setResult(flag);
+        super.onBackPressed();
     }
 }

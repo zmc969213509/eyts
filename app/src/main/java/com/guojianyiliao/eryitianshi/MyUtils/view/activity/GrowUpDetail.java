@@ -17,12 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.MyUtils.base.BaseActivity;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.EcommentsBean;
 import com.guojianyiliao.eryitianshi.MyUtils.bean.EssayInfoBean;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.TimeUtil;
@@ -30,9 +33,6 @@ import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.XCFlowLayout;
 import com.guojianyiliao.eryitianshi.R;
-import com.lzy.ninegrid.ImageInfo;
-import com.lzy.ninegrid.NineGridView;
-import com.lzy.ninegrid.NineGridViewAdapter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.picasso.Picasso;
 
@@ -55,10 +55,10 @@ import retrofit2.Response;
  * version: Administrator
  */
 
-public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoader {
+public class GrowUpDetail extends BaseActivity  {
 
-    @BindView(R.id.nineGrid)
-    NineGridView nineGrid;
+//    @BindView(R.id.nineGrid)
+//    NineGridView nineGrid;
     @BindView(R.id.recycler)
     RecyclerView recycler;
     @BindView(R.id.iv_hot_icon)
@@ -69,6 +69,9 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
     String eid;
     @BindView(R.id.ed_add_pl)
     EditText edAddPl;
+
+    Gson gson;
+    UserInfoLogin user ;
 
     @Override
     protected void onStart() {
@@ -84,10 +87,13 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_activity_growup_detail);
         ButterKnife.bind(this);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
     }
 
     String eimages;
-    ArrayList<ImageInfo> imageInfo = new ArrayList<>();
+//    ArrayList<ImageInfo> imageInfo = new ArrayList<>();
     List<String> isIcon = new ArrayList<String>();
     Integer etag = 0;
 
@@ -103,8 +109,8 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
 
         String eccontent = edAddPl.getText().toString();
 
-        String ecuserid = SpUtils.getInstance(GrowUpDetail.this).get("userid", null);
-        String ecusername = SpUtils.getInstance(GrowUpDetail.this).get("name", null);
+        String ecuserid = user.getUserid();
+        String ecusername = user.getName();
         String ectime = TimeUtil.currectTimess();
         String ressayid = eid;//eid
 
@@ -154,36 +160,36 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
                     eimages = response.body().getEssay().getEimages();
                     MyLogcat.jLog().e("eimages:" + eimages);
                     if (!StringUtils.isEmpty(eimages)) {
-                        if (imageInfo.size() != 0) {
-                            imageInfo.clear();
-                        }
+//                        if (imageInfo.size() != 0) {
+//                            imageInfo.clear();
+//                        }
                         try {
                             String[] split = eimages.split(";");
                             if (split != null) {
 
                                 MyLogcat.jLog().e("growupdetail:" + split.toString());
 
-                                for (int i = 0; i < split.length; i++) {
-                                    ImageInfo imageInfoGrow = new ImageInfo();
-                                    imageInfoGrow.setBigImageUrl(split[i]);
-                                    imageInfoGrow.setThumbnailUrl(split[i]);
-                                    imageInfo.add(imageInfoGrow);
-                                    MyLogcat.jLog().e("--------------------" + split[i]);
-                                }
-                                nineGrid.setVisibility(View.VISIBLE);
+//                                for (int i = 0; i < split.length; i++) {
+//                                    ImageInfo imageInfoGrow = new ImageInfo();
+//                                    imageInfoGrow.setBigImageUrl(split[i]);
+//                                    imageInfoGrow.setThumbnailUrl(split[i]);
+//                                    imageInfo.add(imageInfoGrow);
+//                                    MyLogcat.jLog().e("--------------------" + split[i]);
+//                                }
+////                                nineGrid.setVisibility(View.VISIBLE);
+//
+//                                NineGridViewAdapter myNineAdapter = new NineGridViewAdapter(GrowUpDetail.this, imageInfo);
+//                                myNineAdapter.setImageInfoList(imageInfo);
+//                                MyLogcat.jLog().e("--------------------");
+//                                nineGrid.setAdapter(myNineAdapter);
+//                                nineGrid.setImageLoader(GrowUpDetail.this);
 
-                                NineGridViewAdapter myNineAdapter = new NineGridViewAdapter(GrowUpDetail.this, imageInfo);
-                                myNineAdapter.setImageInfoList(imageInfo);
-                                MyLogcat.jLog().e("--------------------");
-                                nineGrid.setAdapter(myNineAdapter);
-                                nineGrid.setImageLoader(GrowUpDetail.this);
-
-                                nineGrid.setMaxSize(9);
+//                                nineGrid.setMaxSize(9);
                                 //nineGrid.setSingleImageRatio(UIUtils.dip2px(220));
                                 //nineGrid.setSingleImageSize(UIUtils.dip2px(220));
-                                nineGrid.setGridSpacing(UIUtils.dip2px(5));
+//                                nineGrid.setGridSpacing(UIUtils.dip2px(5));
                             } else {
-                                nineGrid.setVisibility(View.GONE);
+//                                nineGrid.setVisibility(View.GONE);
                             }
 
                         } catch (NullPointerException e) {
@@ -376,20 +382,20 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
         }
     }
 
-    @Override
-    public void onDisplayImage(Context context, ImageView imageView, String url) {
-        Object tag = new Object();
-        Picasso.with(context).load(url)
-                .config(Bitmap.Config.RGB_565)
-                .tag(tag)
-                .fit()
-                .into(imageView);
-    }
-
-    @Override
-    public Bitmap getCacheImage(String url) {
-        return null;
-    }
+//    @Override
+//    public void onDisplayImage(Context context, ImageView imageView, String url) {
+//        Object tag = new Object();
+//        Picasso.with(context).load(url)
+//                .config(Bitmap.Config.RGB_565)
+//                .tag(tag)
+//                .fit()
+//                .into(imageView);
+//    }
+//
+//    @Override
+//    public Bitmap getCacheImage(String url) {
+//        return null;
+//    }
 
     /**
      * 评论列表
@@ -420,8 +426,8 @@ public class GrowUpDetail extends BaseActivity implements NineGridView.ImageLoad
 
     public void addReplyEComment(String eressayid, String euserid, String eusername) {
         /**replyid,ressayid,ruserid,rusername,rcontent,rtime,ecuserid,ecusername,ectime * */
-        String ruserid = SpUtils.getInstance(this).get("userid", null);
-        String rusername = SpUtils.getInstance(this).get("name", null);
+        String ruserid = user.getUserid();
+        String rusername = user.getName();
         String rcontent = edAddPl.getText().toString();
         String rtime = "";
         String etime = "";

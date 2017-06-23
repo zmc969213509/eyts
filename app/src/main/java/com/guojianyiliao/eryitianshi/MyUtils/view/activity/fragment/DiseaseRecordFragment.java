@@ -17,6 +17,7 @@ import com.guojianyiliao.eryitianshi.MyUtils.bean.myCasesBean;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.DiseaseRecordDetail;
@@ -43,7 +44,7 @@ public class DiseaseRecordFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userid = SpUtils.getInstance(getActivity()).get("userid", null);
+        userid = SharedPreferencesTools.GetUsearId(getActivity(),"userSave","userId");
         HttpData();
     }
 

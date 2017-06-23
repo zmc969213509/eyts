@@ -49,11 +49,11 @@
                 android:id="@+id/detail1"
                 android:layout_width="@dimen/x640"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x1"
-                android:layout_toRightOf="@id/iv_stance_lin1"
                 android:background="@drawable/drug_ll_item"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_stance_lin1"
+                android:layout_toEndOf="@+id/iv_stance_lin1">
 
                 <TextView
                     android:id="@+id/time_1"

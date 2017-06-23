@@ -56,8 +56,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x150"
         android:layout_marginRight="@dimen/x30"
-        android:layout_marginTop="@dimen/y20"
+        android:layout_marginTop="@dimen/y10"
         android:textColor="#17c2ed"
         android:textSize="@dimen/x22" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="#e6e6e6"
+        android:layout_marginTop="@dimen/y15"
+        android:layout_marginLeft="@dimen/x30"/>
 
 </LinearLayout>

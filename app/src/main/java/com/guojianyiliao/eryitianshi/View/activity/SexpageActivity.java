@@ -7,7 +7,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
@@ -27,11 +30,16 @@ public class SexpageActivity extends MyBaseActivity {
     private TextView tv_send;
     String gender;
 
+    Gson gson;
+    UserInfoLogin user ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genderpage);
-
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
         try {
 
             findView();
@@ -80,7 +88,7 @@ public class SexpageActivity extends MyBaseActivity {
     };
 
     private void httpinit() {
-        String userid = SpUtils.getInstance(SexpageActivity.this).get("userid", null);
+        String userid = SharedPreferencesTools.GetUsearId(this,"userSave","userId");;
 
         if (StringUtils.isEmpty(gender)) {
             ToolUtils.showToast(SexpageActivity.this, "请选择性别！", Toast.LENGTH_SHORT);
@@ -102,7 +110,8 @@ public class SexpageActivity extends MyBaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         if (response.equals("true")) {
-                            SpUtils.getInstance(SexpageActivity.this).put("gender", gender);
+                            user.setGender(gender);
+                            SharedPreferencesTools.SaveUserInfo(SexpageActivity.this, "userSave", "userInfo",gson.toJson(user));
                             finish();
                         } else {
                             Toast.makeText(SexpageActivity.this, "修改失败", Toast.LENGTH_SHORT).show();

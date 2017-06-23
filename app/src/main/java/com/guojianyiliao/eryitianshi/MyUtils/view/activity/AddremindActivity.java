@@ -3,6 +3,7 @@ package com.guojianyiliao.eryitianshi.MyUtils.view.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +19,11 @@ import com.guojianyiliao.eryitianshi.MyUtils.base.BaseActivity;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.R;
 
 import java.text.SimpleDateFormat;
@@ -269,7 +272,6 @@ public class AddremindActivity extends BaseActivity {
 
     @OnClick(R.id.btn_add_remind)
     public void add() {
-
         if (!isAdd) {
             if (StringUtils.isEmpty(ed1.getText().toString())) {
                 ToolUtils.showToast(this, "你的第一条用药提醒还未设置用药", Toast.LENGTH_SHORT);
@@ -282,6 +284,7 @@ public class AddremindActivity extends BaseActivity {
                 ToolUtils.showToast(this, "你的第二条用药提醒还未设置用药", Toast.LENGTH_SHORT);
             } else {
                 llContent2.setVisibility(View.VISIBLE);
+                btnAddRemind.setVisibility(View.GONE);
             }
         }
     }
@@ -293,7 +296,7 @@ public class AddremindActivity extends BaseActivity {
 
     @OnClick(R.id.tv_right)
     public void HttpSendData() {
-        String userid = SpUtils.getInstance(this).get("userid", null);
+        String userid = SharedPreferencesTools.GetUsearId(this,"userSave","userId");
         String startDate = tv1.getText().toString();
         String endDate = tv2.getText().toString();
 
@@ -329,13 +332,55 @@ public class AddremindActivity extends BaseActivity {
             MyLogcat.jLog().e("添加用药提醒错误:");
             return;
         }
+        startDateOut +=" 00:00:00";
+        endDate +=" 00:00:00";
 
-        RetrofitClient.getinstance(this).create(GetService.class).addRemind(startDateOut, endDate, t1, t2, t3, dontent1, dontent2, dontent3, userid).enqueue(new Callback<String>() {
+        int visibility2 = llContent2.getVisibility();
+        int visibility1 = llContent1.getVisibility();
+
+        if(visibility2 == 0){
+            if(TextUtils.isEmpty(dontent3.trim())){
+                ToolUtils.showToast(this, "你的第三条用药提醒还未设置用药", Toast.LENGTH_SHORT);
+                return;
+            }
+        }
+
+        if(visibility1 == 0){
+            if(TextUtils.isEmpty(dontent2.trim())){
+                ToolUtils.showToast(this, "你的第二条用药提醒还未设置用药", Toast.LENGTH_SHORT);
+                return;
+            }
+        }
+
+        if(TextUtils.isEmpty(dontent1.trim())){
+            ToolUtils.showToast(this, "你的第一条用药提醒还未设置用药", Toast.LENGTH_SHORT);
+            return;
+        }
+
+        Call<String> stringCall = null;
+
+        if(visibility2 == 0){
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).addRemind(startDateOut, endDate, t1, t2, t3, dontent1, dontent2, dontent3, userid);
+        }else if(visibility1 == 0){
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).addRemind(startDateOut, endDate, t1, t2, dontent1, dontent2, userid);
+        }else{
+            stringCall = RetrofitClient.getinstance(this).create(GetService.class).addRemind(startDateOut, endDate, t1, dontent1, userid);
+
+        }
+
+        stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 MyLogcat.jLog().e("onresponse:" + response.body());
-                ToolUtils.showToast(AddremindActivity.this, "添加用药提醒成功！", Toast.LENGTH_LONG);
-                finish();
+                if(response.isSuccessful()){
+                    String s = response.body().toString();
+                    if("true".equals(s)){
+                        ToolUtils.showToast(AddremindActivity.this, "添加用药提醒成功！", Toast.LENGTH_LONG);
+                        finish();
+                    }else if("false".equals(s)){
+                        ToolUtils.showToast(AddremindActivity.this, "该时间段已添加了用药！", Toast.LENGTH_LONG);
+                    }
+                }
             }
 
             @Override

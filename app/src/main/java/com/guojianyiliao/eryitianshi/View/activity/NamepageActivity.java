@@ -9,8 +9,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.Data.Http_data;
 import com.guojianyiliao.eryitianshi.Data.User_Http;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.MyBaseActivity;
@@ -28,10 +31,15 @@ public class NamepageActivity extends MyBaseActivity {
     private TextView tv_pas;
     private LinearLayout ll_rutname;
 
+    Gson gson;
+    UserInfoLogin user ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_namepage);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
         try {
             findView();
 
@@ -84,7 +92,7 @@ public class NamepageActivity extends MyBaseActivity {
                     if (et_name_save.getText().toString().trim().equals("") || et_name_save.getText().toString() == null) {
                         Toast.makeText(NamepageActivity.this, "昵称不能为空", Toast.LENGTH_SHORT).show();
                     } else {
-                        String userid = SpUtils.getInstance(NamepageActivity.this).get("userid", null);
+                        String userid = SharedPreferencesTools.GetUsearId(NamepageActivity.this,"userSave","userId");
                         OkHttpUtils
                                 .post()
                                 .url(Http_data.http_data + "user/updateUser")
@@ -100,7 +108,9 @@ public class NamepageActivity extends MyBaseActivity {
                                     @Override
                                     public void onResponse(String response, int id) {
                                         if (response.equals("true")) {
-                                            SpUtils.getInstance(NamepageActivity.this).put("name", et_name_save.getText().toString());
+                                            user.setName(et_name_save.getText().toString());
+                                            SharedPreferencesTools.SaveUserInfo(NamepageActivity.this, "userSave", "userInfo",gson.toJson(user));
+                                            setResult(RESULT_OK);
                                             finish();
                                         } else {
                                             Toast.makeText(NamepageActivity.this, "修改失败", Toast.LENGTH_SHORT).show();

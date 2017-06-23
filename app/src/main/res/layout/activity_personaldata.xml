@@ -50,9 +50,15 @@
         android:layout_height="@dimen/y1"
         android:background="@color/linegray" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_marginLeft="@dimen/x30"
+        android:background="#e6e6e6" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -145,7 +151,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="android"
+                    android:text=""
                     android:textColor="#aaaaaa"
                     android:textSize="@dimen/y28" />
 
@@ -196,7 +202,7 @@
                     android:id="@+id/tv_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="男"
+                    android:text=""
                     android:textColor="@color/linegray1"
                     android:textSize="@dimen/y28" />
 
@@ -254,10 +260,4 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y1"
-        android:layout_marginLeft="@dimen/x30"
-        android:background="#e6e6e6" />
 </LinearLayout>

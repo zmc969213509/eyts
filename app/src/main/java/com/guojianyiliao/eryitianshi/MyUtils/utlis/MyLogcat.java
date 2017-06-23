@@ -21,7 +21,7 @@ public class MyLogcat
     private static MyLogcat                     jlog;
     private static MyLogcat                     klog;
 
-    private static final String                 JAMES           = "@jnluo@ ";
+    private static final String                 JAMES           = "@zmc@ ";
     private static final String                 KESEN           = "@kesen@ ";
 
     private MyLogcat(String name)

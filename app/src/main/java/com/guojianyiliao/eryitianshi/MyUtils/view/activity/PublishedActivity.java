@@ -16,11 +16,14 @@ import com.guojianyiliao.eryitianshi.MyUtils.bean.Moment;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.HttpStaticApi;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.RetrofitCallBack;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.RetrofitHttpUpLoad;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.AnimLoadingUtil;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.TimeUtil;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
 import com.guojianyiliao.eryitianshi.R;
 
 import java.io.File;
@@ -59,6 +62,9 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
     @BindView(R.id.tv_right)
     TextView tvRight;
 
+    View animView;
+    AnimLoadingUtil animLoadingUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,13 +78,25 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
         snplMomentAddPhotos.setMaxItemCount(9);
         snplMomentAddPhotos.setEditable(true);
         snplMomentAddPhotos.setPlusEnable(true);
+        //控件事件监听
         snplMomentAddPhotos.setDelegate(this);
+
+        animView = findViewById(R.id.anim_view_layout);
+        animLoadingUtil = new AnimLoadingUtil(animView);
 
     }
 
+    @OnClick(R.id.tv_back_left)
+    public void back(){
+        onBackPressed();
+    }
+
+    /**
+     * 保存说说
+     */
     @OnClick(R.id.tv_right)
     public void published() {
-
+            //TODO 添加动画  不可点击
         if (!ToolUtils.isFastDoubleClick()) {
             String content = etMomentAddContent.getText().toString();
             MyLogcat.jLog().e("content:" + StringUtils.isEmpty(content));
@@ -99,9 +117,10 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
     }
 
     private void publishEssay() {
+        animLoadingUtil.startAnim("上传中...");
         try {
             String epubtime = TimeUtil.currectTime();
-            String userid = SpUtils.getInstance(this).get("userid", null);
+            String userid = SharedPreferencesTools.GetUsearId(this,"userSave","userId");
             ArrayList<String> data = snplMomentAddPhotos.getData();
 
             RetrofitHttpUpLoad retrofitHttpUpLoad = RetrofitHttpUpLoad.getInstance();
@@ -113,13 +132,15 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
 
             Map<String, RequestBody> params = retrofitHttpUpLoad
                     .addParameter("userid", userid)
-                    .addParameter("econtent", "android")
+                    .addParameter("econtent", etMomentAddContent.getText().toString())
                     //.addParameter("epubtime", "")//2017-04-17 16:45
                     .bulider();
 
             retrofitHttpUpLoad.addToEnqueue(retrofitHttpUpLoad.mHttpService.publishEssay(params), this, HttpStaticApi.HTTP_UPLOADIMAGE_UP);
+
             MyLogcat.jLog().e("上传到服务器 qqq epubtime：" + epubtime);
         } catch (Exception e) {
+            animLoadingUtil.finishAnim();
             MyLogcat.jLog().e("onRespo上传到服务器 Exception:" + e.getMessage());
         }
     }
@@ -132,16 +153,19 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
 
     private static final String EXTRA_MOMENT = "EXTRA_MOMENT";
 
+    //添加图片
     @Override
     public void onClickAddNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, ArrayList<String> models) {
         choicePhotoWrapper();
     }
 
+    //移除图片
     @Override
     public void onClickDeleteNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
         snplMomentAddPhotos.removeItem(position);
     }
 
+    //图片预览
     @Override
     public void onClickNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
         startActivityForResult(BGAPhotoPickerPreviewActivity.newIntent(this, snplMomentAddPhotos.getMaxItemCount(), models, models, position, false), REQUEST_CODE_PHOTO_PREVIEW);
@@ -150,6 +174,7 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 将权限处理转交给EasyPermissions
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
@@ -165,8 +190,12 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
         }
     }
 
+    /**
+     * 权限配置 具体的涉及敏感权限的法.REQUEST_CODE_PERMISSION_PHOTO_PICKER用来*标识此权限是否被用户准许,回调至Granted or Denied方法内.
+     */
     @AfterPermissionGranted(REQUEST_CODE_PERMISSION_PHOTO_PICKER)
     private void choicePhotoWrapper() {
+        //需要获取权限数组
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
         if (EasyPermissions.hasPermissions(this, perms)) {
             // 拍照后照片的存放目录，改成你自己拍照后要存放照片的目录。如果不传递该参数的话就没有拍照功能
@@ -194,6 +223,7 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
             case HttpStaticApi.HTTP_UPLOADIMAGE_UP:
                 MyLogcat.jLog().e("发布说说 onResponse:" + response.body().toString());
                 ToolUtils.showToast(PublishedActivity.this, "发布成功！", Toast.LENGTH_SHORT);
+                animLoadingUtil.finishAnim();
                 finish();
                 break;
             default:
@@ -205,5 +235,6 @@ public class PublishedActivity extends BaseActivity implements EasyPermissions.P
     public void onFailure(Response response, int method) {
         MyLogcat.jLog().e("发布说说 onFailure ");
         ToolUtils.showToast(PublishedActivity.this, "发布失败！请检查网络！", Toast.LENGTH_SHORT);
+        animLoadingUtil.finishAnim();
     }
 }

@@ -32,38 +32,56 @@ import java.util.Date;
 
 public class ReFlashListView extends ListView implements OnScrollListener {
     private static final String TAG = "ReFlashListView";
-    View header;// 顶部布局文件；
-    int headerHeight;// 顶部布局文件的高度；
-    int firstVisibleItem;// 当前第一个可见的item的位置；
-    int scrollState;// listview 当前滚动状态；
-    boolean isRemark;// 标记，当前是在listview最顶端摁下的；
-    int startY;// 摁下时的Y值；
+    /**顶部布局文件**/
+    View header;//
+    /**顶部布局文件的高度**/
+    int headerHeight;// ；
+    /**当前第一个可见的item的位置**/
+    int firstVisibleItem;// ；
+    /**listview 当前滚动状态；**/
+    int scrollState;//
+    /**标记，当前是在listview最顶端摁下的；**/
+    boolean isRemark;//
+    /**摁下时的Y值；**/
+    int startY;//
 
-    int state;// 当前的状态；
-    final int NONE = 0;// 正常状态；
-    final int PULL = 1;// 提示下拉状态；
-    final int RELESE = 2;// 提示释放状态；
-    final int REFLASHING = 3;// 刷新状态；
-    IReflashListener iReflashListener;//刷新数据的接口
+    /**当前的状态**/
+    int state;// ；
+    /**正常状态；**/
+    final int NONE = 0;//
+    /**提示下拉状态；**/
+    final int PULL = 1;//
+    /**提示释放状态；**/
+    final int RELESE = 2;//
+    /**刷新状态；**/
+    final int REFLASHING = 3;//
+    /**刷新数据的接口**/
+    IReflashListener iReflashListener;//
 
+    /**下拉刷新状态**/
+    private final int DOWN_PULL_REFRESH = 0; //
+    /**松开刷新**/
+    private final int RELEASE_REFRESH = 1; //
+    /**正在刷新中**/
+    private final int REFRESHING = 2; //
+    /**头布局的状态: 默认为下拉刷新状态**/
+    private int currentState = DOWN_PULL_REFRESH; //
 
-    private final int DOWN_PULL_REFRESH = 0; // 下拉刷新状态
-    private final int RELEASE_REFRESH = 1; // 松开刷新
-    private final int REFRESHING = 2; // 正在刷新中
-    private int currentState = DOWN_PULL_REFRESH; // 头布局的状态: 默认为下拉刷新状态
-
-
-    private boolean isScrollToBottom; // 是否滑动到底部
-    private View footerView; // 脚布局的对象
-    private int footerViewHeight; // 脚布局的高度
-    private boolean isLoadingMore = false; // 是否正在加载更多中
-
-    private boolean isLoadMore = true;    //是否可以加载更多，有时候，数据已经加载完，就不可加载更多了
-
-    // 实际的padding的距离与界面上偏移距离的比例，越大，拉的越费劲(阻尼系数，damping ratio)
+    /** 脚布局的对象**/
+    private View footerView; //
+    /**脚布局的高度**/
+    private int footerViewHeight; //
+    /**是否滑动到底部**/
+    private boolean isScrollToBottom; //
+    /**是否正在加载更多中**/
+    private boolean isLoadingMore = false; //
+    /**是否可以加载更多，有时候，数据已经加载完，就不可加载更多了**/
+    private boolean isLoadMore = true;    //
+    /**实际的padding的距离与界面上偏移距离的比例，越大，拉的越费劲(阻尼系数，damping ratio)**/
     private final static float RATIO = 3.5f;
-    //回弹效果
+    /**回弹效果**/
     private static final int MAX_Y_OVERSCROLL_DISTANCE = 100;
+    /****/
     private int mMaxYOverscrollDistance;
 
     public ReFlashListView(Context context) {
@@ -84,17 +102,17 @@ public class ReFlashListView extends ListView implements OnScrollListener {
         initView(context);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
-        /**
-         * 解决ScrollView与ListView的嵌套问题
-         */
-        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
-                MeasureSpec.AT_MOST);
-
-        super.onMeasure(widthMeasureSpec, expandSpec);
-    }
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//
+//        /**
+//         * 解决ScrollView与ListView的嵌套问题
+//         */
+//        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
+//                MeasureSpec.AT_MOST);
+//
+//        super.onMeasure(widthMeasureSpec, expandSpec);
+//    }
 
     /**
      * 初始化界面，添加顶部布局文件到 listview
@@ -154,6 +172,7 @@ public class ReFlashListView extends ListView implements OnScrollListener {
         } else {
             height = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         }
+        MyLogcat.jLog().e("measureView : width" + width + ",height " + height);
         view.measure(width, height);
     }
 
@@ -172,10 +191,13 @@ public class ReFlashListView extends ListView implements OnScrollListener {
     public void onScroll(AbsListView view, int firstVisibleItem,
                          int visibleItemCount, int totalItemCount) {
         // TODO Auto-generated method stub
+        MyLogcat.jLog().e("onScroll ：" + "当前第一个可见item下标："+ firstVisibleItem + "可见单元格的数量：" + visibleItemCount + "列表适配器中的项目数：" + totalItemCount);
         this.firstVisibleItem = firstVisibleItem;
         if (getLastVisiblePosition() == (totalItemCount - 1)) {    //滑到底部
+            MyLogcat.jLog().e("onScroll ：" + "滑到底部");
             isScrollToBottom = true;
         } else {
+            MyLogcat.jLog().e("onScroll ：" + "未滑到底部");
             isScrollToBottom = false;
         }
     }
@@ -416,44 +438,44 @@ public class ReFlashListView extends ListView implements OnScrollListener {
      */
     public void reflashComplete() {
         MyLogcat.jLog().e("获取完数据:");
-        if (isLoadingMore) {
+//        if (isLoadingMore) {
             hideFooterView();
-        }
-        state = NONE;
-        isRemark = false;
-        reflashViewByState();
-        TextView lastupdatetime = (TextView) header
-                .findViewById(R.id.lastupdate_time);
-        long lastUpdateTime = SpUtils.getInstance(getContext()).getlong("UPDATED_AT");
-        long currentTime = System.currentTimeMillis();
-        long timePassed = currentTime - lastUpdateTime;
-        long timeIntoFormat;
-        String updateAtValue;
-        if (lastUpdateTime == 0) {
-            updateAtValue = getResources().getString(R.string.not_updated_yet);
-        } else if (timePassed < 0) {
-            updateAtValue = getResources().getString(R.string.time_error);
-        } else if (timePassed < ONE_MINUTE) {
-            updateAtValue = getResources().getString(R.string.updated_just_now);
-        } else if (timePassed < ONE_HOUR) {
-            timeIntoFormat = timePassed / ONE_MINUTE;
-            String value = timeIntoFormat + "分钟";
-            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
-        } else if (timePassed < ONE_DAY) {
-            timeIntoFormat = timePassed / ONE_HOUR;
-            String value = timeIntoFormat + "小时";
-            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
-        } else if (timePassed < ONE_MONTH) {
-            timeIntoFormat = timePassed / ONE_DAY;
-            String value = timeIntoFormat + "天";
-            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
-        } else {
-//            timeIntoFormat = timePassed / ONE_MONTH;
-//            String value = timeIntoFormat + "月";
+//        }
+//        state = NONE;
+//        isRemark = false;
+//        reflashViewByState();
+//        TextView lastupdatetime = (TextView) header
+//                .findViewById(R.id.lastupdate_time);
+//        long lastUpdateTime = SpUtils.getInstance(getContext()).getlong("UPDATED_AT");
+//        long currentTime = System.currentTimeMillis();
+//        long timePassed = currentTime - lastUpdateTime;
+//        long timeIntoFormat;
+//        String updateAtValue;
+//        if (lastUpdateTime == 0) {
+//            updateAtValue = getResources().getString(R.string.not_updated_yet);
+//        } else if (timePassed < 0) {
+//            updateAtValue = getResources().getString(R.string.time_error);
+//        } else if (timePassed < ONE_MINUTE) {
+//            updateAtValue = getResources().getString(R.string.updated_just_now);
+//        } else if (timePassed < ONE_HOUR) {
+//            timeIntoFormat = timePassed / ONE_MINUTE;
+//            String value = timeIntoFormat + "分钟";
 //            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
-            updateAtValue = "暂未更新过";
-        }
-        lastupdatetime.setText(updateAtValue);
+//        } else if (timePassed < ONE_DAY) {
+//            timeIntoFormat = timePassed / ONE_HOUR;
+//            String value = timeIntoFormat + "小时";
+//            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
+//        } else if (timePassed < ONE_MONTH) {
+//            timeIntoFormat = timePassed / ONE_DAY;
+//            String value = timeIntoFormat + "天";
+//            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
+//        } else {
+////            timeIntoFormat = timePassed / ONE_MONTH;
+////            String value = timeIntoFormat + "月";
+////            updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
+//            updateAtValue = "暂未更新过";
+//        }
+//        lastupdatetime.setText(updateAtValue);
 
     }
 
@@ -463,8 +485,10 @@ public class ReFlashListView extends ListView implements OnScrollListener {
      * @author Administrator
      */
     public interface IReflashListener {
+        /**
+         * 下拉刷新
+         */
         void onReflash();
-
         /**
          * 上拉加载更多
          */

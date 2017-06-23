@@ -60,8 +60,6 @@ public class InquiryAdapter extends BaseAdapter {
     public InquiryAdapter(Context context, List<DoctorList> list) {
         this.context = context;
         this.list = list;
-
-
     }
 
     private int onclick;

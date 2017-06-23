@@ -2,8 +2,11 @@ package com.guojianyiliao.eryitianshi.View.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,200 +15,176 @@ import android.widget.Toast;
 
 import com.guojianyiliao.eryitianshi.Data.Http_data;
 import com.guojianyiliao.eryitianshi.Data.User_Http;
+import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
+import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.BindingPhoneActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.HomeAcitivtyMy;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.MyBaseActivity;
 import com.guojianyiliao.eryitianshi.Utils.SharedPsaveuser;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.jpush.im.android.api.JMessageClient;
 import okhttp3.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 
 /**
  *
  */
-public class PasswordSettingActivity extends MyBaseActivity implements View.OnClickListener {
-    private TextView tv_pas, tv_passet;
-    private EditText et_newpassword, et_forpassword;
-    private LinearLayout linearlayout;
-    String forpas;
-    String newpas;
-    SharedPsaveuser sp;
-    TextView tv_pass_page_top, tv_new_pass, tv_for_pass;
+public class PasswordSettingActivity extends MyBaseActivity  {
+
+    @BindView(R.id.phone_et)
+    EditText phone_et;
+    @BindView(R.id.phone_code_et)
+    EditText code_et;
+    @BindView(R.id.get_code)
+    TextView code_tv;
+    @BindView(R.id.first_pas_et)
+    EditText first_pas_et;
+    @BindView(R.id.again_pas_et)
+    EditText again_pas_et;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_setting);
-        try {
+        ButterKnife.bind(this);
 
-            sp = new SharedPsaveuser(this);
-            findView();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
-
-    private void findView() {
-        tv_pas = (TextView) findViewById(R.id.tv_pas);
-        et_newpassword = (EditText) findViewById(R.id.et_newpassword);
-        et_forpassword = (EditText) findViewById(R.id.et_forpassword);
-        linearlayout = (LinearLayout) findViewById(R.id.linearlayout);
-        tv_passet = (TextView) findViewById(R.id.tv_passet);
-        tv_pass_page_top = (TextView) findViewById(R.id.tv_pass_page_top);
-
-        tv_new_pass = (TextView) findViewById(R.id.tv_new_pass);
-
-        tv_for_pass = (TextView) findViewById(R.id.tv_for_pass);
-
-        forpas = et_forpassword.getText().toString();
-        newpas = et_newpassword.getText().toString();
-        linearlayout.setOnClickListener(this);
-        tv_passet.setOnClickListener(this);
-        et_newpassword.addTextChangedListener(textchangelisterer);
-        et_forpassword.addTextChangedListener(textchangelisterer);
-
-        if (sp.getTag().getPassword() != null) {
-            tv_pass_page_top.setText("密码修改");
-            tv_new_pass.setText("旧密码");
-            tv_for_pass.setText("新密码");
-
-            et_forpassword.setHint("请输入原密码");
-
-            et_newpassword.setHint("请输入新密码");
-
-
-        } else {
-            tv_pass_page_top.setText("密码设置");
-            tv_new_pass.setText("新密码");
-            tv_for_pass.setText("新密码");
-
-            et_forpassword.setHint("请输入密码");
-
-            et_newpassword.setHint("请再次输入密码");
-
-        }
-    }
-
-
-    private TextWatcher textchangelisterer = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (et_newpassword.getText().toString().length() != 0 && et_forpassword.getText().toString().length() != 0) {
-
-                tv_pas.setTextColor(android.graphics.Color.parseColor("#6fc9e6"));
-                if (sp.getTag().getPassword() != null) {
-                    tv_pas.setOnClickListener(changelistener);
-
-                } else {
-                    tv_pas.setOnClickListener(setlistener);
+    /**当前是否能获取验证码**/
+    private boolean canGetCode = true;
+    /**
+     * 获取验证码
+     */
+    @OnClick(R.id.get_code)
+    public void getCode() {
+        if (!ToolUtils.isFastDoubleClick()) {
+            if (canGetCode) {
+                String phone = phone_et.getText().toString();
+                MyLogcat.jLog().e("code:" + phone + "/" + StringUtils.isEmpty(phone) + "/" + StringUtils.isMobile(phone));
+                if (StringUtils.isEmpty(phone)) {
+                    ToolUtils.showToast(PasswordSettingActivity.this, "请填写手机号！", Toast.LENGTH_SHORT);
+                    return;
                 }
-
-            } else {
-                tv_pas.setTextColor(android.graphics.Color.parseColor("#e0e0e0"));
-
-                tv_pas.setOnClickListener(null);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
-
-
-    private View.OnClickListener setlistener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!et_newpassword.getText().toString().equals(et_forpassword.getText().toString())) {
-                Toast.makeText(PasswordSettingActivity.this, "2次输入的密码不一致", Toast.LENGTH_SHORT).show();
-            } else {
-                OkHttpUtils
-                        .post()
-                        .url(Http_data.http_data + "/ChangeP")
-                        .addParams("id", sp.getTag().getId() + "")
-                        .addParams("pass", et_forpassword.getText().toString())
-                        .build()
-                        .execute(new StringCallback() {
+                if (!StringUtils.isMobile(phone)) {
+                    ToolUtils.showToast(PasswordSettingActivity.this, "请正确填写手机号！", Toast.LENGTH_SHORT);
+                    return;
+                }
+                Retrofit rt = new Retrofit.Builder()
+                        .baseUrl(Http_data.http_data)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                GetService getService = rt.create(GetService.class);
+                getService.sendCode(phone)
+                        .enqueue(new Callback<String>() {
                             @Override
-                            public void onError(Call call, Exception e, int id) {
-                                Toast.makeText(PasswordSettingActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
+                            public void onResponse(retrofit2.Call<String> call, Response<String> response) {
+                                MyLogcat.jLog().e("SendCode: " + response.body().toString());
+                                timer.start();
+                                canGetCode = false;
+                                ToolUtils.showToast(PasswordSettingActivity.this, "验证码已发送", Toast.LENGTH_LONG);
                             }
 
                             @Override
-                            public void onResponse(String response, int id) {
-                                if (response.equals("0")) {
-                                    Toast.makeText(PasswordSettingActivity.this, "设置成功，以后你可以使用账号密码登陆", Toast.LENGTH_SHORT).show();
-                                    JMessageClient.logout();
-                                    sp.clearinit();
-                                    SpUtils.getInstance(PasswordSettingActivity.this).clear();
-                                    HomeActivity.text_homeactivity.finish();
-                                    Intent intent = new Intent(PasswordSettingActivity.this, LoginSelectActivity.class);
-                                    Toast.makeText(PasswordSettingActivity.this, "请重新登录", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(PasswordSettingActivity.this, "密码设置失败", Toast.LENGTH_SHORT).show();
-                                }
+                            public void onFailure(retrofit2.Call<String> call, Throwable t) {
+                                ToolUtils.showToast(PasswordSettingActivity.this, "网络连接失败！", Toast.LENGTH_SHORT);
                             }
                         });
             }
         }
-    };
 
 
-    private View.OnClickListener changelistener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            OkHttpUtils
-                    .post()
-                    .url(Http_data.http_data + "/ChangeP")
-                    .addParams("id", sp.getTag().getId() + "")
-                    .addParams("oldPassword", et_forpassword.getText().toString())
-                    .addParams("newPassword", et_newpassword.getText().toString())
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, Exception e, int id) {
-                            Toast.makeText(PasswordSettingActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onResponse(String response, int id) {
-                            if (response.equals("1")) {
-                                Toast.makeText(PasswordSettingActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
-                            } else {
-                                User_Http.user.setPhone(et_newpassword.getText().toString());
-
-                                sp.clearinit();
-                                Intent intent5 = new Intent(PasswordSettingActivity.this, LoginActivity.class);
-                                startActivity(intent5);
-                                Toast.makeText(PasswordSettingActivity.this, "密码修改成功,请重新登录", Toast.LENGTH_SHORT).show();
-                                HomeActivity.text_homeactivity.finish();
-                                finish();
-                            }
-                        }
-                    });
-        }
-    };
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_passet:
-                finish();
-                break;
-
-        }
     }
+
+    CountDownTimer timer = new CountDownTimer(45000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            code_tv.setText((millisUntilFinished / 1000) + "秒后可重发");
+        }
+
+        @Override
+        public void onFinish() {
+            code_tv.setEnabled(true);
+            code_tv.setText("获取验证码");
+            canGetCode = true;
+        }
+    };
+
+
+    /**
+     * 完成
+     */
+    @OnClick(R.id.pas_finish)
+    public void changPas(){
+        Log.e("PasswordSettingActivity","finish");
+        final String phone = phone_et.getText().toString();
+        String code = code_et.getText().toString();
+        final String fisPsw = first_pas_et.getText().toString();
+        String againPsw = again_pas_et.getText().toString();
+
+        if(TextUtils.isEmpty(phone.trim())){
+            ToolUtils.showToast(PasswordSettingActivity.this, "手机号不能为空", Toast.LENGTH_LONG);
+        }else if(!StringUtils.isMobile(phone.trim())){
+            ToolUtils.showToast(PasswordSettingActivity.this, "请正确填写手机号！", Toast.LENGTH_SHORT);
+        }else if(TextUtils.isEmpty(code)){
+            ToolUtils.showToast(PasswordSettingActivity.this, "请输入验证码！", Toast.LENGTH_SHORT);
+        }else if(TextUtils.isEmpty(fisPsw) || TextUtils.isEmpty(againPsw)){
+            ToolUtils.showToast(PasswordSettingActivity.this, "密码不能为空！", Toast.LENGTH_SHORT);
+        }else if(!fisPsw.equals(againPsw)){
+            ToolUtils.showToast(PasswordSettingActivity.this, "两次密码不一致", Toast.LENGTH_SHORT);
+        }else{
+            Log.e("PasswordSettingActivity","参数正常");
+            String pasMD5 = StringUtils.MD5encrypt(fisPsw).toUpperCase();
+            RetrofitClient.getinstance(this).create(GetService.class).resetPsw(phone,code,pasMD5).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(retrofit2.Call<String> call, Response<String> response) {
+                    if(response.isSuccessful()){
+                        String body = response.body();
+                        Log.e("PasswordSettingActivity","response = "+ body);
+                        if(body.contains("codeError")){
+                            ToolUtils.showToast(PasswordSettingActivity.this, "验证码错误！", Toast.LENGTH_SHORT);
+                        }else if (body.equals("true")) {
+                            String type = SharedPreferencesTools.GetLoginType(PasswordSettingActivity.this, "userSave", "userType");
+                            if (type.equals("phone")) {
+                                SharedPreferencesTools.SaveLoginData(PasswordSettingActivity.this, "userSave", "userLoginData", phone + "," + fisPsw);
+                            }
+                            // 密码修改成功
+                            ToolUtils.showToast(getApplicationContext(), "密码修改成功！", Toast.LENGTH_SHORT);
+                            onBackPressed();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(retrofit2.Call<String> call, Throwable t) {
+                    ToolUtils.showToast(PasswordSettingActivity.this, "网络连接错误，请重试！", Toast.LENGTH_SHORT);
+                }
+            });
+        }
+
+    }
+
+    /**
+     * 返回按键
+     */
+    @OnClick(R.id.psa_back)
+    public void back(){
+        onBackPressed();
+    }
+
 }

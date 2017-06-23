@@ -7,12 +7,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Jaeger on 16/2/24.
- *
+ * <p>
  * Email: chjie.jaeger@gamil.com
  * GitHub: https://github.com/laobie
  */
@@ -26,7 +27,7 @@ public class NineGridImageView<T> extends ViewGroup {
 
     private int mMaxSize;        // 最大图片数
     private int mShowStyle;     // 显示风格
-    private int mGap;           // 宫格间距
+    public int mGap = 5;           // 宫格间距
     private int mSingleImgSize; // 单张图片时的尺寸
     private int mGridSize;   // 宫格大小,即图片大小
 
@@ -36,6 +37,8 @@ public class NineGridImageView<T> extends ViewGroup {
     private NineGridImageViewAdapter<T> mAdapter;
     private ItemImageClickListener<T> mItemImageClickListener;
 
+    private String tag;//当前nineGridView的tag标记
+
     public NineGridImageView(Context context) {
         this(context, null);
     }
@@ -43,11 +46,12 @@ public class NineGridImageView<T> extends ViewGroup {
     public NineGridImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NineGridImageView);
-        this.mGap = (int) typedArray.getDimension(R.styleable.NineGridImageView_imgGap, 0);
+        this.mGap = (int) typedArray.getDimension(R.styleable.NineGridImageView_imgGap, 5);
         this.mSingleImgSize = typedArray.getDimensionPixelSize(R.styleable.NineGridImageView_singleImgSize, -1);
         this.mShowStyle = typedArray.getInt(R.styleable.NineGridImageView_showStyle, STYLE_GRID);
         this.mMaxSize = typedArray.getInt(R.styleable.NineGridImageView_maxSize, 9);
         typedArray.recycle();
+        Log.e("NineGridImageView","");
     }
 
     @Override
@@ -58,7 +62,7 @@ public class NineGridImageView<T> extends ViewGroup {
         int totalWidth = width - getPaddingLeft() - getPaddingRight();
         if (mImgDataList != null && mImgDataList.size() > 0) {
             if (mImgDataList.size() == 1 && mSingleImgSize != -1) {
-                mGridSize = mSingleImgSize > totalWidth ? totalWidth : mSingleImgSize;
+                mGridSize = mSingleImgSize > (totalWidth * 3 / 4 ) ? (totalWidth * 3 / 4 ) : mSingleImgSize;
             } else {
                 mImageViewList.get(0).setScaleType(ImageView.ScaleType.CENTER_CROP);
                 mGridSize = (totalWidth - mGap * (mColumnCount - 1)) / mColumnCount;
@@ -69,6 +73,10 @@ public class NineGridImageView<T> extends ViewGroup {
             height = width;
             setMeasuredDimension(width, height);
         }
+
+        Log.e("NineGridImageView","onMeasure");
+        Log.e("NineGridImageView","width = "+width);
+        Log.e("NineGridImageView","height = "+height);
     }
 
     @Override
@@ -81,13 +89,21 @@ public class NineGridImageView<T> extends ViewGroup {
      */
     private void layoutChildrenView() {
         if (mImgDataList == null) {
+            if (mAdapter != null) {
+                mAdapter.onHideView(this);
+            }
             return;
+        }
+        if(mImgDataList.size() == 0){
+            if (mAdapter != null) {
+                mAdapter.onHideView(this);
+            }
         }
         int showCount = getNeedShowCount(mImgDataList.size());
         for (int i = 0; i < showCount; i++) {
             ImageView childrenView = (ImageView) getChildAt(i);
             if (mAdapter != null) {
-                mAdapter.onDisplayImage(getContext(), childrenView, mImgDataList.get(i));
+                mAdapter.onDisplayImage(getContext(), childrenView, mImgDataList.get(i),tag,this);
             }
             int rowNum = i / mColumnCount;
             int columnNum = i % mColumnCount;
@@ -105,13 +121,14 @@ public class NineGridImageView<T> extends ViewGroup {
      *
      * @param lists 图片数据集合
      */
-    public void setImagesData(List lists) {
+    public void setImagesData(List lists,String tag) {
         if (lists == null || lists.isEmpty()) {
             this.setVisibility(GONE);
             return;
         } else {
             this.setVisibility(VISIBLE);
         }
+        this.tag = tag;
 
         int newShowCount = getNeedShowCount(lists.size());
 

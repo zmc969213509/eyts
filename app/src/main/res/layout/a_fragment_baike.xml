@@ -8,7 +8,7 @@
     <include layout="@layout/a_foot_head" />
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tab_set"
+        android:id="@+id/bk_tab_set"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y80"
         android:background="@color/white"
@@ -16,13 +16,8 @@
         app:tabSelectedTextColor="#17c2ed"
         app:tabTextColor="#777777" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y20"
-        android:background="#e6e6e6" />
-
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_set"
+        android:id="@+id/bk_vp_set"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

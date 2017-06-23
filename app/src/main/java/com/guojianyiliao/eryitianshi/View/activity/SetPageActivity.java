@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
+import com.guojianyiliao.eryitianshi.MyUtils.view.activity.HomeAcitivtyMy;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.MyBaseActivity;
-import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 
 import cn.jpush.im.android.api.JMessageClient;
 
@@ -23,13 +25,19 @@ public class SetPageActivity extends MyBaseActivity implements View.OnClickListe
     private ImageView ll_return;
     TextView tv_pass_set;
 
+    Gson gson;
+    UserInfoLogin user ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_page);
 
-        pas = SpUtils.getInstance(this).get("password", null);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
+
+        pas = user.getPassword();
 
         try {
             findView();
@@ -67,22 +75,18 @@ public class SetPageActivity extends MyBaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_feedback:
-
                 Intent intent1 = new Intent(SetPageActivity.this, FeedbackActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.rl_aboutus:
-
                 Intent intent2 = new Intent(SetPageActivity.this, AboutusActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.rl_remidset:
-
                 Intent intent3 = new Intent(SetPageActivity.this, RemindsetActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.rl_setpass:
-
                 Intent intent4 = new Intent(SetPageActivity.this, PasswordSettingActivity.class);
                 startActivity(intent4);
                 break;
@@ -91,10 +95,10 @@ public class SetPageActivity extends MyBaseActivity implements View.OnClickListe
                 Intent intent5 = new Intent(SetPageActivity.this, LoginSelectActivity.class);
                 startActivity(intent5);
                 Toast.makeText(SetPageActivity.this, "请重新登录", Toast.LENGTH_SHORT).show();
-                SpUtils.getInstance(SetPageActivity.this).clear();
-                HomeActivity.text_homeactivity.finish();
+                SharedPreferencesTools.SaveUserInfo(this, "userSave", "userInfo","");
+                SharedPreferencesTools.SaveLoginStatus(this,"userSave","userLoginStatus",false);
+                HomeAcitivtyMy.homeAcitivtyMy.finish();
                 finish();
-
                 break;
             case R.id.ll_return:
                 finish();

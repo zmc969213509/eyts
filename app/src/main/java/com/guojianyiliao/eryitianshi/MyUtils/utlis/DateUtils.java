@@ -140,6 +140,31 @@ public class DateUtils {
         return week;
     }
 
+    public static int getWeeks(long timeStamp) {
+        int day = -1;
+        int mydate = 0;
+        Calendar cd = Calendar.getInstance();
+        cd.setTime(new Date(timeStamp));
+        mydate = cd.get(Calendar.DAY_OF_WEEK);
+        // 获取指定日期转换成星期几
+        if (mydate == 1) {
+            day = 7;
+        } else if (mydate == 2) {
+            day = 1;
+        } else if (mydate == 3) {
+            day = 2;
+        } else if (mydate == 4) {
+            day = 3;
+        } else if (mydate == 5) {
+            day = 4;
+        } else if (mydate == 6) {
+            day = 5;
+        } else if (mydate == 7) {
+            day = 6;
+        }
+        return day;
+    }
+
     // 并用分割符把时间分成时间数组
 
     /**

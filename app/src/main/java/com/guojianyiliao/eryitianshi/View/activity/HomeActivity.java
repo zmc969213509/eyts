@@ -103,7 +103,6 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
     Context context;
     private Dialog setHeadDialog;
     private View dialogView;
-    public static HomeActivity text_homeactivity;
 
     Animation translateAnimation;
 
@@ -136,7 +135,6 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //GuideDailog();//测试
         try {
             Intent serviceOne = new Intent();
             serviceOne.setClass(HomeActivity.this, ServiceOne.class);
@@ -157,11 +155,6 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
                 version_numberSp.setspversionNumber(Http_data.version_number);
             }
 
-            text_homeactivity = this;
-
-
-            JMessageClient.registerEventReceiver(this);
-            JMessageClient.setNotificationMode(JMessageClient.NOTI_MODE_DEFAULT);
             db = new ChatpageDao(this);
             findView();
             init();
@@ -199,17 +192,11 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
     }
 
     private void spStorage() {
-        /*if (User_Http.user.getId() != null) {
-            id = User_Http.user.getId();
-            name = User_Http.user.getName();
-            phone = User_Http.user.getPhone();
-            gender = User_Http.user.getGender();
-            sp.setspUser(id, phone, name, gender);
-        }*/
-        String userid = SpUtils.getInstance(this).get("Userid", null);
-        String phone = SpUtils.getInstance(this).get("phone", null);
-        CrashReport.putUserData(UIUtils.getContext(), "userkey", userid + "phone:" + phone);/**carsh 上报 ID*/
-        MyLogcat.jLog().e("user info id:" + userid + "/" + "phone:" + phone);
+
+//        String userid = SpUtils.getInstance(this).get("Userid", null);
+//        String phone = SpUtils.getInstance(this).get("phone", null);
+//        CrashReport.putUserData(UIUtils.getContext(), "userkey", userid + "phone:" + phone);/**carsh 上报 ID*/
+//        MyLogcat.jLog().e("user info id:" + userid + "/" + "phone:" + phone);
     }
 
     private Dialog dialog;
@@ -418,7 +405,6 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
 
     }
 
-    //？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
     public void down_file(String url) throws IOException {
         updatesdcardTempFile = new File(updateaudioFile, "textupdate.apk");
 
@@ -599,7 +585,7 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
 
     private void jmessage() {
         //sp.getTag().getId();
-        phone = SpUtils.getInstance(this).get("phone", null);
+//        phone = SpUtils.getInstance(this).get("phone", null);
 
       /*  if (User_Http.user.getPhone() == null) {
             username = sp.getTag().getPhone();
@@ -646,48 +632,48 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
      */
 
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void onEventMainThread(MessageEvent event) {
-        Message msg = event.getMessage();
-        switch (msg.getContentType()) {
-            case text:
-                TextContent textContent = (TextContent) msg.getContent();
-                String content = textContent.getText();
-                String username = msg.getFromID();
-
-                Date dt = new Date();
-                Long time = dt.getTime();
-                Chatcontent chatcontent = new Chatcontent("2" + content, time, null, null, username, sp.getTag().getPhone());
-                db.addchatcont(chatcontent);
-                break;
-            case image:
-
-                ImageContent imageContent = (ImageContent) msg.getContent();
-                String mfile = imageContent.getLocalPath();
-
-                String file = imageContent.getLocalThumbnailPath();
-
-                Date dt1 = new Date();
-                Long time1 = dt1.getTime();
-
-                chatcontent = new Chatcontent("2*2", time1, file, file, msg.getTargetID(), sp.getTag().getPhone());
-                db.addchatcont(chatcontent);
-        }
-    }
-
-
-    public void onEvent(NotificationClickEvent event) {
-        InquiryrecordDao db = new InquiryrecordDao(this);
-        Message msg = event.getMessage();
-        Inquiryrecord inquiryrecord = db.chatfinddoctor(msg.getTargetID());
-
-        Intent intent = new Intent(HomeActivity.this, ChatpageActivity.class);
-        intent.putExtra("doctorID", inquiryrecord.getId());
-        intent.putExtra("name", inquiryrecord.getDoctorname());
-        intent.putExtra("icon", inquiryrecord.getDoctoricon());
-        intent.putExtra("username", inquiryrecord.getDoctorid());
-        startActivity(intent);
-    }
+//    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+//    public void onEventMainThread(MessageEvent event) {
+//        Message msg = event.getMessage();
+//        switch (msg.getContentType()) {
+//            case text:
+//                TextContent textContent = (TextContent) msg.getContent();
+//                String content = textContent.getText();
+//                String username = msg.getFromID();
+//
+//                Date dt = new Date();
+//                Long time = dt.getTime();
+//                Chatcontent chatcontent = new Chatcontent("2" + content, time, null, null, username, sp.getTag().getPhone());
+//                db.addchatcont(chatcontent);
+//                break;
+//            case image:
+//
+//                ImageContent imageContent = (ImageContent) msg.getContent();
+//                String mfile = imageContent.getLocalPath();
+//
+//                String file = imageContent.getLocalThumbnailPath();
+//
+//                Date dt1 = new Date();
+//                Long time1 = dt1.getTime();
+//
+//                chatcontent = new Chatcontent("2*2", time1, file, file, msg.getTargetID(), sp.getTag().getPhone());
+//                db.addchatcont(chatcontent);
+//        }
+//    }
+//
+//
+//    public void onEvent(NotificationClickEvent event) {
+//        InquiryrecordDao db = new InquiryrecordDao(this);
+//        Message msg = event.getMessage();
+//        Inquiryrecord inquiryrecord = db.chatfinddoctor(msg.getTargetID());
+//
+//        Intent intent = new Intent(HomeActivity.this, ChatpageActivity.class);
+//        intent.putExtra("doctorID", inquiryrecord.getId());
+//        intent.putExtra("name", inquiryrecord.getDoctorname());
+//        intent.putExtra("icon", inquiryrecord.getDoctoricon());
+//        intent.putExtra("username", inquiryrecord.getDoctorid());
+//        startActivity(intent);
+//    }
 
 
     private void findView() {
@@ -891,9 +877,9 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(HomeActivity.this, InquiryActivity.class);
-                startActivity(intent);
-                setHeadDialog.dismiss();
+//                Intent intent = new Intent(HomeActivity.this, InquiryActivity.class);
+//                startActivity(intent);
+//                setHeadDialog.dismiss();
             }
         });
 
@@ -1008,8 +994,8 @@ public class HomeActivity extends MyBaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 setHeadDialog.dismiss();
-                Intent intent = new Intent(HomeActivity.this, InquiryActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(HomeActivity.this, InquiryActivity.class);
+//                startActivity(intent);
             }
         });
     }

@@ -45,13 +45,11 @@ import com.guojianyiliao.eryitianshi.Utils.Lauar;
 import com.guojianyiliao.eryitianshi.Utils.ListenerManager;
 import com.guojianyiliao.eryitianshi.Utils.SharedPsaveuser;
 import com.guojianyiliao.eryitianshi.Utils.db.PharmacyDao;
-import com.guojianyiliao.eryitianshi.Utils.db.RxBusBean;
 import com.guojianyiliao.eryitianshi.View.activity.CompileConsultingActivity;
 import com.guojianyiliao.eryitianshi.View.activity.CompilePharmacyRemindActivity;
 import com.guojianyiliao.eryitianshi.View.activity.CompileremindActivity;
 import com.guojianyiliao.eryitianshi.View.activity.HealthconditionActivity;
 import com.guojianyiliao.eryitianshi.View.activity.HealthparticularsActivity;
-import com.guojianyiliao.eryitianshi.View.activity.InquiryActivity;
 import com.guojianyiliao.eryitianshi.View.activity.PharmacyremindActivity;
 import com.guojianyiliao.eryitianshi.View.activity.ReservationlistActivity;
 import com.guojianyiliao.eryitianshi.page.adapter.CalendarAdapter;
@@ -908,8 +906,8 @@ public class ConsultingFragment extends Fragment implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 setHeadDialog.dismiss();
-                Intent intent = new Intent(getActivity(), InquiryActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), InquiryActivity.class);
+//                startActivity(intent);
             }
         });
     }

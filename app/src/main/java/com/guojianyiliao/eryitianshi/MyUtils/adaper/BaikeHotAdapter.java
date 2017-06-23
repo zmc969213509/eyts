@@ -10,6 +10,7 @@ import com.guojianyiliao.eryitianshi.MyUtils.bean.BaikeHotTalkBean;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.GetService;
 import com.guojianyiliao.eryitianshi.MyUtils.manager.RetrofitClient;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.TimeUtil;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.UIUtils;
@@ -77,7 +78,7 @@ public class BaikeHotAdapter extends RecyclerView.Adapter {
     private void httpCollect() {
         String time = TimeUtil.currectTime();
         MyLogcat.jLog().e("收藏文章 Time:" + time);
-        String userid = SpUtils.getInstance(UIUtils.getContext()).get("userid", null);
+        String userid = SharedPreferencesTools.GetUsearId(UIUtils.getContext(),"userSave","userId");
         RetrofitClient.getinstance(UIUtils.getContext()).create(GetService.class).collectCycl(userid, cyclopediaid, time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

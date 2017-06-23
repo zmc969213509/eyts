@@ -10,7 +10,6 @@ package com.guojianyiliao.eryitianshi.MyUtils.bean;
 
 public class MyFocus {
 
-
     /**
      * gender : 男
      * icon : http://192.168.1.11:10010/AppServer/images/13/8/44f45c1707da4c878f6b5d6f5bee3954.png
@@ -22,13 +21,52 @@ public class MyFocus {
      * userid : 9ce44d6a677641ad86b1f3ac05c2209e
      */
 
-    public String gender;
-    public String icon;
-    public String name;
-    public String password;
-    public String phone;
-    public String qq;
-    public String role;
+    /**用户id**/
     public String userid;
+    /**用户级别**/
+    public String role;
+    /**用户密码**/
+    public String password;
+    /**用户qq**/
+    public String qq;
+    /**用户电话**/
+    public String phone;
+    /**用户姓名**/
+    public String name;
+    /**用户头像**/
+    public String icon;
+    /**用户性别**/
+    public String gender;
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 }

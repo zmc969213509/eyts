@@ -19,7 +19,6 @@
             android:layout_height="@dimen/y100"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x30"
-            android:src="@drawable/doctor_head"
             app:civ_border_color="@color/white" />
 
         <LinearLayout
@@ -39,7 +38,6 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="安卓"
                     android:textColor="#323232"
                     android:textSize="@dimen/x32" />
 
@@ -60,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_marginTop="@dimen/y10"
-                android:text="18388888888"
                 android:textColor="#aaaaaa"
                 android:textSize="@dimen/x24" />
         </LinearLayout>

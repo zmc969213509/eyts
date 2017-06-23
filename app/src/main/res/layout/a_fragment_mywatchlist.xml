@@ -4,25 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- <com.andview.refreshview.XRefreshView
-         android:id="@+id/xr_watch"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:background="#e6e6e6"
-         android:backgroundTint="#e6e6e6"
-         android:backgroundTintMode="screen">-->
-
-    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.OnReFlashRecyclerView.LoadRefreshRecyclerView
-        android:id="@+id/recycler"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-<!--
-    <com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.recyclerview.LoadRefreshRecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
--->
+        android:layout_height="@dimen/y15"
+        android:background="#45cccccc"/>
 
-    <!-- </com.andview.refreshview.XRefreshView>-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e4e4e4"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

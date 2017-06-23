@@ -26,7 +26,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/x30"
                     android:layout_marginTop="@dimen/y30"
-                    android:background="@drawable/new_icon" />
+                    android:background="@drawable/new_icon"
+                    android:visibility="invisible"/>
 
                 <FrameLayout
                     android:id="@+id/fl_foot"
@@ -37,11 +38,11 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_icon"
                         android:layout_width="@dimen/x140"
-                        android:layout_height="@dimen/y140"
+                        android:layout_height="@dimen/x140"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/default_icon"
                         app:civ_border_color="@color/white"
-                        app:civ_border_width="@dimen/x4" />
+                        app:civ_border_width="@dimen/x1" />
 
                     <ImageView
                         android:id="@+id/iv_gender"
@@ -162,12 +163,14 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
+--------------------------代金券------------------------------
                 <RelativeLayout
                     android:id="@+id/rl_my_cashcoupons"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y100"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/iv_1"
@@ -196,13 +199,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y1"
-                    android:background="#e6e6e6" />
+                    android:background="#e6e6e6"
+                    android:visibility="gone"/>
 
+------------------------------------我的支付------------------------------
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y100"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/iv_2"
@@ -231,7 +237,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y1"
-                    android:background="#e6e6e6" />
+                    android:background="#e6e6e6"
+                    android:visibility="gone"/>
 
                 <RelativeLayout
                     android:id="@+id/rl_mycollect"
@@ -317,7 +324,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x30"
-                        android:background="@drawable/share_icon" />
+                        android:background="@drawable/share_icon_gray" />
 
                     <TextView
                         android:layout_width="wrap_content"

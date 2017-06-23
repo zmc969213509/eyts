@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guojianyiliao.eryitianshi.Data.Http_data;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.AnimLoadingUtil;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
 import com.guojianyiliao.eryitianshi.R;
 import com.guojianyiliao.eryitianshi.Utils.MyBaseActivity;
 import com.guojianyiliao.eryitianshi.Utils.SharedPsaveuser;
@@ -21,28 +24,28 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import okhttp3.Call;
 
 /**
- *
+ *  意见反馈
  */
 public class FeedbackActivity extends MyBaseActivity implements View.OnClickListener {
     private TextView tv_feedback, tv_cancel;
     private EditText et_feedback;
     private LinearLayout ll_et_feedback;
 
-    SharedPsaveuser sp;
+    String uid;
+    View animView;
+
+    AnimLoadingUtil animLoadingUtil;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        try {
+        animView = findViewById(R.id.anim_view_layout);
+        animLoadingUtil = new AnimLoadingUtil(animView);
+        uid = SharedPreferencesTools.GetUsearId(this, "userSave", "userId");
+        findView();
 
-            sp = new SharedPsaveuser(this);
-            findView();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void findView() {
@@ -93,26 +96,28 @@ public class FeedbackActivity extends MyBaseActivity implements View.OnClickList
             if (et_feedback.getText().toString().length() < 2) {
                 Toast.makeText(FeedbackActivity.this, "必须大于2个字", Toast.LENGTH_SHORT).show();
             } else {
+                animLoadingUtil.startAnim("意见上传中...");
                 OkHttpUtils
                         .post()
-                        .url(Http_data.http_data + "/AddFeedback")
-                        .addParams("userId", sp.getTag().getId() + "")
+                        .url(Http_data.http_data + "feedback/addFeedback")
                         .addParams("content", et_feedback.getText().toString())
+                        .addParams("ftime", ToolUtils.CurrentTime())
+                        .addParams("userid", uid)
                         .build()
                         .execute(new StringCallback() {
                             @Override
                             public void onError(Call call, Exception e, int id) {
+                                animLoadingUtil.finishAnim();
                                 Toast.makeText(FeedbackActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onResponse(String response, int id) {
 
-                                if (response.equals("0")) {
+                                if (response.equals("true")) {
                                     Toast.makeText(FeedbackActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                                    animLoadingUtil.finishAnim();
                                     finish();
-                                } else {
-                                    Toast.makeText(FeedbackActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -126,8 +131,6 @@ public class FeedbackActivity extends MyBaseActivity implements View.OnClickList
             case R.id.tv_cancel:
                 finish();
                 break;
-
-
         }
     }
 }

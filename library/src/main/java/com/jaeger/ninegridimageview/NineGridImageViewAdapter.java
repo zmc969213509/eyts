@@ -11,7 +11,13 @@ import java.util.List;
  * GitHub: https://github.com/laobie
  */
 public abstract class NineGridImageViewAdapter<T> {
-    protected abstract void onDisplayImage(Context context, ImageView imageView, T t);
+
+
+    /**没有图片时 隐藏控件**/
+    protected abstract void onHideView(NineGridImageView<T> view);
+
+    /**加载图片**/
+    protected abstract void onDisplayImage(Context context, ImageView imageView, T t,String tag,NineGridImageView<T> view);
 
     protected void onItemImageClick(Context context, ImageView imageView, int index, List<T> list) {
     }

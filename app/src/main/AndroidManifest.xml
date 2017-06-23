@@ -7,7 +7,7 @@
         android:name="com.guojianyiliao.eryitianshi.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-sdk android:minSdkVersion="8"></uses-sdk>
+    <uses-sdk android:minSdkVersion="19"></uses-sdk>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -43,6 +43,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!--android:name=".View.activity.LeadActivity"-->
 
     <application
         android:name="com.guojianyiliao.eryitianshi.MyUtils.SampleApplication"
@@ -88,24 +90,66 @@
             android:name=".MyUtils.view.activity.DiseaseRecordDetail"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".MyUtils.view.activity.ImagePagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.TODOActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".MyUtils.view.activity.AddremindActivityDetail"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyUtils.view.activity.AddremindActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".MyUtils.view.activity.YYGHHisActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".MyUtils.view.activity.MyInquiryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MyUtils.view.activity.InquiryActivityNew"
+            android:name=".MyUtils.view.activity.SearActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.ArticleDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.YYGHInfoActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.DoctorDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.DiseasesDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.ForgerPswActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.YYGHSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.imChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.AddCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.imChatHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.AllDoctorActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyUtils.view.activity.SchoolActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MyUtils.view.activity.test.caidanshaixuan"
+            android:name=".MyUtils.view.activity.MycollectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyUtils.view.activity.MyDoctorActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyUtils.view.activity.test.LayoutTestAcitity"
@@ -145,9 +189,6 @@
             android:name="com.guojianyiliao.eryitianshi.View.activity.ReservationlistActivity"
             android:screenOrientation="portrait"
             android:theme="@style/lucency" />
-        <activity
-            android:name="com.guojianyiliao.eryitianshi.View.activity.MycollectActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name="com.guojianyiliao.eryitianshi.View.activity.ReservationActivity"
             android:screenOrientation="portrait" />
@@ -222,12 +263,13 @@
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait"
             android:theme="@style/lucency" />
-        <activity
-            android:name="com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name="com.guojianyiliao.eryitianshi.View.activity.MyDoctorActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name="com.guojianyiliao.eryitianshi.View.activity.InquiryrecordActivity"
             android:screenOrientation="portrait" />
+
         <activity android:name="com.guojianyiliao.eryitianshi.View.activity.HomeActivity" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
@@ -365,9 +407,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.activity.HealthparticularsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.activity.InquiryActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.activity.LectureoomActivity"

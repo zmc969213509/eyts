@@ -40,11 +40,10 @@
             android:id="@+id/tv_hot_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x20"
             android:layout_marginRight="@dimen/x30"
             android:layout_marginTop="@dimen/y20"
             android:ellipsize="end"
-            android:lineSpacingMultiplier="1"
+            android:lineSpacingMultiplier="1.2"
             android:lines="2"
             android:textColor="#bab9b9"
             android:textSize="@dimen/x26" />

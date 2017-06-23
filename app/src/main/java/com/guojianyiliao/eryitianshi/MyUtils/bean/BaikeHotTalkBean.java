@@ -50,4 +50,39 @@ public class BaikeHotTalkBean {
     public String title;
     public String typeid;
 
+    public int getCollectcount() {
+        return collectcount;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public String getCtime() {
+        return ctime;
+    }
+
+    public String getCyclopediaid() {
+        return cyclopediaid;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public int getReadtimes() {
+        return readtimes;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTypeid() {
+        return typeid;
+    }
 }

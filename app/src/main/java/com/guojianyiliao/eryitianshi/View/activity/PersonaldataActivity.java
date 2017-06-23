@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -19,17 +20,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.guojianyiliao.eryitianshi.MyUtils.base.BaseActivity;
+import com.guojianyiliao.eryitianshi.MyUtils.bean.UserInfoLogin;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.HttpStaticApi;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.RetrofitCallBack;
 import com.guojianyiliao.eryitianshi.MyUtils.interfaceservice.RetrofitHttpUpLoad;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.MyLogcat;
+import com.guojianyiliao.eryitianshi.MyUtils.utlis.SharedPreferencesTools;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.SpUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.StringUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.TimeUtil;
 import com.guojianyiliao.eryitianshi.MyUtils.utlis.ToolUtils;
 import com.guojianyiliao.eryitianshi.MyUtils.view.activity.view.xpdialog.XProgressDialog;
 import com.guojianyiliao.eryitianshi.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
@@ -47,6 +52,7 @@ import okhttp3.RequestBody;
 import retrofit2.Response;
 
 /**
+ * 个人资料
  */
 public class PersonaldataActivity extends BaseActivity implements RetrofitCallBack {
 
@@ -70,15 +76,23 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
     @BindView(R.id.ll_sex)
     LinearLayout llSex;
 
+    Gson gson;
+    UserInfoLogin user ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personaldata);
         ButterKnife.bind(this);
 
-        String gender = SpUtils.getInstance(this).get("gender", null);
-        String name = SpUtils.getInstance(this).get("name", null);
-        String phone = SpUtils.getInstance(this).get("phone", null);
+        gson = new Gson();
+        String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+        user = gson.fromJson(s, UserInfoLogin.class);
+
+        ImageLoader.getInstance().displayImage(user.getIcon(),ivIcon);
+        String gender = user.getGender();
+        String name = user.getName();
+        String phone = user.getPhone();
         tvName.setText(name);
         tvSex.setText(gender);
         tvPhone.setText(phone);
@@ -100,7 +114,7 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
 
     @OnClick(R.id.ll_name)
     public void setName() {
-        startActivity(new Intent(PersonaldataActivity.this, NamepageActivity.class));
+        startActivityForResult(new Intent(PersonaldataActivity.this, NamepageActivity.class),0);
     }
 
     @OnClick(R.id.ll_sex)
@@ -112,9 +126,9 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
     protected void onStart() {
         super.onStart();
 
-        String name = SpUtils.getInstance(this).get("name", null);
-        String gender = SpUtils.getInstance(this).get("gender", null);
-        String phone = SpUtils.getInstance(this).get("phone", null);
+        String name = user.getName();
+        String gender = user.getGender();
+        String phone = user.getPhone();
 
         tvName.setText(name);
         tvSex.setText(gender);
@@ -137,6 +151,12 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if(requestCode == 0 && resultCode == RESULT_OK){
+            String s = SharedPreferencesTools.GetUsearInfo(this, "userSave", "userInfo");
+            user = gson.fromJson(s, UserInfoLogin.class);
+            tvName.setText(user.getName());
+            setResult(RESULT_OK);
+        }
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             MyLogcat.jLog().e("beginCrop:" + result.getData());
             beginCrop(result.getData());
@@ -172,8 +192,8 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
             Bitmap bm = extras.getParcelable("data");
             ivIcon.setImageBitmap(bm);
             /** bm - uri*/
-            Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bm, null, null));
-            upLoadImage(uri);
+            icon = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bm, null, null));
+            upLoadImage(icon);
             // XProgressDialog xProgressDialog = new XProgressDialog(this, "头像上传中...", XProgressDialog.THEME_CIRCLE_PROGRESS);
             //xProgressDialog.show();
         }
@@ -267,69 +287,20 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
         wl.width = ViewGroup.LayoutParams.MATCH_PARENT;
         wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
-//        if (MainTabActivity.myObjectId != null) {
-//            user = pedometerDB.loadUser(MainTabActivity.myObjectId);
-//            Bitmap picture = PictureUtil.Byte2Bitmap(user.getPicture());
-//            // pictureImage.setImageBitmap(toRoundBitmap.toRoundBitmap(picture));
-//        } else {
-        // pictureImage
-        // .setImageBitmap(toRoundBitmap.toRoundBitmap(BitmapFactory
-        // .decodeResource(context.getResources(),
-        // R.drawable.default_picture)));
 
         dialog.onWindowAttributesChanged(wl);
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
     }
 
-
-
-  /*  private View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            switch (v.getId()) {
-                case R.id.rl_name:
-                    Intent intent = new Intent(PersonaldataActivity.this, NamepageActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.rl_gender:
-                    Intent intent1 = new Intent(PersonaldataActivity.this, SexpageActivity.class);
-                    startActivity(intent1);
-                    break;
-                case R.id.rl_phone:
-                    Intent intent2 = new Intent(PersonaldataActivity.this, PhonechangeActivity.class);
-                    startActivity(intent2);
-                    break;
-                case R.id.rl_icon:
-
-                    try {
-
-
-                        Crop.pickImage(PersonaldataActivity.this);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(PersonaldataActivity.this, "打开图库失败，请查看是否开启权限或稍后再试", Toast.LENGTH_SHORT).show();
-                    }
-
-                    break;
-
-            }
-
-
-        }
-    };*/
-  /*  private View.OnClickListener finlistener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
-    };*/
-
     File sdcardTempFile;
     File audioFile;  //相机是否也是这个文件？
     Uri destination;
 
+    /**
+     * 开始裁剪
+     * @param source
+     */
     private void beginCrop(Uri source) {
         try {
             sdcardTempFile = File.createTempFile(".icon", ".jpg", audioFile);
@@ -340,19 +311,26 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
         Crop.of(source, destination).asSquare().start(this);
     }
 
+    /**更新头像uri**/
+    Uri icon ;
+    /**
+     * 将裁剪的数据进行处理
+     * @param resultCode
+     * @param result
+     */
     private void handleCrop(final int resultCode, Intent result) {
         if (resultCode == RESULT_OK) {
-            Uri output = Crop.getOutput(result);
-            MyLogcat.jLog().e("output :" + output.toString());
-            ivIcon.setImageURI(output);
-            upLoadImage(output);
+            icon = Crop.getOutput(result);
+            MyLogcat.jLog().e("output :" + icon.toString());
+            ivIcon.setImageURI(icon);
+            upLoadImage(icon);
         } else if (resultCode == Crop.RESULT_ERROR) {
             //失败
         }
     }
 
     private void upLoadImage(Uri uri) {
-        String userid = SpUtils.getInstance(this).get("userid", null);
+        String userid = user.getUserid();
         RetrofitHttpUpLoad retrofitHttpUpLoad = RetrofitHttpUpLoad.getInstance();
         retrofitHttpUpLoad.clear();
         String realFilePath = StringUtils.getRealFilePath(this, uri);
@@ -369,8 +347,10 @@ public class PersonaldataActivity extends BaseActivity implements RetrofitCallBa
     public void onResponse(Response response, int method) {
         switch (method) {
             case HttpStaticApi.HTTP_UPLOADIMAGE:
-                MyLogcat.jLog().e("上传图片成功:" + response.body().toString());
                 ToolUtils.showToast(this,"头像上传成功",Toast.LENGTH_SHORT);
+                user.setIcon(icon.toString());
+                SharedPreferencesTools.SaveUserInfo(this,"userSave","userInfo",gson.toJson(user));
+                setResult(RESULT_OK);
                 break;
             default:
                 break;
