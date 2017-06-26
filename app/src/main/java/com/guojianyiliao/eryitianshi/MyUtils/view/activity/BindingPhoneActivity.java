@@ -159,12 +159,13 @@ public class BindingPhoneActivity extends BaseActivity {
 
         String url = "";
 
+        String ip = "http://139.224.196.16/AppServer/";
         if(type.equals("qq")){
-            url = Http_data.Service+"user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&qq="+uid+"&code="+code;
+            url = ip + "user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&qq="+uid+"&code="+code;
         }else if(type.equals("wechat")){
-            url = Http_data.Service+"user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&wechat="+uid+"&code="+code;
+            url = ip+"user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&wechat="+uid+"&code="+code;
         }else if(type.equals("webo")){
-            url = Http_data.Service+"user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&weibo="+uid+"&code="+code;
+            url = ip+"user/bindPhone?phone="+phone+"&name="+name+"&gender="+gender+"&icon="+icon+"&weibo="+uid+"&code="+code;
         }
         /**
          *  此处由于不同的情况  返回的数据不是同一对象类型  故用自己的

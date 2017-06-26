@@ -45,6 +45,7 @@ import com.jaeger.ninegridimageview.NineGridImageView;
 import com.jaeger.ninegridimageview.NineGridImageViewAdapter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 import com.wx.goodview.GoodView;
 
 import java.util.ArrayList;
@@ -503,6 +504,7 @@ public class GrowUpDetailcopy extends BaseActivity implements zmc_EssayCommentRe
     private void showEssayAgree(List<EssayInfoBean.EssayAgreeListBean> bean){
         for (int i = 0; i <bean.size() ; i++) {
             try{
+                isIcon.removeAll(isIcon);
                 isIcon.add(bean.get(i).getUser().getIcon());
                 if(bean.get(i).getUserid().equals(user.getUserid())){//自己点赞了
                     isDianZan = true;
@@ -592,6 +594,7 @@ public class GrowUpDetailcopy extends BaseActivity implements zmc_EssayCommentRe
 
         @Override
         protected void onDisplayImage(Context context, ImageView imageView, String s, String tag, NineGridImageView<String> view) {
+            imageView.setScaleType(ImageView.ScaleType.CENTER);
             Picasso.with(context).load(s).config(Bitmap.Config.RGB_565).fit().placeholder(R.drawable.default_icon).into(imageView);
         }
 
