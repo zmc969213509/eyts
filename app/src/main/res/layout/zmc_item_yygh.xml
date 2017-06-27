@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y240"
+        android:layout_marginLeft="@dimen/y30"
+        android:layout_marginRight="@dimen/y30"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@drawable/shape_text_bg_while_radius_35"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80">
+
+            <TextView
+                android:id="@+id/item_yygh_hos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="成都天使儿童医院"
+                android:textColor="#17c2ed"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/item_yygh_keshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_toLeftOf="@+id/item_yygh_status"
+                android:text=""
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:id="@+id/item_yygh_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x30" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80">
+
+
+            <TextView
+                android:id="@+id/item_yygh_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:text=""
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="#e6e6e6" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80">
+
+
+            <TextView
+                android:id="@+id/item_ttgh_docname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:textColor="#323232"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

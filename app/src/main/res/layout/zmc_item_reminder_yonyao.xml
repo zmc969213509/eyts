@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <View
+        android:layout_width="@dimen/x1"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x40"
+        android:background="#e6e6e6" />
+
+    <TextView
+        android:id="@+id/zmc_item_remind_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x30"
+        android:background="@drawable/shape_text_bg_while_radius_35"
+        android:paddingBottom="@dimen/x12"
+        android:paddingLeft="@dimen/x50"
+        android:paddingRight="@dimen/x50"
+        android:paddingTop="@dimen/x12"
+        android:textColor="#f87055"
+        android:textSize="@dimen/x26" />
+
+    <RelativeLayout
+        android:id="@+id/zmc_item_remind_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zmc_item_remind_day"
+        android:layout_marginTop="@dimen/x30"
+        android:background="#00000000">
+
+        <View
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x40"
+            android:background="#e6e6e6" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="#f87055" />
+
+        <TextView
+            android:id="@+id/zmc_item_remind_tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x80"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_text_bg"
+            android:lineSpacingMultiplier="1.4"
+            android:padding="@dimen/x30"
+            android:textColor="#323232"
+            android:textSize="@dimen/x26" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/zmc_item_remind_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zmc_item_remind_layout1"
+        android:layout_marginTop="@dimen/x30"
+        android:visibility="gone"
+        android:background="#00000000">
+
+        <View
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x40"
+            android:background="#e6e6e6" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="#f87055" />
+
+        <TextView
+            android:id="@+id/zmc_item_remind_tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x80"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_text_bg"
+            android:lineSpacingMultiplier="1.4"
+            android:padding="@dimen/x30"
+            android:textColor="#323232"
+            android:textSize="@dimen/x26" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/zmc_item_remind_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zmc_item_remind_layout2"
+        android:layout_marginTop="@dimen/x30"
+        android:visibility="gone"
+        android:background="#00000000">
+
+        <View
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x40"
+            android:background="#e6e6e6" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="#f87055" />
+
+        <TextView
+            android:id="@+id/zmc_item_remind_tv3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x80"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_text_bg"
+            android:lineSpacingMultiplier="1.4"
+            android:padding="@dimen/x30"
+            android:textColor="#323232"
+            android:textSize="@dimen/x26" />
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

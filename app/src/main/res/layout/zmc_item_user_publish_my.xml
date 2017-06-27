@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:paddingBottom="@dimen/y40">
+
+
+    <TextView
+        android:id="@+id/zmc_item_publish_day_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:text="今天"
+        android:textColor="#323232"
+        android:textSize="@dimen/x36" />
+
+
+    <ImageView
+        android:id="@+id/zmc_item_publish_add"
+        android:layout_width="@dimen/x140"
+        android:layout_height="@dimen/y140"
+        android:layout_marginLeft="@dimen/x150"
+        android:src="@drawable/add3_icon" />
+
+
+</RelativeLayout>

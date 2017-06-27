@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners android:bottomLeftRadius="30dp" android:bottomRightRadius="30dp" android:topLeftRadius="30dp"/>
+
+    <solid android:color="@color/chat_doctor"/>
+    <stroke android:color="@color/chat_doctor_line" android:width="@dimen/x1"/>
+
+</shape>

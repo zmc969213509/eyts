@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6">
+
+
+    <RelativeLayout
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/view">
+
+        <ImageView
+            android:id="@+id/add_comment_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left_icon"
+            android:padding="@dimen/x30"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布评论"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/x32"/>
+
+        <TextView
+            android:id="@+id/add_comment_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="提交"
+            android:gravity="center"
+            android:textSize="@dimen/x32"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/x20"
+            android:paddingLeft="@dimen/x20"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_below="@+id/title_view"
+        android:id="@+id/add_comment_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y200"
+        android:background="@color/white"
+        android:hint="写下您对医生的评论"
+        android:textColorHint="#e6e6e6"
+        android:gravity="start"
+        android:textSize="@dimen/x26"
+        android:lineSpacingMultiplier="1.3"
+        android:textColor="#99323232"
+        android:padding="@dimen/x20"
+        />
+
+
+    <include
+        layout="@layout/zmc_anim_view"/>
+
+
+</RelativeLayout>

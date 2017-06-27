@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y88"
+                android:background="@drawable/nav_bg">
+
+                <ImageButton
+                    android:id="@+id/diseases_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/x30"
+                    android:src="@drawable/left_icon"
+                    android:background="#00000000"/>
+
+               <!-- <RelativeLayout
+                    android:layout_toRightOf="@+id/diseases_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">-->
+
+                    <TextView
+                        android:id="@+id/diseases_title"
+                        android:layout_marginRight="@dimen/x100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text=""
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/x36" />
+               <!-- </RelativeLayout>-->
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/diseases_gs"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y90"
+                        android:background="@drawable/selector_layout_chick"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/diseases_img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:src="@drawable/selector_img_add_bg" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:text="概述"
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x28" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/diseases_gs_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:lineSpacingMultiplier="1.3"
+                        android:paddingBottom="@dimen/y30"
+                        android:paddingLeft="@dimen/x30"
+                        android:paddingRight="@dimen/x30"
+                        android:textColor="#323232"
+                        android:textSize="@dimen/x26"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y1"
+                        android:background="#e6e6e6" />
+
+                    <LinearLayout
+                        android:id="@+id/diseases_by"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y90"
+                        android:background="@drawable/selector_layout_chick"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/diseases_img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:src="@drawable/selector_img_add_bg" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:text="病因"
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x28" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/diseases_by_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:lineSpacingMultiplier="1.3"
+                        android:paddingBottom="@dimen/y30"
+                        android:paddingLeft="@dimen/x30"
+                        android:paddingRight="@dimen/x30"
+                        android:textColor="#323232"
+                        android:textSize="@dimen/x26"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y1"
+                        android:background="#e6e6e6" />
+
+                    <LinearLayout
+                        android:id="@+id/diseases_zz"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y90"
+                        android:background="@drawable/selector_layout_chick"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/diseases_img3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:src="@drawable/selector_img_add_bg" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:text="症状"
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x28" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/diseases_zz_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:lineSpacingMultiplier="1.3"
+                        android:paddingBottom="@dimen/y30"
+                        android:paddingLeft="@dimen/x30"
+                        android:paddingRight="@dimen/x30"
+                        android:textColor="#323232"
+                        android:textSize="@dimen/x26"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y1"
+                        android:background="#e6e6e6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_marginTop="@dimen/y30"
+                        android:drawableLeft="@drawable/round"
+                        android:drawablePadding="@dimen/x10"
+                        android:text="病者患例"
+                        android:textColor="#f87055"
+                        android:textSize="@dimen/x32" />
+
+                    <com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView
+                        android:id="@+id/diseases_recycleview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y20"
+                        android:background="#f6f6f6" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/y30"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:layout_marginTop="@dimen/y30"
+                            android:drawableLeft="@drawable/round"
+                            android:drawablePadding="@dimen/x10"
+                            android:text="推荐医生"
+                            android:textColor="#f87055"
+                            android:textSize="@dimen/x32" />
+
+                        <TextView
+                            android:id="@+id/diseases_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="@dimen/y30"
+                            android:layout_marginRight="@dimen/x30"
+                            android:layout_marginTop="@dimen/y30"
+                            android:drawablePadding="@dimen/x10"
+                            android:drawableRight="@drawable/right_icon"
+                            android:text="更多"
+                            android:textColor="#80777777"
+                            android:textSize="@dimen/x32" />
+
+                    </RelativeLayout>
+
+
+                    <include
+                        android:id="@+id/include_view"
+                        layout="@layout/inquiry_list_item" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y1"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:background="#e6e6e6" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y20" />
+                </LinearLayout>
+
+                <include layout="@layout/zmc_loading_anim" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>
+</LinearLayout>

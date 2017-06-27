@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:background="#17c2ed"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_search_foot"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y76"
+                android:layout_marginBottom="@dimen/y10"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y10"
+                android:background="@drawable/zmc_shape_sear_radius33"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_sms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:background="@drawable/search_icon"
+                    android:padding="@dimen/x18" />
+
+                <EditText
+                    android:id="@+id/et_home_search"
+                    android:layout_width="@dimen/x520"
+                    android:layout_height="@dimen/y64"
+                    android:layout_marginLeft="@dimen/x15"
+                    android:background="@null"
+                    android:hint="请输入您想要搜索的关键词"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="#cccccc"
+                    android:textColorLink="#e6e6e6"
+                    android:textSize="@dimen/x26" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cancel_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="取消"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                查看搜索历史以及热词layout
+                -------------------------------------------------------------------------------------------------
+
+                <LinearLayout
+                    android:id="@+id/history_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y30"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:text="历史搜索"
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x28" />
+
+                        <ImageView
+                            android:id="@+id/delete_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/x30"
+                            android:src="@drawable/del_icon" />
+
+                    </RelativeLayout>
+
+                    <com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout
+                        android:id="@+id/history_showtextlinearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:text_color="#66323232" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_marginTop="@dimen/y30"
+                        android:text="热门搜索"
+                        android:textColor="#777777"
+                        android:textSize="@dimen/x28" />
+
+                    <com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout
+                        android:id="@+id/hot_showtextlinearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:text_color="#66323232" />
+
+                </LinearLayout>
+
+                搜索结果layout
+                ------------------------------------------------------------------------------------------------------
+
+                <LinearLayout
+                    android:id="@+id/sear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#f6f6f6"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/disease_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y80"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/x30"
+                                android:text="相关疾病"
+                                android:textColor="#777777"
+                                android:textSize="@dimen/x28" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y1"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:background="#e5e6e6" />
+
+                        <com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview
+                            android:id="@+id/disease_listview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"></com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y20"
+                        android:background="#f6f6f6" />
+
+                    <LinearLayout
+                        android:id="@+id/doctor_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y80"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/x30"
+                                android:text="相关医生"
+                                android:textColor="#777777"
+                                android:textSize="@dimen/x28" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview
+                            android:id="@+id/doctor_listview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"></com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y1"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:background="#e5e6e6" />
+
+                        <TextView
+                            android:id="@+id/show_more_doctor"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y80"
+                            android:gravity="center"
+                            android:text="查看更多相关医生"
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x28" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/zmc_anim_view"/>
+</RelativeLayout>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:background="@color/view">
+
+                <ImageView
+                    android:id="@+id/yygh_i_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x30"
+                    android:src="@drawable/left_icon" />
+
+                <TextView
+                    android:id="@+id/yygh_i_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="预约挂号"
+                    android:textSize="@dimen/x32" />
+
+            </RelativeLayout>
+
+            <include
+                layout="@layout/inquiry_list_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="#e6e6e6" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="就诊人"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <EditText
+                    android:id="@+id/yygh_i_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:hint="就诊人姓名"
+                    android:padding="@dimen/y30"
+                    android:textColor="#323232"
+                    android:textColorHint="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="联系电话"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+
+                <EditText
+                    android:id="@+id/yygh_i_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView5"
+                    android:layout_alignBottom="@+id/textView5"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginRight="23dp"
+                    android:hint="就诊人电话"
+                    android:padding="@dimen/y30"
+                    android:textColor="#323232"
+                    android:textColorHint="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="年龄"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/yygh_i_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:padding="@dimen/y30"
+                    android:text="选择年龄"
+                    android:textColor="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="性别"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/yygh_i_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:padding="@dimen/y30"
+                    android:text="选择性别"
+                    android:textColor="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="就诊时间"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/yygh_i_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:padding="@dimen/y30"
+                    android:text="预约就诊时间"
+                    android:textColor="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="挂号类型"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/yygh_i_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:padding="@dimen/y30"
+                    android:text="专家号"
+                    android:textColor="#aaaaaa"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="挂号费用"
+                    android:textColor="#323232"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/yygh_i_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:padding="@dimen/y30"
+                    android:text="50.00元"
+                    android:textColor="@color/couponsregistr"
+                    android:textSize="@dimen/x30" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:background="#e6e6e6" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/yygh_i_sure"
+                android:layout_width="@dimen/y570"
+                android:layout_height="@dimen/y88"
+                android:layout_below="@id/ll_foot_pas"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/x30"
+                android:background="@drawable/aa_btn_default"
+                android:text="预约挂号"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        layout="@layout/zmc_anim_view"/>
+
+</RelativeLayout>

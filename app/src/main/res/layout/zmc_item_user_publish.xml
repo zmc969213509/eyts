@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:paddingBottom="@dimen/y40">
+
+    <TextView
+        android:id="@+id/zmc_item_publish_day_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12"
+        android:textSize="@dimen/x36"
+        android:textColor="#323232"
+        android:layout_marginLeft="@dimen/x30"/>
+
+    <TextView
+        android:id="@+id/zmc_item_publish_mouth_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4月"
+        android:textSize="@dimen/x22"
+        android:textColor="#323232"/>
+
+    <com.guojianyiliao.eryitianshi.MyUtils.customView.FourGridImageView
+        android:id="@+id/zmc_item_publish_fourview"
+        android:layout_width="@dimen/x140"
+        android:layout_height="@dimen/y140"
+        android:layout_marginLeft="@dimen/x30"
+        app:img_padding="@dimen/x4"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/zmc_item_publish_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重温一下儿时快乐"
+            android:layout_marginLeft="@dimen/x20"
+            android:textSize="@dimen/x28"
+            android:textColor="#323232"
+            android:ellipsize="end"
+            android:layout_marginRight="@dimen/x30"
+            android:lines="1"/>
+
+
+        <TextView
+            android:id="@+id/zmc_item_publish_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/x24"
+            android:textColor="#aaaaaa"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yygh_s_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y460"
+            android:background="@drawable/yygh_bg">
+
+            <ImageView
+                android:id="@+id/yygg_s_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x30"
+                android:src="@drawable/left_icon" />
+
+
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:layout_marginTop="@dimen/y300"
+                android:layout_centerHorizontal="true"
+                android:text="就诊患者1862人  |  医生28位"
+                android:textSize="@dimen/x26" />
+
+
+            <TextView
+                android:id="@+id/yygh_s_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y20"
+                android:drawableLeft="@drawable/address_icon"
+                android:drawablePadding="@dimen/x5"
+                android:text="成都市武侯区人民南路四段46号（桐梓林地铁B出口..详情 >"
+                android:textSize="@dimen/x25" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingTop="@dimen/x30"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            ----------------------显示在线医生信息------------------------------------------------------
+
+            <LinearLayout
+                android:id="@+id/yygh_s_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/foot_rand_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/ll_foot_1"
+                        android:layout_width="@dimen/x220"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y30">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y20">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/rand_order_icon_1"
+                                android:layout_width="@dimen/x130"
+                                android:layout_height="@dimen/y130"
+                                android:background="@drawable/head_icon" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|right"
+                                android:background="@drawable/v_icon3x" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/rand_order_name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x20"
+                            android:text=""
+                            android:textColor="#08aed8"
+                            android:textSize="@dimen/x30" />
+
+                        <TextView
+                            android:id="@+id/rand_order_type_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x14"
+                            android:text=""
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x22" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_foot_2"
+                        android:layout_width="@dimen/x220"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:layout_toRightOf="@id/ll_foot_1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y30">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y20">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/rand_order_icon_2"
+                                android:layout_width="@dimen/x130"
+                                android:layout_height="@dimen/y130"
+                                android:background="@drawable/head_icon" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|right"
+                                android:background="@drawable/v_icon3x" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/rand_order_name_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x20"
+                            android:textColor="#08aed8"
+                            android:textSize="@dimen/x30" />
+
+                        <TextView
+                            android:id="@+id/rand_order_type_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y14"
+                            android:text=""
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x22" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_foot_3"
+                        android:layout_width="@dimen/x220"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:layout_toRightOf="@id/ll_foot_2"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/y30">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y20">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/rand_order_icon_3"
+                                android:layout_width="@dimen/x130"
+                                android:layout_height="@dimen/y130"
+                                android:background="@drawable/head_icon" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|right"
+                                android:background="@drawable/v_icon3x"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/rand_order_name_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x20"
+                            android:text=""
+                            android:textColor="#08aed8"
+                            android:textSize="@dimen/x30" />
+
+                        <TextView
+                            android:id="@+id/rand_order_type_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x14"
+                            android:text=""
+                            android:textColor="#777777"
+                            android:textSize="@dimen/x22" />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y20"
+                    android:background="#f6f6f6" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/y30">
+
+                    <ImageView
+                        android:id="@+id/view_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:background="@drawable/round" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x10"
+                        android:layout_toRightOf="@id/view_set"
+                        android:text="今日坐诊医生"
+                        android:textColor="#f87055"
+                        android:textSize="@dimen/x28" />
+
+                    <TextView
+                        android:id="@+id/rl_see_order_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x30"
+                        android:text="更多 >"
+                        android:textColor="#bab9b9"
+                        android:textSize="@dimen/x22" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y1"
+                    android:layout_marginTop="@dimen/x30"
+                    android:background="#e6e6e6" />
+
+                <com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview
+                    android:id="@+id/yygh_s_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </com.guojianyiliao.eryitianshi.MyUtils.customView.MyListview>
+
+            </LinearLayout>
+
+            -----------------------显示地址layout-------------------------------------------------------
+
+            <LinearLayout
+                android:id="@+id/yygh_s_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/subway_icon"
+                    android:text="地铁："
+                    android:textColor="#f9a720"
+                    android:textSize="@dimen/x28"
+                    android:drawablePadding="@dimen/x10"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y20"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/x28"
+                    android:text="乘坐地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n乘坐地铁二号线：在天府广场换乘1号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n乘坐地铁3号线：在省体育馆换乘地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n乘坐地铁四号线，在骡马市换乘地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n火车北站：乘坐地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n火车南站：乘坐地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。\n成都东客站：乘坐地铁二号线至天府广场换乘地铁一号线，在桐梓林地铁站下车，B出口出站，沿人民南路四段出城方向步行20米即到。"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/y30"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/x1"
+                    android:background="#e6e6e6"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/bus_icon"
+                    android:text="公交："
+                    android:textColor="#8fcf31"
+                    android:textSize="@dimen/x28"
+                    android:drawablePadding="@dimen/x10"
+                    android:layout_marginBottom="@dimen/y20"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/x28"
+                    android:text="乘坐或换乘16路，99路，109路，118路，247路，304路，501路，506路，1097路到桐梓林公交站下车，沿人民南路四段出城方向步行20米即到。"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/y30"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/x1"
+                    android:background="#e6e6e6"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/drive_icon"
+                    android:text="自驾："
+                    android:textColor="#17c2ed"
+                    android:textSize="@dimen/x28"
+                    android:drawablePadding="@dimen/x10"
+                    android:layout_marginBottom="@dimen/y20"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/x28"
+                    android:text="成都市武侯区人民南路四段46号（桐梓林地铁b出口旁20米）"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/y30"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>

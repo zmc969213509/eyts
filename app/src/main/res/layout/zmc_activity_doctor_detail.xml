@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            ----------------------------------------头部视图-------------------------------------------
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y400">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y340"
+                    android:background="@drawable/doctor_bg" />
+
+                <ImageView
+                    android:id="@+id/doctor_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x30"
+                    android:src="@drawable/left_icon" />
+
+                <ImageView
+                    android:id="@+id/doctor_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_marginTop="@dimen/y20"
+                    android:src="@drawable/selector_article_collection" />
+
+                <RelativeLayout
+                    android:layout_width="@dimen/y200"
+                    android:layout_height="@dimen/y200"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/doctor_icon"
+                        android:layout_width="@dimen/y200"
+                        android:layout_height="@dimen/y200"
+                        android:src="@drawable/default_icon"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="@dimen/x4" />
+
+                    <ImageView
+                        android:layout_width="@dimen/y45"
+                        android:layout_height="@dimen/y45"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="@dimen/y5"
+                        android:layout_marginRight="@dimen/y5"
+                        android:src="@drawable/v_icon" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/doctor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y20"
+                android:text=" "
+                android:textColor="#323232"
+                android:textSize="@dimen/x32" />
+
+            <TextView
+                android:id="@+id/doctor_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y20"
+                android:text=" "
+                android:textColor="#777777"
+                android:textSize="@dimen/x26" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginTop="@dimen/y44"
+                android:background="#e6e6e6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/doctor_zxwz"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imgs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/wz_icon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/y65"/>
+
+                    <LinearLayout
+                        android:layout_toRightOf="@+id/imgs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/x30">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="在线问诊"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x32" />
+                        <TextView
+                            android:id="@+id/doctor_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" "
+                            android:textColor="#84c327"
+                            android:textSize="@dimen/x28" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="@dimen/x1"
+                    android:layout_height="@dimen/y80"
+                    android:layout_gravity="center"
+                    android:background="#e6e6e6" />
+
+                <RelativeLayout
+                    android:id="@+id/doctor_yygh"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/yy_icon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/y65"/>
+
+                    <LinearLayout
+                        android:layout_toRightOf="@+id/img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/x30">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="预约挂号"
+                            android:textColor="#323232"
+                            android:textSize="@dimen/x32" />
+                        <TextView
+                            android:id="@+id/doctor_jiaqian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" "
+                            android:textColor="#f3a11a"
+                            android:textSize="@dimen/x28" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="#f6f6f6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y30"
+                android:drawableLeft="@drawable/round"
+                android:drawablePadding="@dimen/x10"
+                android:text="擅长"
+                android:textColor="#f87055"
+                android:textSize="@dimen/x32" />
+
+            <TextView
+                android:id="@+id/doctor_adept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_marginTop="@dimen/y20"
+                android:lineSpacingMultiplier="1.3"
+                android:text=""
+                android:textColor="#aaaaaa"
+                android:textSize="@dimen/x26" />
+
+            <com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout
+                android:id="@+id/doctor_adept_showtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:orientation="vertical"
+                app:text_color="#17c2ed"
+                app:text_bg="@drawable/shape_show_tx_bg_blue"
+                app:max_padding_width="15sp"
+                app:padding_height="6sp"
+                app:margin_width="10sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:layout_marginTop="@dimen/y30"
+                android:background="#f6f6f6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y30"
+                android:drawableLeft="@drawable/round"
+                android:drawablePadding="@dimen/x10"
+                android:text="坐诊时间"
+                android:textColor="#f87055"
+                android:textSize="@dimen/x32" />
+
+            <com.guojianyiliao.eryitianshi.MyUtils.customView.TableLinearLayout
+                android:id="@+id/doctor_work_table"
+                android:layout_width="@dimen/x690"
+                android:layout_height="@dimen/y240"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y20"
+                app:line_color="#80777777"
+                app:table_text_color="#777777"
+                app:table_text_size="@dimen/x26"
+                app:view_bg="#10ffffff" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:layout_marginTop="@dimen/y30"
+                android:background="#f6f6f6" />
+
+            <TextView
+                android:id="@+id/doctor_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y30"
+                android:drawableLeft="@drawable/round"
+                android:drawablePadding="@dimen/x10"
+                android:text="患者评论 （0条）"
+                android:textColor="#f87055"
+                android:textSize="@dimen/x32" />
+
+            <com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView
+                android:id="@+id/doctor_recycleview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y30" />
+
+        </LinearLayout>
+    </com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/doctor_bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44000000"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/doctor_introduce_start"
+            android:layout_width="@dimen/x170"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/y140"
+            android:background="@drawable/shape_tv_while_bg"
+            android:gravity="center"
+            android:paddingBottom="@dimen/y15"
+            android:paddingTop="@dimen/y15"
+            android:text="医生简介"
+            android:textSize="@dimen/x32" />
+
+            <include
+                android:id="@+id/view_introduce"
+                layout="@layout/zmc_view_doc_introduce"
+                android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/zmc_loading_anim"
+        />
+
+</RelativeLayout>

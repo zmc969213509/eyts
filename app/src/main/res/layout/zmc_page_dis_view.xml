@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="#f6f6f6" />
+
+            <com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout
+                android:id="@+id/zmc_page_dis_hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y30"
+                android:layout_marginTop="@dimen/y30"
+                android:orientation="vertical"
+                app:margin_width="10sp"
+                app:max_padding_width="15sp"
+                app:padding_height="6sp"
+                app:text_bg="@drawable/shape_show_tx_bg_blue"
+                app:text_color="#17c2ed"
+                app:text_size="13px">
+
+            </com.guojianyiliao.eryitianshi.MyUtils.customView.ShowTextLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:background="#e6e6e6" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView
+                    android:id="@+id/zmc_page_dis_recycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </com.guojianyiliao.eryitianshi.MyUtils.customView.MyRecycleView>
+
+                <include layout="@layout/zmc_loading_anim" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </com.guojianyiliao.eryitianshi.MyUtils.customView.MyScrollView>
+
+
+</LinearLayout>

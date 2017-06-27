@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_below="@+id/item_chat_history_img"
+        android:layout_marginLeft="@dimen/x30"
+        android:background="@color/linegray" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_chat_history_img"
+        android:layout_width="@dimen/y112"
+        android:layout_height="@dimen/y112"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"/>
+
+    <TextView
+        android:id="@+id/item_chat_history_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#777777"
+        android:layout_toRightOf="@+id/item_chat_history_img"
+        android:layout_marginTop="@dimen/y30"
+        android:layout_marginLeft="@dimen/x30"
+        android:textSize="@dimen/x26"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="问诊已结束"
+        android:textColor="#88777777"
+        android:layout_toRightOf="@+id/item_chat_history_img"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_below="@+id/item_chat_history_name"
+        android:layout_marginTop="@dimen/y15"
+        android:textSize="@dimen/x26"/>
+
+</RelativeLayout>

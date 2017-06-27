@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/x1"
+        android:layout_height="@dimen/x1"
+        android:layout_centerInParent="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/huojian"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x50"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="页面君正在悄悄进化"
+            android:textColor="@color/view"
+            android:textSize="@dimen/x36"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/x40"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/todo_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="去其他界面瞧瞧"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x26"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingBottom="@dimen/x15"
+        android:paddingTop="@dimen/x15"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/view"
+        android:background="@drawable/shape_btn_blue_bg_radius"/>
+
+
+</RelativeLayout>
